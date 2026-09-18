@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="Eoncyrus mark">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#79c0ff"/><stop offset=".52" stop-color="#56d4c8"/><stop offset="1" stop-color="#b7a6ff"/>
+  </linearGradient>
+</defs>
+<rect x="2" y="2" width="156" height="156" rx="40" fill="#0d1117" stroke="#30363d" stroke-width="4"/>
+<circle cx="80" cy="80" r="48" fill="none" stroke="url(#g)" stroke-width="5" opacity=".9"/>
+<ellipse cx="80" cy="80" rx="57" ry="25" fill="none" stroke="#56d4c8" stroke-width="3" opacity=".7" transform="rotate(-28 80 80)"/>
+<circle cx="124" cy="53" r="7" fill="#79c0ff"/>
+<path d="M58 53h42M58 80h34M58 107h42" stroke="#f0f6fc" stroke-width="8" stroke-linecap="round"/>
+<path d="M58 53v54" stroke="#f0f6fc" stroke-width="8" stroke-linecap="round"/>
+</svg>
