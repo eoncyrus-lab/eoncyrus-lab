@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="205" viewBox="0 0 1280 205" role="img" aria-label="Research system flow">
+  <rect width="1280" height="205" rx="22" fill="#0d1117"/>
+  <text x="52" y="48" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">RESEARCH SYSTEM / SIGNAL PATH</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" text-anchor="middle">
+    <g><rect x="50" y="82" width="160" height="72" rx="16" fill="#111820" stroke="#2f81f7"/><text x="130" y="124" fill="#79c0ff">SOURCES</text></g>
+    <g><rect x="250" y="82" width="160" height="72" rx="16" fill="#111820" stroke="#2ea043"/><text x="330" y="124" fill="#7ee787">INFORMATION</text></g>
+    <g><rect x="450" y="82" width="160" height="72" rx="16" fill="#111820" stroke="#a371f7"/><text x="530" y="124" fill="#d2a8ff">KNOWLEDGE</text></g>
+    <g><rect x="650" y="82" width="160" height="72" rx="16" fill="#111820" stroke="#39c5cf"/><text x="730" y="124" fill="#56d4c8">AGENTS</text></g>
+    <g><rect x="850" y="82" width="160" height="72" rx="16" fill="#111820" stroke="#d29922"/><text x="930" y="124" fill="#e3b341">RESEARCH</text></g>
+    <g><rect x="1050" y="82" width="180" height="72" rx="16" fill="#111820" stroke="#f0883e"/><text x="1140" y="124" fill="#ffa657">DECISION SUPPORT</text></g>
+  </g>
+  <g stroke="#484f58" stroke-width="2" fill="none">
+    <path d="M210 118H245"/><path d="M410 118H445"/><path d="M610 118H645"/><path d="M810 118H845"/><path d="M1010 118H1045"/>
+  </g>
+  <g fill="#484f58"><path d="M245 118l-8-5v10z"/><path d="M445 118l-8-5v10z"/><path d="M645 118l-8-5v10z"/><path d="M845 118l-8-5v10z"/><path d="M1045 118l-8-5v10z"/></g>
+</svg>
