@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-label="Eoncyrus — systems, agents, markets, information">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffffff"/>
+    <stop offset=".58" stop-color="#f6f8fa"/>
+    <stop offset="1" stop-color="#eef4f7"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#79c0ff"/>
+    <stop offset=".5" stop-color="#56d4c8"/>
+    <stop offset="1" stop-color="#b7a6ff"/>
+  </linearGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+</defs>
+
+<rect x="1" y="1" width="1278" height="438" rx="32" fill="url(#bg)" stroke="#d0d7de"/>
+<circle cx="1090" cy="60" r="210" fill="#79c0ff" opacity=".035"/>
+<circle cx="1000" cy="410" r="230" fill="#56d4c8" opacity=".028"/>
+<circle cx="1170" cy="250" r="90" fill="#b7a6ff" opacity=".025"/>
+
+<g opacity=".09" stroke="#afb8c1">
+  <path d="M760 60H1220"/><path d="M760 110H1220"/><path d="M760 160H1220"/><path d="M760 210H1220"/><path d="M760 260H1220"/><path d="M760 310H1220"/><path d="M760 360H1220"/>
+  <path d="M790 35V405"/><path d="M860 35V405"/><path d="M930 35V405"/><path d="M1000 35V405"/><path d="M1070 35V405"/><path d="M1140 35V405"/><path d="M1210 35V405"/>
+</g>
+
+<!-- logo -->
+<g transform="translate(66,48)">
+  <circle cx="30" cy="30" r="28" fill="#ffffff" stroke="#56d4c8" stroke-width="3"/>
+  <ellipse cx="30" cy="30" rx="39" ry="15" fill="none" stroke="#79c0ff" stroke-width="2" transform="rotate(-18 30 30)"/>
+  <path d="M18 16v28M18 16h22M18 30h17M18 44h22" stroke="#f0f6fc" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="54" cy="14" r="4" fill="#79c0ff"/>
+</g>
+
+<text x="138" y="79" fill="#57606a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16">eoncyrus-lab / profile</text>
+<text x="66" y="174" fill="#1f2328" font-family="Inter,system-ui,sans-serif" font-size="76" font-weight="760" letter-spacing="3">EONCYRUS</text>
+<text x="70" y="222" fill="#57606a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22">building tools to understand noisy systems.</text>
+<rect x="70" y="252" width="520" height="2" fill="url(#accent)" opacity=".8"/>
+
+<g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">
+  <rect x="70" y="280" width="104" height="36" rx="18" fill="#f6f8fa" stroke="#2f81f7"/>
+  <text x="122" y="303" text-anchor="middle" fill="#79c0ff">SYSTEMS</text>
+  <rect x="186" y="280" width="96" height="36" rx="18" fill="#f6f8fa" stroke="#39c5cf"/>
+  <text x="234" y="303" text-anchor="middle" fill="#56d4c8">AGENTS</text>
+  <rect x="294" y="280" width="104" height="36" rx="18" fill="#f6f8fa" stroke="#a371f7"/>
+  <text x="346" y="303" text-anchor="middle" fill="#d2a8ff">MARKETS</text>
+  <rect x="410" y="280" width="150" height="36" rx="18" fill="#f6f8fa" stroke="#d29922"/>
+  <text x="485" y="303" text-anchor="middle" fill="#e3b341">INFORMATION</text>
+</g>
+
+<text x="70" y="366" fill="#57606a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">code · research · automate · repeat</text>
+
+<!-- right character panel -->
+<g transform="translate(840,34)">
+  <rect x="0" y="0" width="382" height="372" rx="44" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+  <rect x="24" y="24" width="334" height="324" rx="34" fill="#f6f8fa"/>
+  <circle cx="178" cy="165" r="134" fill="#dff2ff" opacity=".035"/>
+
+  <!-- terminal blocks -->
+  <g opacity=".18">
+    <rect x="38" y="48" width="102" height="62" rx="10" fill="#ffffff" stroke="#79c0ff"/>
+    <path d="M52 68h42M52 82h64M52 96h31" stroke="#79c0ff" stroke-width="3" stroke-linecap="round"/>
+    <rect x="253" y="48" width="86" height="62" rx="10" fill="#ffffff" stroke="#56d4c8"/>
+    <path d="M269 69h44M269 84h31M269 98h50" stroke="#56d4c8" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- sticky note -->
+  <g transform="translate(264,126) rotate(4)">
+    <rect x="0" y="0" width="86" height="78" rx="8" fill="#f1e4c4" opacity=".92"/>
+    <text x="43" y="25" text-anchor="middle" fill="#544b42" font-family="ui-monospace,monospace" font-size="11">bug fixed</text>
+    <text x="43" y="42" text-anchor="middle" fill="#544b42" font-family="ui-monospace,monospace" font-size="11">sleep?</text>
+    <path d="M28 57q15 13 30 0" fill="none" stroke="#544b42" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- raised sleeves -->
+  <path d="M106 252C65 238 54 202 64 174c8-22 28-19 42 1l28 47z" fill="#24292f" stroke="#afb8c1" stroke-width="3"/>
+  <path d="M247 252c42-13 55-49 45-78-8-22-28-19-43 1l-29 48z" fill="#24292f" stroke="#afb8c1" stroke-width="3"/>
+  <path d="M72 179c-5-28 4-57 18-77" stroke="#f3dedb" stroke-width="20" stroke-linecap="round"/>
+  <path d="M286 179c5-28-4-57-18-77" stroke="#f3dedb" stroke-width="20" stroke-linecap="round"/>
+  <path d="M81 97l8-13 7 15m164 0 8-15 8 14" fill="none" stroke="#f3dedb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- hair mass -->
+  <path d="M88 192C61 149 66 94 100 59c29-30 79-45 120-28 55 22 78 78 61 131-11 36-38 69-76 79-45 12-91-6-117-49z" fill="#e8edf4"/>
+  <path d="M96 144c-18-68 25-113 84-119 62-6 104 39 98 107-27-30-64-44-106-40-32 3-55 17-76 52z" fill="#f4f7fa"/>
+  <path d="M113 60c-16-20-3-37 10-47 4 18 4 29-10 47m90-25c13-21 29-21 43-12-15 9-25 16-43 12" fill="#f4f7fa"/>
+
+  <!-- cat clip -->
+  <g transform="translate(102,72)">
+    <path d="M0 13L8 0l9 10L28 1l8 14v21H0z" fill="#ffffff" stroke="#56d4c8" stroke-width="2"/>
+    <circle cx="11" cy="23" r="2" fill="#79c0ff"/><circle cx="25" cy="23" r="2" fill="#79c0ff"/>
+    <path d="M15 29q4 4 8 0" fill="none" stroke="#c9d1d9" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- face -->
+  <ellipse cx="182" cy="161" rx="84" ry="75" fill="#f3dfdd"/>
+  <path d="M102 144c25-46 64-66 110-55 29 7 49 21 62 43-32-18-71-22-104-12-30 9-48 24-68 44z" fill="#f4f7fa"/>
+
+  <!-- >< eyes -->
+  <path d="M126 158l17-11 17 11" fill="none" stroke="#24292f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M204 158l17-11 17 11" fill="none" stroke="#24292f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="119" cy="181" rx="21" ry="10" fill="#e8a3aa" opacity=".42"/>
+  <ellipse cx="244" cy="181" rx="21" ry="10" fill="#e8a3aa" opacity=".42"/>
+
+  <!-- mouth -->
+  <path d="M150 179q32 41 65 0c-2 39-15 58-33 58-19 0-30-20-32-58z" fill="#7d4e58" stroke="#4e343b" stroke-width="3"/>
+  <ellipse cx="182" cy="218" rx="20" ry="8" fill="#e89da8"/>
+
+  <!-- ahoge -->
+  <path d="M174 46q4-29 27-32-9 15 8 27" fill="none" stroke="#f4f7fa" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- hoodie -->
+  <path d="M104 247q77 38 156 0l32 101H72z" fill="#24292f"/>
+  <path d="M151 253l31 27 34-27" fill="none" stroke="#afb8c1" stroke-width="4"/>
+  <g transform="translate(166,292)">
+    <path d="M0 10L7 0l9 8 10-8 8 11v18H0z" fill="#f6f8fa" stroke="#56d4c8" stroke-width="2"/>
+    <circle cx="10" cy="18" r="2" fill="#79c0ff"/><circle cx="24" cy="18" r="2" fill="#79c0ff"/>
+  </g>
+
+  <!-- doodles -->
+  <g fill="none" stroke="#afb8c1" stroke-width="2" opacity=".6">
+    <path d="M34 286q12-18 24 0t24 0"/>
+    <path d="M314 259q13-16 26 0"/>
+    <path d="M311 279l7-9 7 9 8-9"/>
+  </g>
+</g>
+
+<text x="874" y="418" fill="#6e7781" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">cute chaos / serious systems</text>
+</svg>
