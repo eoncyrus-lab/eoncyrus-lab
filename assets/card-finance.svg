@@ -1,10 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="590" height="184" viewBox="0 0 590 184" role="img" aria-label="Financial_freedom">
-  <rect x="1" y="1" width="588" height="182" rx="20" fill="#0d1117" stroke="#30363d"/>
-  <rect x="1" y="1" width="7" height="182" rx="4" fill="#e3b341"/>
-  <circle cx="57" cy="52" r="25" fill="#111820" stroke="#e3b341" opacity=".95"/>
-  <text x="57" y="60" text-anchor="middle" fill="#e3b341" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="23" font-weight="700">F</text>
-  <text x="98" y="47" fill="#f0f6fc" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">Financial_freedom</text>
-  <text x="98" y="74" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">primary sources · long-term investing library</text>
-  <path d="M46 106H544" stroke="#21262d"/>
-  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace"><rect x="46" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="95" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Research</text><rect x="158" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="207" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Value</text><rect x="270" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="319" y="151" text-anchor="middle" fill="#8b949e" font-size="12">BTC</text><rect x="382" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="431" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Gold</text></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="188" viewBox="0 0 590 188" role="img" aria-label="Financial_freedom">
+  <defs><linearGradient id="a" x1="0" x2="1"><stop offset="0" stop-color="#e3b341"/><stop offset="1" stop-color="#e3b341" stop-opacity=".08"/></linearGradient></defs>
+  <rect x="1" y="1" width="588" height="186" rx="22" fill="#0c1117" stroke="#2d3744"/>
+  <rect x="1" y="1" width="588" height="5" rx="3" fill="url(#a)"/>
+  <text x="528" y="38" fill="#30363d" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="19">03</text>
+  <circle cx="58" cy="57" r="27" fill="#111820" stroke="#e3b341" stroke-width="2"/>
+  <text x="58" y="65" text-anchor="middle" fill="#e3b341" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="23" font-weight="700">F</text>
+  <text x="102" y="51" fill="#f0f6fc" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">Financial_freedom</text>
+  <text x="102" y="78" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5">primary sources · long-term investing library</text>
+  <path d="M46 111H544" stroke="#21262d"/>
+  <circle cx="48" cy="151" r="4" fill="#e3b341" opacity="0.95"/><text x="59" y="155" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12">Research</text><circle cx="166" cy="151" r="4" fill="#e3b341" opacity="0.83"/><text x="177" y="155" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12">Value</text><circle cx="284" cy="151" r="4" fill="#e3b341" opacity="0.71"/><text x="295" y="155" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12">BTC</text><circle cx="402" cy="151" r="4" fill="#e3b341" opacity="0.59"/><text x="413" y="155" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12">Gold</text>
+  <path d="M500 145h30l8-8m-8 8 8 8" fill="none" stroke="#e3b341" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
   </svg>
