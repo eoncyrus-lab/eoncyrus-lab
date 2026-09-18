@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="Eoncyrus — systems, agents, markets, information">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".6" stop-color="#f6f8fa"/>
+      <stop offset="1" stop-color="#eef4f7"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#0969da"/>
+      <stop offset=".52" stop-color="#16897c"/>
+      <stop offset="1" stop-color="#8250df"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="1278" height="358" rx="28" fill="url(#bg)" stroke="#d0d7de"/>
+  <circle cx="1040" cy="92" r="110" fill="#16897c" opacity=".055"/>
+  <circle cx="1152" cy="250" r="132" fill="#0969da" opacity=".045"/>
+  <path d="M865 82 C955 35 1080 52 1185 130 S1105 315 938 285" fill="none" stroke="url(#accent)" stroke-width="2" opacity=".18"/>
+  <path d="M900 116 C975 76 1070 86 1148 150 S1088 272 970 254" fill="none" stroke="#0969da" stroke-width="1.5" opacity=".16"/>
+  <g fill="#0969da">
+    <circle cx="900" cy="116" r="5"/><circle cx="1034" cy="90" r="4"/><circle cx="1148" cy="150" r="5"/><circle cx="1088" cy="272" r="4"/><circle cx="970" cy="254" r="5"/>
+  </g>
+  <g opacity=".12" fill="#24292f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14">
+    <text x="890" y="190">sources → signal → models → decisions</text>
+    <text x="930" y="216">code / research / automate / repeat</text>
+  </g>
+  <text x="72" y="72" fill="#57606a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">eoncyrus-lab / profile</text>
+  <text x="72" y="166" fill="#1f2328" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="72" letter-spacing="3">EONCYRUS</text>
+  <text x="75" y="214" fill="#57606a" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="23">Building tools to understand noisy systems.</text>
+  <rect x="73" y="245" width="520" height="2" fill="url(#accent)" opacity=".7"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">
+    <text x="74" y="292" fill="#0969da">SYSTEMS</text>
+    <text x="180" y="292" fill="#afb8c1">/</text>
+    <text x="205" y="292" fill="#16897c">AGENTS</text>
+    <text x="304" y="292" fill="#afb8c1">/</text>
+    <text x="329" y="292" fill="#8250df">MARKETS</text>
+    <text x="441" y="292" fill="#afb8c1">/</text>
+    <text x="466" y="292" fill="#bc4c00">INFORMATION</text>
+  </g>
+</svg>
