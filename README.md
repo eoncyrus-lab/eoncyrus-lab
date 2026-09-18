@@ -2,9 +2,9 @@
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-character.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-character-light.svg">
-  <img src="./assets/hero-character.svg" width="100%" alt="Eoncyrus — systems, agents, markets, information">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-character.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-character-light.png">
+  <img src="./assets/hero-character.png" width="100%" alt="Eoncyrus — systems, agents, markets, information">
 </picture>
 </p>
 
@@ -21,9 +21,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/flow-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/flow-light.svg">
-    <img alt="Research system: sources to decision support" src="./assets/flow-dark.svg" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/flow-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/flow-light.png">
+    <img alt="Research system: sources to decision support" src="./assets/flow-dark.png" width="100%">
   </picture>
 </p>
 
@@ -34,18 +34,18 @@
 <td width="50%" valign="top">
 <a href="https://github.com/eoncyrus-lab/nimbus-news">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-nimbus.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-nimbus-light.svg">
-  <img src="./assets/card-nimbus.svg" width="100%" alt="nimbus-news">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-nimbus.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-nimbus-light.png">
+  <img src="./assets/card-nimbus.png" width="100%" alt="nimbus-news">
 </picture>
 </a>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/eoncyrus-lab/iwencai-skillhub-tools">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-iwencai.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-iwencai-light.svg">
-  <img src="./assets/card-iwencai.svg" width="100%" alt="iwencai-skillhub-tools">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-iwencai.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-iwencai-light.png">
+  <img src="./assets/card-iwencai.png" width="100%" alt="iwencai-skillhub-tools">
 </picture>
 </a>
 </td>
@@ -54,18 +54,18 @@
 <td width="50%" valign="top">
 <a href="https://github.com/eoncyrus-lab/Financial_freedom">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-finance.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-finance-light.svg">
-  <img src="./assets/card-finance.svg" width="100%" alt="Financial_freedom">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-finance.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-finance-light.png">
+  <img src="./assets/card-finance.png" width="100%" alt="Financial_freedom">
 </picture>
 </a>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/eoncyrus-lab/wechat-md-vintage">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-vintage.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-vintage-light.svg">
-  <img src="./assets/card-vintage.svg" width="100%" alt="wechat-md-vintage">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-vintage.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-vintage-light.png">
+  <img src="./assets/card-vintage.png" width="100%" alt="wechat-md-vintage">
 </picture>
 </a>
 </td>
@@ -74,17 +74,17 @@
 <td width="50%" valign="top">
 <a href="https://github.com/eoncyrus-lab/singbox-deploy">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-singbox.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-singbox-light.svg">
-  <img src="./assets/card-singbox.svg" width="100%" alt="singbox-deploy">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-singbox.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-singbox-light.png">
+  <img src="./assets/card-singbox.png" width="100%" alt="singbox-deploy">
 </picture>
 </a>
 </td>
 <td width="50%" valign="top">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-more.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/card-more-light.svg">
-  <img src="./assets/card-more.svg" width="100%" alt="More to come">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-more.png">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-more-light.png">
+  <img src="./assets/card-more.png" width="100%" alt="More to come">
 </picture>
 </td>
 </tr>
@@ -111,9 +111,9 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/eoncyrus-mark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/eoncyrus-mark-light.svg">
-    <img src="./assets/eoncyrus-mark.svg" width="54" alt="Eoncyrus mark">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/eoncyrus-mark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/eoncyrus-mark-light.png">
+    <img src="./assets/eoncyrus-mark.png" width="54" alt="Eoncyrus mark">
   </picture>
   <br>
   <sub><code>code · research · automate · repeat</code></sub>
