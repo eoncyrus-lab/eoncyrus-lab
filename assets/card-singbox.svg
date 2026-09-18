@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="184" viewBox="0 0 590 184" role="img" aria-label="singbox-deploy">
+  <rect x="1" y="1" width="588" height="182" rx="20" fill="#0d1117" stroke="#30363d"/>
+  <rect x="1" y="1" width="7" height="182" rx="4" fill="#ffa657"/>
+  <circle cx="57" cy="52" r="25" fill="#111820" stroke="#ffa657" opacity=".95"/>
+  <text x="57" y="60" text-anchor="middle" fill="#ffa657" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="23" font-weight="700">S</text>
+  <text x="98" y="47" fill="#f0f6fc" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700">singbox-deploy</text>
+  <text x="98" y="74" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">reproducible network deployment · operations</text>
+  <path d="M46 106H544" stroke="#21262d"/>
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace"><rect x="46" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="95" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Shell</text><rect x="158" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="207" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Net</text><rect x="270" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="319" y="151" text-anchor="middle" fill="#8b949e" font-size="12">macOS</text><rect x="382" y="132" width="98" height="28" rx="14" fill="#161b22" stroke="#30363d"/><text x="431" y="151" text-anchor="middle" fill="#8b949e" font-size="12">Ops</text></g>
+  </svg>
