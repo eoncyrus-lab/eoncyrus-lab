@@ -1,7 +1,11 @@
 <!-- profile: eoncyrus-lab -->
 
 <p align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-character.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-character-light.svg">
   <img src="./assets/hero-character.svg" width="100%" alt="Eoncyrus — systems, agents, markets, information">
+</picture>
 </p>
 
 <p align="center">
@@ -28,26 +32,60 @@
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/eoncyrus-lab/nimbus-news"><img src="./assets/card-nimbus.svg" width="100%" alt="nimbus-news"></a>
+<a href="https://github.com/eoncyrus-lab/nimbus-news">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-nimbus.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-nimbus-light.svg">
+  <img src="./assets/card-nimbus.svg" width="100%" alt="nimbus-news">
+</picture>
+</a>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/eoncyrus-lab/iwencai-skillhub-tools"><img src="./assets/card-iwencai.svg" width="100%" alt="iwencai-skillhub-tools"></a>
+<a href="https://github.com/eoncyrus-lab/iwencai-skillhub-tools">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-iwencai.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-iwencai-light.svg">
+  <img src="./assets/card-iwencai.svg" width="100%" alt="iwencai-skillhub-tools">
+</picture>
+</a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/eoncyrus-lab/Financial_freedom"><img src="./assets/card-finance.svg" width="100%" alt="Financial_freedom"></a>
+<a href="https://github.com/eoncyrus-lab/Financial_freedom">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-finance.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-finance-light.svg">
+  <img src="./assets/card-finance.svg" width="100%" alt="Financial_freedom">
+</picture>
+</a>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/eoncyrus-lab/wechat-md-vintage"><img src="./assets/card-vintage.svg" width="100%" alt="wechat-md-vintage"></a>
+<a href="https://github.com/eoncyrus-lab/wechat-md-vintage">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-vintage.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-vintage-light.svg">
+  <img src="./assets/card-vintage.svg" width="100%" alt="wechat-md-vintage">
+</picture>
+</a>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/eoncyrus-lab/singbox-deploy"><img src="./assets/card-singbox.svg" width="100%" alt="singbox-deploy"></a>
+<a href="https://github.com/eoncyrus-lab/singbox-deploy">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-singbox.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-singbox-light.svg">
+  <img src="./assets/card-singbox.svg" width="100%" alt="singbox-deploy">
+</picture>
+</a>
 </td>
 <td width="50%" valign="top">
-<img src="./assets/card-more.svg" width="100%" alt="More to come">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/card-more.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./assets/card-more-light.svg">
+  <img src="./assets/card-more.svg" width="100%" alt="More to come">
+</picture>
 </td>
 </tr>
 </table>
@@ -72,7 +110,11 @@
 <br>
 
 <p align="center">
-  <img src="./assets/eoncyrus-mark.svg" width="54" alt="Eoncyrus mark">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/eoncyrus-mark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/eoncyrus-mark-light.svg">
+    <img src="./assets/eoncyrus-mark.svg" width="54" alt="Eoncyrus mark">
+  </picture>
   <br>
   <sub><code>code · research · automate · repeat</code></sub>
   <br>
