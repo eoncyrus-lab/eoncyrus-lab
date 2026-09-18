@@ -1,56 +1,25 @@
 <!-- profile: eoncyrus-lab -->
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
-    <img alt="Eoncyrus — systems, agents, markets, information" src="./assets/hero-dark.svg" width="100%">
-  </picture>
+  <img src="./assets/hero-character.svg" width="100%" alt="Eoncyrus — systems, agents, markets, information">
 </p>
 
 <table>
 <tr>
-<td width="68%" valign="top">
-
-<h3>Independent systems builder</h3>
-
-<p>
-I build practical systems around <b>AI agents</b>, <b>market intelligence</b>,
-<b>developer tooling</b>, and <b>information workflows</b>.
-</p>
-
-<p>
-Most of my projects start with the same question:
-<br>
-<code>Can this become a system instead of another repeated task?</code>
-</p>
-
-<p>
-<kbd>AI systems</kbd>
-<kbd>Agents</kbd>
-<kbd>Market intelligence</kbd>
-<kbd>Research infra</kbd>
-<kbd>Developer tools</kbd>
-</p>
-
-<sub>
-Primary sources over summaries · reproducible workflows over manual rituals ·
-decision support over automated decisions.
-</sub>
-
+<td width="18%" align="center" valign="middle">
+  <img src="./assets/eoncyrus-mark.svg" width="112" alt="Eoncyrus mark">
 </td>
-<td width="32%" align="center" valign="middle">
+<td width="82%" valign="middle">
 
-<img src="https://avatars.githubusercontent.com/eoncyrus-lab?s=460" width="220" alt="Eoncyrus avatar">
+### Independent systems builder
 
-<br>
-<sub><code>build · research · automate · repeat</code></sub>
+I build practical systems around **AI agents**, **market intelligence**, **developer tooling**, and **information workflows**.
+
+`primary sources` · `reproducible workflows` · `decision support`
 
 </td>
 </tr>
 </table>
-
-<br>
 
 <p align="center">
   <picture>
@@ -62,22 +31,50 @@ decision support over automated decisions.
 
 ## Selected work
 
-| | |
-|---|---|
-| **☁️ [nimbus-news](https://github.com/eoncyrus-lab/nimbus-news)**<br><sub>Personal market-intelligence pipeline: multi-source news, market snapshots, LLM analysis, scheduled delivery.</sub><br><br>`Go` `Vue` `LLM` `Market Data` | **🧩 [iwencai-skillhub-tools](https://github.com/eoncyrus-lab/iwencai-skillhub-tools)**<br><sub>AI-oriented tooling for installing and managing finance research skills around iWenCai SkillHub.</sub><br><br>`Python` `Shell` `Finance` `AI Skills` |
-| **📚 [Financial_freedom](https://github.com/eoncyrus-lab/Financial_freedom)**<br><sub>Curated primary-source library spanning Buffett, Munger, Graham, Bitcoin, gold, and long-term investing.</sub><br><br>`Primary Sources` `Investing` `Research` | **✒️ [wechat-md-vintage](https://github.com/eoncyrus-lab/wechat-md-vintage)**<br><sub>Local Markdown → WeChat HTML renderer with a restrained vintage typography system.</sub><br><br>`JavaScript` `Typography` `CLI` |
-| **⚙️ [singbox-deploy](https://github.com/eoncyrus-lab/singbox-deploy)**<br><sub>Reproducible sing-box deployment and operations tooling for macOS, with generic work-network profiles.</sub><br><br>`Shell` `Networking` `Automation` | **⌁ More to come**<br><sub>Research agents, information infrastructure, and small tools built to remove repeated work.</sub><br><br>`Systems` `Agents` `Markets` |
+<table>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/eoncyrus-lab/nimbus-news">
+  <img src="./assets/card-nimbus.svg" width="100%" alt="nimbus-news">
+</a>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/eoncyrus-lab/iwencai-skillhub-tools">
+  <img src="./assets/card-iwencai.svg" width="100%" alt="iwencai-skillhub-tools">
+</a>
+</td>
+</tr>
 
-## What I care about
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/eoncyrus-lab/Financial_freedom">
+  <img src="./assets/card-finance.svg" width="100%" alt="Financial_freedom">
+</a>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/eoncyrus-lab/wechat-md-vintage">
+  <img src="./assets/card-vintage.svg" width="100%" alt="wechat-md-vintage">
+</a>
+</td>
+</tr>
 
-> **Signal over noise.**  
-> Better inputs, explicit assumptions, and traceable sources.
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/eoncyrus-lab/singbox-deploy">
+  <img src="./assets/card-singbox.svg" width="100%" alt="singbox-deploy">
+</a>
+</td>
+<td width="50%" valign="top">
+  <img src="./assets/card-more.svg" width="100%" alt="More to come">
+</td>
+</tr>
+</table>
 
-> **Systems over rituals.**  
-> If a useful workflow repeats, it should eventually become tooling.
+## Principles
 
-> **Long-term compounding.**  
-> Code, knowledge, and judgment all benefit from accumulation.
+| Signal over noise | Systems over rituals | Long-term compounding |
+|---|---|---|
+| Better inputs, explicit assumptions, traceable sources. | If a useful workflow repeats, it should become tooling. | Code, knowledge, and judgment all compound. |
 
 <details>
 <summary><b>Toolbox / current interests</b></summary>
@@ -100,5 +97,7 @@ aggregation · filtering · primary-source verification · knowledge systems
 <br>
 
 <p align="center">
+  <sub><code>code · research · automate · repeat</code></sub>
+  <br>
   <sub><i>Make tools for things I don't want to do twice.</i></sub>
 </p>
