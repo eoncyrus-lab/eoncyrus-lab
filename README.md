@@ -9,6 +9,8 @@
 </p>
 
 <p align="center">
+  <img src="./assets/avatar.png" width="96" alt="Eoncyrus avatar">
+  <br>
   <strong>Independent systems builder.</strong><br>
   <sub>I build tools that turn noisy information into repeatable decisions.</sub>
 </p>
