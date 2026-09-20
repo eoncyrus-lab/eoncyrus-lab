@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
   <title id="title">Eoncyrus mark</title>
   <desc id="desc">A compact signal-node mark for Eoncyrus.</desc>
-  <circle cx="60" cy="60" r="51" fill="#12161b" stroke="#34383d" stroke-width="2"/>
-  <path d="M34 38H78M34 60H70M34 82H78" stroke="#d6a84b" stroke-width="7" stroke-linecap="round"/>
-  <path d="M78 38L91 48L78 60L91 72L78 82" fill="none" stroke="#6fb69a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="91" cy="48" r="4" fill="#c98288"/>
-  <circle cx="91" cy="72" r="4" fill="#8fb8d8"/>
+  <circle cx="60" cy="60" r="51" fill="#111417" stroke="#363c3e" stroke-width="2"/>
+  <path d="M34 38H78M34 60H70M34 82H78" stroke="#d1a84f" stroke-width="7" stroke-linecap="round"/>
+  <path d="M78 38L91 48L78 60L91 72L78 82" fill="none" stroke="#78aa91" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="91" cy="48" r="4" fill="#c18ca5"/>
+  <circle cx="91" cy="72" r="4" fill="#d1a84f"/>
 </svg>

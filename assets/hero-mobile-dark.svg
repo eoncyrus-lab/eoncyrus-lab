@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Eoncyrus — quiet investor's desk</title>
+  <desc id="desc">A mobile dark banner for long-horizon investing built on primary sources, independent judgment, and patient compounding.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111417"/>
+      <stop offset="1" stop-color="#171b1d"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d1a84f"/>
+      <stop offset="0.52" stop-color="#78aa91"/>
+      <stop offset="1" stop-color="#c18ca5"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="638" height="418" rx="28" fill="url(#bg)" stroke="#363c3e" stroke-width="2"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace">
+    <text x="42" y="54" fill="#aaa198" font-size="22" letter-spacing="1.2">INVESTOR'S DESK / 01</text>
+    <text x="40" y="132" fill="#f0ece5" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="68" font-weight="750" letter-spacing="2">EONCYRUS</text>
+    <text x="44" y="176" fill="#d7d1c9" font-size="26">LONG-HORIZON INVESTOR</text>
+    <rect x="44" y="202" width="552" height="3" rx="1.5" fill="url(#rule)"/>
+    <circle cx="52" cy="250" r="7" fill="#d1a84f"/>
+    <text x="78" y="258" fill="#f0ece5" font-size="24">01  PRIMARY SOURCES</text>
+    <circle cx="52" cy="304" r="7" fill="#78aa91"/>
+    <text x="78" y="312" fill="#f0ece5" font-size="24">02  INDEPENDENT JUDGMENT</text>
+    <circle cx="52" cy="358" r="7" fill="#c18ca5"/>
+    <text x="78" y="366" fill="#f0ece5" font-size="24">03  PATIENT COMPOUNDING</text>
+  </g>
+</svg>

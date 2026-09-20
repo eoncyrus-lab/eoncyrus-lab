@@ -32,6 +32,10 @@ if rg -n 'hero-character|card-|flow-(dark|light)|More to come' "$README_PATH" >/
   fail "README.md still references retired image cards or placeholder content"
 fi
 
+if rg -n '^\| Layer \| Project \|' "$README_PATH" >/dev/null; then
+  fail "README.md still uses the retired research-stack table"
+fi
+
 REFERENCES="$(rg -o '\./assets/[A-Za-z0-9._/-]+' "$README_PATH" | sort -u || true)"
 while IFS= read -r reference; do
   [[ -z "$reference" ]] && continue
@@ -44,6 +48,8 @@ done <<< "$REFERENCES"
 for reference in \
   './assets/hero-dark.svg' \
   './assets/hero-light.svg' \
+  './assets/hero-mobile-dark.svg' \
+  './assets/hero-mobile-light.svg' \
   './assets/chibi-focus.png' \
   './assets/chibi-cozy.png' \
   './assets/chibi-rest.png' \
@@ -54,6 +60,17 @@ for reference in \
   fi
 done
 
+mobile_dark_line="$(rg -nF '<source media="(max-width: 640px) and (prefers-color-scheme: dark)" srcset="./assets/hero-mobile-dark.svg">' "$README_PATH" | cut -d: -f1 || true)"
+mobile_light_line="$(rg -nF '<source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="./assets/hero-mobile-light.svg">' "$README_PATH" | cut -d: -f1 || true)"
+desktop_dark_line="$(rg -nF '<source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">' "$README_PATH" | cut -d: -f1 || true)"
+desktop_light_line="$(rg -nF '<source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">' "$README_PATH" | cut -d: -f1 || true)"
+
+if [[ -z "$mobile_dark_line" || -z "$mobile_light_line" || -z "$desktop_dark_line" || -z "$desktop_light_line" ]]; then
+  fail "README.md is missing an exact responsive hero source"
+elif ! (( mobile_dark_line < mobile_light_line && mobile_light_line < desktop_dark_line && desktop_dark_line < desktop_light_line )); then
+  fail "responsive hero sources are not ordered mobile-first and theme-first"
+fi
+
 for svg in "$ROOT_DIR"/assets/hero-*.svg "$ROOT_DIR"/assets/mark-*.svg; do
   if [[ ! -f "$svg" ]]; then
     fail "expected SVG is missing: $svg"
@@ -61,6 +78,18 @@ for svg in "$ROOT_DIR"/assets/hero-*.svg "$ROOT_DIR"/assets/mark-*.svg; do
   fi
   if ! xmllint --noout "$svg" >/dev/null 2>&1; then
     fail "invalid SVG XML: ${svg#$ROOT_DIR/}"
+  fi
+  if rg -ni "<script\\b|<foreignObject\\b|\\bon[a-z]+\\s*=|(?:xlink:)?href\\s*=\\s*['\\\"](?:https?:|//|javascript:|data:)|url\\s*\\(\\s*['\\\"]?(?:https?:|//|javascript:|data:)" "$svg" >/dev/null; then
+    fail "SVG contains executable or external content: ${svg#$ROOT_DIR/}"
+  fi
+  if [[ "$svg" == *hero-mobile-* ]]; then
+    if ! rg -qF 'viewBox="0 0 640 420"' "$svg"; then
+      fail "mobile hero has an unexpected viewBox: ${svg#$ROOT_DIR/}"
+    fi
+  elif [[ "$svg" == *hero-* ]]; then
+    if ! rg -qF 'viewBox="0 0 1280 400"' "$svg"; then
+      fail "desktop hero has an unexpected viewBox: ${svg#$ROOT_DIR/}"
+    fi
   fi
 done
 
