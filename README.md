@@ -11,8 +11,8 @@
 <p align="center">
   <img src="./assets/avatar.png" width="96" alt="Eoncyrus avatar">
   <br>
-  <strong>Independent systems builder.</strong><br>
-  <sub>I build tools that turn noisy information into repeatable decisions.</sub>
+  <strong>Code, markets, and quiet chaos.</strong><br>
+  <sub>Building agents and research loops for noisy information and long-horizon decisions.</sub>
 </p>
 
 <p align="center">
@@ -28,15 +28,17 @@
 </p>
 
 <p align="center">
-  <img src="./assets/chibi-focus.png" width="160" alt="Eoncyrus chibi working late">
-  <img src="./assets/chibi-cozy.png" width="160" alt="Eoncyrus chibi in a cozy shark hoodie">
-  <img src="./assets/chibi-rest.png" width="160" alt="Eoncyrus chibi resting with a black cat plush">
+  <img src="./assets/chibi-focus.png" width="20%" alt="Eoncyrus chibi working late">
+  <img src="./assets/chibi-cozy.png" width="20%" alt="Eoncyrus chibi in a cozy shark hoodie">
+  <img src="./assets/chibi-rest.png" width="20%" alt="Eoncyrus chibi resting with a black cat plush">
 </p>
-<p align="center"><sub>focus · drift · recharge</sub></p>
+<p align="center"><sub>build · read · recharge</sub></p>
 
 ## What I build
 
-I work at the intersection of research systems, agent tooling, market intelligence, and developer automation. The common thread is simple: make repeated work more traceable, useful, and difficult to do badly.
+I work at the intersection of coding agents, market intelligence, investing research, and developer automation. The common thread is simple: make repeated work more traceable, useful, and difficult to do badly.
+
+<strong>Currently building:</strong> coding agents, market intelligence, and long-horizon investing workflows.
 
 ## Selected work
 
@@ -46,14 +48,7 @@ I work at the intersection of research systems, agent tooling, market intelligen
 | [iWenCai SkillHub Tools](https://github.com/eoncyrus-lab/iwencai-skillhub-tools) | Reusable AI skills and batch installation tools for research workflows. | `Shell` · `AI skills` |
 | [singbox-deploy](https://github.com/eoncyrus-lab/singbox-deploy) | Repeatable macOS deployment for transparent proxying and rule-based routing. | `Shell` · `macOS` · `Networking` |
 | [WeChat MD Vintage](https://github.com/eoncyrus-lab/wechat-md-vintage) | Markdown-to-WeChat HTML rendering with a restrained editorial theme. | `JavaScript` · `Publishing` |
-
-<details>
-<summary><strong>More projects</strong></summary>
-<br>
-
-<a href="https://github.com/eoncyrus-lab/Financial_freedom"><strong>Financial Freedom</strong></a> · A curated library for value investing and Bitcoin research.
-
-</details>
+| [Financial Freedom](https://github.com/eoncyrus-lab/Financial_freedom) | A curated library for value investing and Bitcoin research. | `Research` · `Investing` |
 
 ## Working principles
 
@@ -65,7 +60,7 @@ I work at the intersection of research systems, agent tooling, market intelligen
 <summary><strong>Toolbox</strong></summary>
 <br>
 
-`Go` · `Python` · `JavaScript` · `Shell` · `Docker` · coding agents · research agents · reusable skills · data pipelines · knowledge systems
+`Go` · `Python` · `JavaScript` · `Shell` · `Docker` · coding agents · market intelligence · value investing · reusable skills · data pipelines · knowledge systems
 
 </details>
 
@@ -77,5 +72,5 @@ I work at the intersection of research systems, agent tooling, market intelligen
     <img src="./assets/mark-light.svg" width="54" alt="Eoncyrus mark">
   </picture>
   <br>
-  <sub><code>code · research · automate · repeat</code></sub>
+  <sub><code>code · markets · compound · repeat</code></sub>
 </p>

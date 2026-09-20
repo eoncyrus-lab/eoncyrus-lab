@@ -1,6 +1,6 @@
 # Profile visual system
 
-The profile uses the **Quiet Signal** visual direction: restrained technical surfaces, a small functional color system, and text-first project descriptions.
+The profile uses the **Cyber Silver Signal** visual direction: silver-haired character art for personality, graphite technical surfaces, cool cyan/lilac accents, and text-first project descriptions about code, markets, and compounding research.
 
 ## Rules
 
@@ -9,6 +9,7 @@ The profile uses the **Quiet Signal** visual direction: restrained technical sur
 - Keep dark and light variants geometrically identical; only colors and surface tones change.
 - Do not use unreviewed generated faces, hands, logos, or small text in profile assets.
 - The supplied `avatar.png` and `chibi-*.png` images are approved profile identity/storytelling assets; do not regenerate or edit them automatically.
+- Keep the character layer and systems layer distinct: character art carries mood, while SVG surfaces carry code, market, and signal motifs.
 - Prefer a small number of reusable shapes over a new illustration for every project.
 
 ## Tokens
