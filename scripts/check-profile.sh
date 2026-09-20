@@ -24,6 +24,10 @@ if [[ ! -f "$README_PATH" ]]; then
   fail "README.md is missing"
 fi
 
+if [[ ! -f "$ROOT_DIR/assets/avatar.png" ]]; then
+  fail "canonical profile asset is missing: ./assets/avatar.png"
+fi
+
 if rg -n 'hero-character|card-|flow-(dark|light)|More to come' "$README_PATH" >/dev/null; then
   fail "README.md still references retired image cards or placeholder content"
 fi
@@ -40,7 +44,6 @@ done <<< "$REFERENCES"
 for reference in \
   './assets/hero-dark.svg' \
   './assets/hero-light.svg' \
-  './assets/avatar.png' \
   './assets/chibi-focus.png' \
   './assets/chibi-cozy.png' \
   './assets/chibi-rest.png' \

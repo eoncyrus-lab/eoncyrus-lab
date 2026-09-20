@@ -1,6 +1,6 @@
 # Profile visual system
 
-The profile uses the **Cyber Silver Signal** visual direction: silver-haired character art for personality, graphite technical surfaces, cool cyan/lilac accents, and text-first project descriptions about code, markets, and compounding research.
+The profile uses the **Quiet Compounding** visual direction: editorial research surfaces, ink and paper neutrals, restrained gold and green accents, and a small silver-haired character layer that adds warmth without displacing the investment thesis.
 
 ## Rules
 
@@ -8,21 +8,23 @@ The profile uses the **Cyber Silver Signal** visual direction: silver-haired cha
 - Keep critical facts, project descriptions, and links in Markdown rather than inside images.
 - Keep dark and light variants geometrically identical; only colors and surface tones change.
 - Do not use unreviewed generated faces, hands, logos, or small text in profile assets.
-- The supplied `avatar.png` and `chibi-*.png` images are approved profile identity/storytelling assets; do not regenerate or edit them automatically.
-- Keep the character layer and systems layer distinct: character art carries mood, while SVG surfaces carry code, market, and signal motifs.
+- The supplied `avatar.png` is the canonical profile identity asset, but the README does not repeat it because GitHub already displays the account avatar.
+- The supplied `chibi-*.png` images are approved storytelling assets; keep them together near the end as an after-hours coda.
+- Keep the character layer and research layer distinct: character art carries mood, while SVG surfaces carry sources, thesis, judgment, and compounding motifs.
+- Avoid speculative trading imagery, neon cyberpunk palettes, candlestick dashboards, and finance-ad visual language.
 - Prefer a small number of reusable shapes over a new illustration for every project.
 
 ## Tokens
 
 | Role | Dark | Light |
 | --- | --- | --- |
-| Surface | `#090d12` | `#f8fafc` |
-| Text | `#f0f6fc` | `#1f2328` |
-| Muted text | `#8b949e` | `#57606a` |
-| Signal blue | `#79c0ff` | `#0969da` |
-| System teal | `#56d4c8` | `#0f9d91` |
-| Decision violet | `#d2a8ff` | `#8250df` |
-| Warning amber | `#ffa657` | `#bc4c00` |
+| Surface | `#0d1117` | `#fbfaf6` |
+| Text | `#f1f3f5` | `#25241f` |
+| Muted text | `#a0a8b0` | `#665f55` |
+| Compounding gold | `#d6a84b` | `#9a6200` |
+| Research green | `#6fb69a` | `#2f7d63` |
+| Risk burgundy | `#c98288` | `#8c3f4d` |
+| Data blue | `#8fb8d8` | `#3f6f92` |
 
 ## Validation
 
