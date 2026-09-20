@@ -27,6 +27,13 @@
   <code>automation</code>
 </p>
 
+<p align="center">
+  <img src="./assets/chibi-focus.png" width="160" alt="Eoncyrus chibi working late">
+  <img src="./assets/chibi-cozy.png" width="160" alt="Eoncyrus chibi in a cozy shark hoodie">
+  <img src="./assets/chibi-rest.png" width="160" alt="Eoncyrus chibi resting with a black cat plush">
+</p>
+<p align="center"><sub>focus · drift · recharge</sub></p>
+
 ## What I build
 
 I work at the intersection of research systems, agent tooling, market intelligence, and developer automation. The common thread is simple: make repeated work more traceable, useful, and difficult to do badly.

@@ -41,6 +41,9 @@ for reference in \
   './assets/hero-dark.svg' \
   './assets/hero-light.svg' \
   './assets/avatar.png' \
+  './assets/chibi-focus.png' \
+  './assets/chibi-cozy.png' \
+  './assets/chibi-rest.png' \
   './assets/mark-dark.svg' \
   './assets/mark-light.svg'; do
   if ! rg -qF "$reference" "$README_PATH"; then

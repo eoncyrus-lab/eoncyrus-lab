@@ -8,7 +8,7 @@ The profile uses the **Quiet Signal** visual direction: restrained technical sur
 - Keep critical facts, project descriptions, and links in Markdown rather than inside images.
 - Keep dark and light variants geometrically identical; only colors and surface tones change.
 - Do not use unreviewed generated faces, hands, logos, or small text in profile assets.
-- The supplied `avatar.png` is the approved profile identity asset; do not regenerate or edit it automatically.
+- The supplied `avatar.png` and `chibi-*.png` images are approved profile identity/storytelling assets; do not regenerate or edit them automatically.
 - Prefer a small number of reusable shapes over a new illustration for every project.
 
 ## Tokens
