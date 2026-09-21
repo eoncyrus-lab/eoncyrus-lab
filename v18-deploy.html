@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>中国婚姻增量经济产业链 V18</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#667085;--border:#dfe5ee}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif}
+.page{max-width:1980px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+h1{font-size:24px;margin:0 0 5px}.sub{font-size:13px;line-height:1.6;color:var(--muted);max-width:1100px}
+.actions,.legend,.stagebar{display:flex;flex-wrap:wrap;gap:7px}.actions{justify-content:flex-end}
+button,select,input[type=number]{border:1px solid var(--border);background:#fff;color:var(--text);border-radius:9px;padding:8px 10px;font-size:13px}
+button{cursor:pointer}button.active{background:#172033;color:#fff;border-color:#172033}.legend,.stagebar{margin-top:9px}
+.chip{background:#fff;border:1px solid var(--border);border-radius:999px;padding:5px 9px;font-size:12px;color:#475467}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}
+.stagebar button{border-radius:999px;padding:6px 10px}.viewHead{margin-top:10px;background:#fff;border:1px solid var(--border);border-radius:13px;padding:11px 14px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.viewTitle{font-size:18px;font-weight:850}.viewDesc{font-size:12px;color:#667085;margin-top:3px;line-height:1.55}.viewMeta{font-size:12px;color:#667085;text-align:right;white-space:nowrap}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:12px;margin-top:10px}.canvas{position:relative;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;min-height:825px}
+svg{display:block;width:100%;height:825px;touch-action:none}.side{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;align-self:start}.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#98a2b3;font-weight:800}
+.dtitle{font-size:22px;font-weight:800;margin-top:5px}.dcost{font-size:18px;font-weight:800;margin-top:3px;color:#344054}.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.badge{font-size:11px;font-weight:800;border-radius:999px;padding:4px 7px;background:#f2f4f7;color:#475467}
+.note{margin-top:12px;font-size:13px;line-height:1.7;color:#536071}.rule{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;line-height:1.65;color:#667085}.paramBox{margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.paramBox h3{font-size:13px;margin:0 0 8px}.rangeRow{display:grid;grid-template-columns:1fr 75px;gap:8px;align-items:center;margin:8px 0}.rangeRow label{font-size:12px;color:#667085}.rangeRow input[type=range]{width:100%}.rangeVal{font-size:12px;font-weight:800;text-align:right}
+.loading{position:absolute;inset:0;display:grid;place-items:center;background:rgba(255,255,255,.94);z-index:3;color:#667085;font-size:14px}.hidden{display:none!important}
+.node{cursor:pointer}.node rect,.node polygon{stroke-width:2}.node.main rect{stroke-width:3}.nt{font-size:12.5px;font-weight:800;fill:#172033}.nc{font-size:10.5px;font-weight:800;fill:#344054}.nm{font-size:9px;font-weight:700;fill:#667085}.np{font-size:9px;font-weight:850;fill:#475467}
+.edge{fill:none;stroke:#9aa5b4;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.mainEdge{stroke:#465266;stroke-width:3.8}.money{fill:none;stroke-linecap:round;opacity:.48}.moneyLabel{font-size:9px;font-weight:800;fill:#667085;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.compound{fill:#fafbfd;stroke:#dce3ec;stroke-width:1.4}.compoundHead{fill:#f2f5f8;stroke:#dce3ec;stroke-width:1.2;cursor:pointer}.compoundTitle{font-size:12px;font-weight:850;fill:#172033}.compoundMeta{font-size:9.5px;font-weight:700;fill:#667085}.toggle{font-size:13px;font-weight:900;fill:#667085}
+.stageFrame{fill:#fff;stroke:#cfd7e3;stroke-width:1.4}.stageHeader{fill:#f4f6f9;stroke:#cfd7e3;stroke-width:1.4}.stageHeaderText{font-size:15px;font-weight:850;fill:#172033}.stageHeaderSub{font-size:10px;fill:#667085}
+.sourceBand{fill:#fbfcfe;stroke:#dfe5ee;stroke-width:1.2}.sourceBandText{font-size:12px;font-weight:850;fill:#536071}.safeHeader{paint-order:stroke;stroke:#f4f6f9;stroke-width:3px}
+.model{margin-top:12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px}.model h2{font-size:15px;margin:0 0 8px}.modelGrid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.field{background:#fafbfd;border:1px solid #e7ebf0;border-radius:10px;padding:8px}.field label{display:block;font-size:10px;color:#667085;margin-bottom:4px}.field input,.field select{width:100%;border:0;background:transparent;font-size:15px;font-weight:800;color:#172033;outline:none;padding:2px}
+.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}.result{border-radius:10px;padding:10px;border:1px solid #e7ebf0;background:#fafbfd}.result .k{font-size:10px;color:#667085}.result .v{font-size:17px;font-weight:900;margin-top:3px}
+.analysisGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.analysisCard{border:1px solid #e7ebf0;border-radius:10px;padding:10px;background:#fff}.analysisCard h3{font-size:12px;margin:0 0 8px}
+.barRow{display:grid;grid-template-columns:105px 1fr 78px;gap:8px;align-items:center;margin:6px 0;font-size:11px}.bar{height:8px;background:#edf1f5;border-radius:999px;overflow:hidden}.bar i{display:block;height:100%;background:#7f8ca0;border-radius:999px}.barVal{text-align:right;font-weight:800}
+.modelNote{font-size:11px;color:#667085;line-height:1.55;margin-top:8px}
+.presetRow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}.presetRow button{padding:6px 10px;border-radius:999px;font-size:12px}
+.gridHint{font-size:10px;font-weight:800;fill:#667085}.lifeFlow{fill:none;stroke:#465266;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}.lifeFlowBg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+
+/* V15: visual hierarchy */
+.spineNode rect{fill:#fff;stroke:#172033;stroke-width:2.4}.spineTitle{font-size:13px;font-weight:850;fill:#172033}.spineMeta{font-size:9.5px;font-weight:750;fill:#667085}
+.spineNo{fill:#172033}.spineNoText{font-size:9px;font-weight:900;fill:#fff}.spinePhase{font-size:10px;font-weight:850;fill:#667085;letter-spacing:.04em}
+.spineEdgeBg{fill:none;stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}.spineEdge{fill:none;stroke:#263246;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.stageTag{fill:#eef2f6;stroke:#d4dce7;stroke-width:1}.stageTagText{font-size:11px;font-weight:850;fill:#344054;pointer-events:none}.stageTagNo{fill:#172033;pointer-events:none}.stageTagNoText{font-size:8px;font-weight:900;fill:#fff;pointer-events:none}
+.stageFrameV15{fill:#fff;stroke:#d6dde7;stroke-width:1.3}
+
+
+.validationGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.validationItem{border:1px solid #e5eaf0;border-radius:10px;padding:9px;background:#fafbfd}
+.validationItem .vTitle{font-size:11px;font-weight:850}.validationItem .vMeta{font-size:10px;color:#667085;line-height:1.45;margin-top:4px}
+.passDot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2f9e5b;margin-right:5px}.fixDot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#c99716;margin-right:5px}
+
+.costDeck{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;margin-top:10px}
+.costCard{background:#fff;border:1px solid var(--border);border-radius:13px;padding:11px 13px;min-width:0}
+.costCard h3{font-size:13px;margin:0}.costLead{font-size:24px;font-weight:900;margin-top:4px}.costSub{font-size:10.5px;color:#667085;line-height:1.5;margin-top:3px}
+.costMetrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}.costMetric{border:1px solid #e7ebf0;background:#fafbfd;border-radius:9px;padding:7px}.costMetric .k{font-size:9px;color:#667085}.costMetric .v{font-size:13px;font-weight:850;margin-top:2px}
+.cRisk{margin-top:8px;padding-top:7px;border-top:1px solid #edf0f4}.cRiskHead{display:flex;justify-content:space-between;gap:8px;font-size:10.5px}.cBar{height:7px;background:#edf0f4;border-radius:999px;overflow:hidden;margin-top:5px}.cBar i{display:block;height:100%;background:#c99716;border-radius:999px}.cNodeList{font-size:10px;color:#667085;line-height:1.55;margin-top:5px}
+.stageBillActive{outline:2px solid #172033;outline-offset:2px}
+.cFocusPanel{margin-top:12px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px}.cFocusGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:8px}.cFocusItem{border:1px solid #e7ebf0;border-radius:9px;padding:8px;background:#fafbfd}.cFocusItem b{font-size:11px}.cFocusItem .amt{font-size:15px;font-weight:900;margin:3px 0}.cFocusItem p{font-size:9.5px;color:#667085;line-height:1.4;margin:0}
+@media(max-width:1160px){.costDeck{grid-template-columns:1fr}.costMetrics{grid-template-columns:1fr 1fr}.cFocusGrid{grid-template-columns:1fr 1fr}}
+
+@media(max-width:1160px){.validationGrid{grid-template-columns:1fr 1fr}}
+
+@media(max-width:1160px){.top{display:block}.actions{justify-content:flex-start;margin-top:10px}.layout{grid-template-columns:1fr}.modelGrid{grid-template-columns:1fr 1fr}.resultGrid{grid-template-columns:1fr 1fr}.analysisGrid{grid-template-columns:1fr}.viewHead{display:block}.viewMeta{text-align:left;margin-top:6px}}
+</style></head>
+<body>
+<div class="page">
+<div class="top"><div><h1>中国婚姻增量经济产业链｜V18</h1><div class="sub">V18 成本账单 + C级参数版：点击任意阶段即可查看该阶段最终消费成本、资金压力与资产/信贷分账；顶部持续显示完整生命周期成本。同时优先收紧彩礼、婚礼服务与家庭保险等剩余高影响C级参数。</div></div>
+<div class="actions"><button id="moneyBtn" class="active">资金流</button><button id="labelBtn">资金标签</button><button id="focusBtn">完整总图聚焦</button>
+<select id="moneyThreshold" title="只显示当前模型量级高于阈值的资金流"><option value="0">全部资金流</option><option value="500">≥500亿元</option><option value="1000">≥1000亿元</option><option value="3000">≥3000亿元</option><option value="5000">≥5000亿元</option></select>
+<button id="expandBtn">全部展开</button><button id="collapseBtn">全部折叠</button><button id="fitBtn">适配</button><button id="exportBtn">导出SVG</button></div></div>
+
+<div class="legend"><span class="chip"><span class="dot" style="background:#3b82f6"></span>真实新增消费</span><span class="chip"><span class="dot" style="background:#c99716"></span>Transfer</span><span class="chip"><span class="dot" style="background:#e56b1f"></span>资产 / 信用</span><span class="chip"><span class="dot" style="background:#2f9e5b"></span>生育衍生</span><span class="chip">A 婚姻专属　B 婚姻放大　C 生育衍生</span><span class="chip">P = 发生概率 / 渗透率（可编辑建模假设）</span></div>
+<div class="stagebar" id="stagebar"></div>
+<div class="viewHead"><div><div class="viewTitle" id="viewTitle"></div><div class="viewDesc" id="viewDesc"></div></div><div class="viewMeta" id="viewMeta"></div></div>
+<div class="costDeck">
+  <section class="costCard">
+    <h3>完整生命周期成本｜按当前情景、每新增婚姻对</h3>
+    <div class="costLead" id="chainCostLead">—</div>
+    <div class="costSub">主数字 = 真实商品/服务 Gross 消费。彩礼/嫁妆、资产交易、首付和信贷单独分账，避免混成“总成本”或GDP。</div>
+    <div class="costMetrics">
+      <div class="costMetric"><div class="k">婚姻净增量消费</div><div class="v" id="chainNetCost">—</div></div>
+      <div class="costMetric"><div class="k">家庭资金压力*</div><div class="v" id="chainCashPressure">—</div></div>
+      <div class="costMetric"><div class="k">财富转移</div><div class="v" id="chainTransferCost">—</div></div>
+      <div class="costMetric"><div class="k">资产交易价值</div><div class="v" id="chainAssetCost">—</div></div>
+      <div class="costMetric"><div class="k">首付/资产资金投入</div><div class="v" id="chainFundingCost">—</div></div>
+      <div class="costMetric"><div class="k">信贷激活</div><div class="v" id="chainCreditCost">—</div></div>
+    </div>
+    <div class="cRisk"><div class="cRiskHead"><b>C级参数占消费支出</b><span id="chainCShare">—</span></div><div class="cBar"><i id="chainCBar" style="width:0%"></i></div><div class="cNodeList" id="chainCTop"></div></div>
+    <div class="costSub">* 家庭资金压力 = 消费/服务 + 财富转移 + 首付等资金投入；不含贷款本金，且不等于GDP。</div>
+  </section>
+  <section class="costCard" id="stageBillCard">
+    <h3>阶段账单｜<span id="stageBillName">点击一个阶段</span></h3>
+    <div class="costLead" id="stageCostLead">—</div>
+    <div class="costSub" id="stageCostSub">点击顶部阶段按钮、主链节点或完整总图阶段角标即可更新。</div>
+    <div class="costMetrics">
+      <div class="costMetric"><div class="k">净增量消费</div><div class="v" id="stageNetCost">—</div></div>
+      <div class="costMetric"><div class="k">家庭资金压力</div><div class="v" id="stageCashPressure">—</div></div>
+      <div class="costMetric"><div class="k">财富转移</div><div class="v" id="stageTransferCost">—</div></div>
+      <div class="costMetric"><div class="k">资产交易</div><div class="v" id="stageAssetCost">—</div></div>
+      <div class="costMetric"><div class="k">首付/资金投入</div><div class="v" id="stageFundingCost">—</div></div>
+      <div class="costMetric"><div class="k">信贷激活</div><div class="v" id="stageCreditCost">—</div></div>
+    </div>
+    <div class="cRisk"><div class="cRiskHead"><b>本阶段C级消费占比</b><span id="stageCShare">—</span></div><div class="cBar"><i id="stageCBar" style="width:0%"></i></div><div class="cNodeList" id="stageCTop"></div></div>
+  </section>
+</div>
+
+<div class="layout">
+<div class="canvas"><div class="loading" id="loading">正在计算 Compound Graph…</div><svg id="svg"></svg></div>
+<aside class="side">
+<div class="eyebrow">Selected node</div><div class="dtitle" id="dTitle">请选择节点</div><div class="dcost" id="dCost">—</div>
+<div class="badges"><span class="badge" id="dKind">经济性质</span><span class="badge" id="dInc">增量属性</span><span class="badge" id="dUnit">成本类型</span></div>
+<div class="note" id="dNote">点击任意产业节点查看解释并修改发生概率/渗透率。</div>
+<div class="paramBox"><h3>节点模型参数</h3>
+<div class="rangeRow"><label>发生概率 / 渗透率</label><span class="rangeVal" id="probVal">—</span></div><input id="probRange" type="range" min="0" max="100" step="1" value="50" disabled>
+<div class="rangeRow"><label>Counterfactual 净增量率</label><span class="rangeVal" id="cfVal">—</span></div><input id="cfRange" type="range" min="0" max="100" step="1" value="100" disabled>
+<div class="rangeRow"><label>持续期 / 计费周期倍数</label><input id="durInput" type="number" min="0" max="30" step="0.5" value="1" disabled></div>
+<div class="rangeRow"><label>模型中位金额（万元）</label><input id="amountInput" type="number" min="0" step="0.1" value="0" disabled></div>
+<div class="badges"><span class="badge confC" id="dConfidence">C · 模型假设</span><span class="badge" id="dSensitivity">敏感度</span><span class="badge" id="dAccounting">可加总性</span></div>
+<div class="note" id="nodeExpected">选择节点后显示 Gross / Counterfactual / Net。</div><div id="nodeSource"></div></div>
+<div class="rule"><b>模型口径：</b><br/>婚恋/婚礼/成家以新增婚姻为基数；生育及以后以“新增婚姻 × 增量出生率”为基数。主节点不参与求和，避免重复计算。</div>
+<div class="configBtns"><button id="exportConfigBtn">导出模型 JSON</button><button id="importConfigBtn">导入模型 JSON</button><input id="importConfigFile" type="file" accept="application/json,.json" style="display:none"></div>
+</aside></div>
+
+<div class="model">
+<h2>婚姻产业链乘数模型</h2>
+<div class="presetRow">
+<button type="button" id="presetActual" class="active">2025同比新增 +65.7万对</button><button type="button" id="presetLow">保守预设</button>
+<button type="button" id="presetBase">中性预设</button>
+<button type="button" id="presetHigh">高婚育预设</button>
+<span class="chip">预设仅修改全局参数，不覆盖单节点手工调整</span>
+</div>
+<div class="modelGrid">
+<div class="field"><label>新增婚姻（万对；默认=2025同比增加）</label><input id="mPairs" type="number" min="0" step="0.1" value="65.7"></div>
+<div class="field"><label>增量出生（孩 / 新增婚姻）</label><input id="mBirth" type="number" min="0" max="2" step="0.05" value="0.6"></div>
+<div class="field"><label>情景</label><select id="mScenario"><option value="0.8">低（金额×0.8）</option><option value="1" selected>中性</option><option value="1.2">高（金额×1.2）</option></select></div>
+<div class="field"><label>资产口径</label><select id="assetMode"><option value="value" selected>资产交易价值</option><option value="funding">仅首付等资金投入</option></select></div>
+<div class="field"><label>地区参数集</label><select id="mRegion"><option value="national" selected>全国基准</option><option value="tier1">高成本城市代理（京沪育儿/东部住房）</option><option value="tier23">一般城镇代理</option><option value="county">农村代理</option></select></div><div class="field"><label>全局渗透率系数</label><input id="mPenScale" type="number" min="0" max="2" step="0.05" value="1"></div>
+<div class="field"><label>育儿阶段校准微调</label><input id="mChildCal" type="number" min="0" max="2" step="0.01" value="1.00"></div><div class="field"><label>模型节点</label><input id="modelNodes" value="—" readonly></div><div class="field"><label>NPV折现率</label><input id="mDiscount" type="number" min="0" max="0.2" step="0.005" value="0.03"></div><div class="field"><label>Monte Carlo次数</label><input id="mIters" type="number" min="200" max="5000" step="100" value="1500"></div>
+</div>
+<div class="resultGrid">
+<div class="result"><div class="k">Gross 触发商品/服务需求</div><div class="v" id="rGross">—</div></div>
+<div class="result"><div class="k">Counterfactual 剔除后净增量</div><div class="v" id="rDirect">—</div></div>
+<div class="result"><div class="k">本来就会发生的基线需求</div><div class="v" id="rBaseline">—</div></div>
+<div class="result"><div class="k">0–22岁子女净增量需求</div><div class="v" id="rChild">—</div></div>
+<div class="result"><div class="k">财富转移规模</div><div class="v" id="rTransfer">—</div></div>
+<div class="result"><div class="k">资产形成 / 交易规模</div><div class="v" id="rAsset">—</div></div>
+<div class="result"><div class="k">信贷激活规模</div><div class="v" id="rCredit">—</div></div>
+<div class="result"><div class="k">每新增婚姻净增量</div><div class="v" id="rPerCouple">—</div></div>
+</div>
+<div class="resultGrid" style="margin-top:8px"><div class="result"><div class="k">Monte Carlo P10</div><div class="v" id="rP10">—</div></div><div class="result"><div class="k">Monte Carlo P50</div><div class="v" id="rP50">—</div></div><div class="result"><div class="k">Monte Carlo P90</div><div class="v" id="rP90">—</div></div><div class="result"><div class="k">P50 NPV</div><div class="v" id="rNPV">—</div></div></div>
+<div class="analysisGrid"><div class="analysisCard"><h3>真实消费：阶段贡献</h3><div id="stageBars"></div></div><div class="analysisCard"><h3>真实消费：Top 10 节点</h3><div id="topBars"></div></div></div>
+<div class="modelNote">净增量 = 节点金额 × 发生概率 × 持续期 × 地区系数 × 情景系数 × 阶段校准系数 × Counterfactual净增量率 × 对应人口基数。V13在分阶段校准和去重基础上进一步把参数不确定性显式化，并对未来年份需求做生育滞后和NPV折现。</div>
+</div>
+
+
+<div class="researchCard" style="margin-top:12px">
+<h2>V16 运行时验证｜逻辑、引用、交互结构</h2>
+<div class="researchSub">页面加载后自动检查 HTML ID、图边引用、资金流引用、公司节点映射、11个视图和关键渲染函数。黄色项表示本轮已修复的经济口径。</div>
+<div class="validationGrid" id="runtimeAudit"></div>
+</div>
+<div class="researchCard" style="margin-top:12px"><h2>V16 资本市场传导｜时间匹配后的产业需求 → 公司收入</h2><div class="researchSub">公司收入是“年度流量”，因此不再拿20多年生命周期需求池直接除以单年收入。当前冲击使用 <b>0–5年内峰值年度需求 × 捕获率</b>；生命周期池和长期峰值单独展示。捕获率仍是C级情景假设，不做股票排名。</div><div style="overflow:auto;max-height:560px"><table class="companyTable"><thead><tr><th>公司</th><th>映射节点</th><th>年化业务规模</th><th>捕获率</th><th>0–5年峰值收入冲击</th><th>占年化业务规模</th><th>生命周期捕获池</th><th>长期峰值 / 年份</th><th>利润代理<br>(0–5年峰值)</th><th>PE TTM</th><th>PB</th><th>股息率</th><th>市值(RMB bn)</th></tr></thead><tbody id="companyRows"></tbody></table></div><div class="investNote">时间匹配规则：婚礼在T0；成家耐用品主要在T0–T+1；保险/车后服务按实际持续年限逐年摊开；子女教育按出生滞后+年龄窗释放。教育等远期行业可能“生命周期暴露很大、未来5年冲击为0”，这是正常结果。FX：1 USD=6.69765 CNY，1 HKD=0.853677 CNY（2026-09-21）。</div></div><div class="researchGrid"><section class="researchCard"><h2>V13 Monte Carlo｜生命周期净增量分布</h2><div class="researchSub">节点金额、渗透率、Counterfactual净增量率按各自A/B/C不确定性区间抽样；默认固定随机种子，便于重复验证。</div><div class="chartBox" style="height:250px"><svg id="mcChart"></svg></div><div class="mcMeta" id="mcMeta"></div></section><section class="researchCard"><h2>生育滞后 + NPV</h2><div class="researchSub">默认把增量出生分布到婚后第1/2/3年：25% / 50% / 25%。0–22岁需求按孩子年龄窗平移，再按折现率折算到T0。</div><div id="lagSummary"></div></section></div><div class="researchCard" style="margin-top:12px"><h2>V12 可加总性 / 重复计算审计</h2><div class="researchSub">模型把“图上需要展示”和“总量可以直接相加”分开。父节点若已包含子项，子项仍保留在产业图中，但总量权重可以为0或部分计入。</div><table class="auditTable"><thead><tr><th>节点</th><th>处理</th><th>求和权重</th><th>原因</th></tr></thead><tbody><tr><td>建材 / 卫浴 / 门窗</td><td class="roleInc">包含项</td><td>0%</td><td>主要包含在装修/硬装预算中</td></tr><tr><td>酒水 / 喜糖 / 伴手礼</td><td class="rolePart">部分可加</td><td>50%</td><td>部分酒店套餐已含酒水，伴手礼独立</td></tr><tr><td>NIPT / 遗传检测</td><td class="rolePart">部分可加</td><td>50%</td><td>与部分产检套餐有口径重叠</td></tr><tr><td>住房总价 / 首付 / 房贷</td><td class="roleAdd">分账核算</td><td>不互加</td><td>分别进入资产、资金投入、信贷账户</td></tr><tr><td>各阶段超级节点</td><td class="roleInc">结构节点</td><td>0%</td><td>只用于流程/阶段锚点，不参与总量</td></tr></tbody></table></div>
+<div class="cFocusPanel">
+<h2 style="font-size:15px;margin:0">重点 C 级参数｜按当前模型贡献排序</h2>
+<div class="researchSub">这里专门列出“金额贡献大、但仍依赖模型假设”的节点。越靠前越值得继续找数据。B-context 只用于收紧区间，不会把缺乏全国统计的参数伪装成B级。</div>
+<div class="cFocusGrid" id="cFocusGrid"></div>
+</div>
+<div class="researchCard" style="margin-top:12px">
+<h2>V18 校准面板｜哪些数字已经有锚点</h2>
+<div class="researchSub">“A/B锚定”不等于每个细分节点都有全国均值。V11采取两级校准：先用官方/研究数据约束阶段总量和关键资产价格，再保留细分节点的C级分配假设。</div>
+<div class="calGrid" id="calGrid"></div>
+</div>
+<div class="researchGrid">
+<section class="researchCard"><h2>生命周期 Cohort｜需求释放曲线</h2><div class="researchSub">只绘制 Counterfactual 剔除后的真实商品/服务净增量；T0 为结婚年份。长期育儿需求沿 20+ 年释放。</div><div class="chartBox"><svg id="cohortChart"></svg></div></section>
+<section class="researchCard"><h2>Marriage / Birth Sensitivity</h2><div class="researchSub">结构性敏感度评分，用于识别产业对结婚数量与新增出生的暴露方向，不代表股价弹性。每行：左侧条 = Marriage Sensitivity，右侧条 = Birth Sensitivity。</div><div id="sensitivityRows"></div></section>
+</div>
+<div class="researchGrid">
+<section class="researchCard"><h2>上游—中游—下游产业链与上市公司映射</h2><div class="researchSub">上市公司仅为业务暴露示例；实际弹性还取决于收入占比、份额、毛利率、竞争、估值与政策，不构成投资推荐。</div>
+<div class="chainControls"><label>查看阶段</label><select id="industryStage"></select></div>
+<div class="chain3"><div class="chainCol"><h3>上游</h3><div id="chainUp"></div></div><div class="chainCol"><h3>中游</h3><div id="chainMid"></div></div><div class="chainCol"><h3>下游 / 需求端</h3><div id="chainDown"></div></div></div>
+<div class="companyWrap" id="companyWrap"></div></section>
+<section class="researchCard"><h2>数据可信度与研究锚点</h2><div class="researchSub">A = 官方统计/政策；B = 公开研究或公司官方披露；C = 情景假设。具体节点成本、渗透率与 Counterfactual 系数默认按 C 处理。</div><div class="sourceGrid" id="sourceGrid"></div></section>
+</div>
+</div>
+
+<script type="module">
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+import ELK from "https://cdn.jsdelivr.net/npm/elkjs@0.11.0/+esm";
+const DATA={"stages": [{"id": "overview", "name": "总览", "desc": "生命周期主链 + 资金源 + 婚姻增量经济的三种量：真实消费、财富转移、资产/信用"}, {"id": "dating", "name": "① 婚恋形成", "desc": "匹配、相亲、约会、形象管理与求婚"}, {"id": "wedding", "name": "② 订婚与婚礼", "desc": "礼俗资金转移 + 珠宝 + 婚宴 + 婚庆 + 蜜月"}, {"id": "household", "name": "③ 新家庭形成", "desc": "家庭资产负债表 + 住房 + 装修 + 家居家电 + 汽车 + 保险"}, {"id": "fertility", "name": "④ 生育医疗", "desc": "备孕、生殖检查、辅助生殖、产检、分娩与产后服务"}, {"id": "infant", "name": "⑤ 0–3岁母婴托育", "desc": "母婴快消、婴童耐用品、儿科、托育与照护"}, {"id": "preschool", "name": "⑥ 3–6岁学前", "desc": "幼儿园、兴趣教育、儿童医疗与亲子服务"}, {"id": "k12", "name": "⑦ 6–18岁教育成长", "desc": "K12、学习硬件、素质教育、研学与升学"}, {"id": "college", "name": "⑧ 18–22岁高等教育", "desc": "大学、生活费、消费电子、考研考公、职培与留学"}, {"id": "adult", "name": "⑨ 成年与下一代", "desc": "就业、租房、购车、购房首付，再进入下一轮婚育"}], "nodes": [{"id": "parents", "label": "双方父母储蓄", "cost": "多年积累", "kind": "transfer", "inc": "B", "unit": "存量资金", "note": "结婚会集中释放双方父母储蓄，用于彩礼、嫁妆、首付、装修、汽车与育儿准备。", "stage": "source", "group": "资金来源", "amount": 0, "main": true, "macroGroup": "资金来源", "prob": 0.8, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 0.5, "confidence": "结构", "marriageSens": 75, "birthSens": 15, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.6, "probHi": 1, "cfLo": 0.28, "cfHi": 0.72}, {"id": "income", "label": "新人收入 / 储蓄", "cost": "工资 + 储蓄", "kind": "neutral", "inc": "B", "unit": "持续", "note": "新人收入与个人储蓄，是婚礼、成家与后续育儿的基础资金。", "stage": "source", "group": "资金来源", "amount": 0, "main": true, "macroGroup": "资金来源", "prob": 1.0, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 0.5, "confidence": "结构", "marriageSens": 75, "birthSens": 15, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.8, "probHi": 1, "cfLo": 0.28, "cfHi": 0.72}, {"id": "gifts", "label": "亲友礼金", "cost": "¥2–10万+", "kind": "transfer", "inc": "A", "unit": "一次性", "note": "社会关系网络向新家庭的一次性资金转移；本身不直接形成新增GDP。", "stage": "source", "group": "资金来源", "amount": 6, "main": true, "macroGroup": "资金来源", "prob": 0.9, "duration": 1, "base": "marriage", "calcRole": "transfer", "cf": 1.0, "confidence": "结构", "marriageSens": 75, "birthSens": 15, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 4.2, "amountHi": 7.8, "probLo": 0.7, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "credit", "label": "银行信用", "cost": "房贷 / 车贷", "kind": "asset", "inc": "B", "unit": "长期负债", "note": "把未来收入前置使用，放大住房与耐用品需求；贷款本金不是新增消费。", "stage": "source", "group": "资金来源", "amount": 0, "main": true, "macroGroup": "资金来源", "prob": 0.45, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 0.5, "confidence": "结构", "marriageSens": 75, "birthSens": 15, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.25, "probHi": 0.65, "cfLo": 0.28, "cfHi": 0.72}, {"id": "dating_core", "label": "恋爱 / 相亲", "cost": "¥0.5–5万", "kind": "super", "inc": "A", "unit": "阶段累计", "note": "进入婚姻市场后的匹配、约会、形象管理与求婚增量。", "stage": "dating", "group": "婚恋主链", "amount": 2, "main": true, "macroGroup": "婚恋主链", "prob": 1.0, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 1.0, "confidence": "结构", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.8, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "dating_app", "label": "婚恋平台 / 红娘", "cost": "¥0.1–5万", "kind": "consumption", "inc": "A", "unit": "阶段累计", "note": "婚恋App会员、红娘服务、线下相亲会、高端婚介等。", "stage": "dating", "group": "匹配服务", "amount": 1.5, "main": false, "macroGroup": "匹配与相亲", "prob": 0.35, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "dating_event", "label": "相亲活动 / 场地", "cost": "¥0.05–0.5万", "kind": "consumption", "inc": "A", "unit": "按次", "note": "线下相亲会、社群活动、酒店/商场场地等。", "stage": "dating", "group": "匹配服务", "amount": 0.2, "main": false, "macroGroup": "匹配与相亲", "prob": 0.12, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.14, "amountHi": 0.26, "probLo": 0, "probHi": 0.32, "cfLo": 0.78, "cfHi": 1}, {"id": "dating_spend", "label": "约会增量", "cost": "¥0.3–2万", "kind": "consumption", "inc": "B", "unit": "阶段累计", "note": "只计算因恋爱和婚姻准备额外发生的餐饮、娱乐、酒店、短途旅行。", "stage": "dating", "group": "体验消费", "amount": 1, "main": false, "macroGroup": "体验与形象", "prob": 0.9, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.55, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0.7, "probHi": 1, "cfLo": 0.33, "cfHi": 0.77}, {"id": "image", "label": "形象管理", "cost": "¥0.2–2万", "kind": "consumption", "inc": "B", "unit": "阶段累计", "note": "相亲摄影、美妆、服饰、健身、医美等因婚恋目的而新增的部分。", "stage": "dating", "group": "形象消费", "amount": 0.8, "main": false, "macroGroup": "体验与形象", "prob": 0.25, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.45, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.56, "amountHi": 1.04, "probLo": 0.05, "probHi": 0.45, "cfLo": 0.23, "cfHi": 0.67}, {"id": "proposal", "label": "求婚 / 纪念", "cost": "¥0.5–3万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "鲜花、场地、摄影、求婚旅行与求婚礼物等。", "stage": "dating", "group": "求婚", "amount": 1.5, "main": false, "macroGroup": "求婚", "prob": 0.45, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.25, "probHi": 0.65, "cfLo": 0.78, "cfHi": 1}, {"id": "wedding_core", "label": "订婚 / 婚礼", "cost": "B锚点≈¥33.04万", "kind": "super", "inc": "A", "unit": "阶段累计", "note": "中国人民大学人口与发展研究中心2023年专项调查的受访者结婚花费平均值约33.04万元。该调查并非全国行政统计，且口径与本模型的彩礼/嫁妆/宴席拆分并不完全一致，因此仅作为软校准锚点。", "stage": "wedding", "group": "婚礼主链", "amount": 30, "main": true, "macroGroup": "婚礼主链", "prob": 1.0, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 100, "birthSens": 0, "sourceKey": "wedding2023", "calibrationNote": "33.04万元来自专项调查的宽口径结婚花费，只作为阶段上下文参考。V17取消对所有婚礼细项的统一硬缩放，避免把彩礼/嫁妆/宴席等口径差异机械压到直接消费节点。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 24.6, "amountHi": 35.4, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "brideprice", "label": "彩礼", "cost": "C校准≈¥10万", "kind": "transfer", "inc": "A", "unit": "一次性", "note": "男方家庭向女方或新家庭的财富转移；本身不直接形成新增GDP。", "stage": "wedding", "group": "礼俗转移", "amount": 10.0, "main": false, "macroGroup": "礼俗资金", "prob": 0.5, "duration": 1.0, "base": "marriage", "calcRole": "transfer", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 5.0, "amountHi": 15.0, "probLo": 0.3, "probHi": 0.7, "cfLo": 0.78, "cfHi": 1, "sourceKey": "brideprice_rural_context", "calibrationNote": "农村公开锚点约12.8万元，但全国城乡差异极大。V18全国底模取10万元、P=50%，仍保持C级并给出5–15万元宽区间。"}, {"id": "dowry", "label": "嫁妆", "cost": "¥5–30万+", "kind": "transfer", "inc": "A", "unit": "一次性", "note": "女方家庭提供的现金、车辆、首饰、家电或住房支持；主要是财富转移。", "stage": "wedding", "group": "礼俗转移", "amount": 12, "main": false, "macroGroup": "礼俗资金", "prob": 0.7, "duration": 1.0, "base": "marriage", "calcRole": "transfer", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 8.4, "amountHi": 15.6, "probLo": 0.5, "probHi": 0.9, "cfLo": 0.78, "cfHi": 1}, {"id": "engagement", "label": "订婚宴", "cost": "¥1–5万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "订婚宴席、场地、礼服与礼品。", "stage": "wedding", "group": "仪式消费", "amount": 3, "main": false, "macroGroup": "订婚与珠宝", "prob": 0.55, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.1, "amountHi": 3.9, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.78, "cfHi": 1}, {"id": "gold", "label": "三金 / 五金", "cost": "B代理≈¥1.0万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "黄金珠宝属于典型婚姻专属消费。 2025年黄金首饰消费量363.836吨，说明珠宝市场总体环境，但不能直接推出婚礼人均购买额。", "stage": "wedding", "group": "珠宝", "amount": 1.0, "main": false, "macroGroup": "订婚与珠宝", "prob": 0.75, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.85, "confidence": "B", "marriageSens": 100, "birthSens": 0, "sourceKey": "wgc_wedding_gold2025", "calibrationNote": "按2025中国金饰消费金额与婚庆场景19%占比做宏观一致性约束；婚庆与自戴边界模糊，因此Counterfactual从100%降至85%。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.6, "amountHi": 1.6, "probLo": 0.55, "probHi": 0.9, "cfLo": 0.6, "cfHi": 1.0}, {"id": "rings", "label": "钻戒 / 对戒", "cost": "B代理≈¥1.2万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "订婚戒指与结婚对戒。", "stage": "wedding", "group": "珠宝", "amount": 1.2, "main": false, "macroGroup": "订婚与珠宝", "prob": 0.55, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.8, "confidence": "B", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.6, "amountHi": 2.0, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.55, "cfHi": 1.0, "sourceKey": "weddingexpo2024", "calibrationNote": "婚博会订单显示对戒仍常见，但钻戒价格带下移、消费更务实。V17将典型金额降至1.2万元、渗透率55%。"}, {"id": "photo", "label": "婚纱摄影 / 旅拍", "cost": "C/B-context≈¥1.0万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "婚纱照、旅拍、相册与短视频。", "stage": "wedding", "group": "影像", "amount": 1.0, "main": false, "macroGroup": "婚礼服务", "prob": 0.8, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.5, "amountHi": 2.0, "probLo": 0.6, "probHi": 1, "cfLo": 0.78, "cfHi": 1, "sourceKey": "weddingexpo_detail2024", "calibrationNote": "报告明确摄影消费趋理性但未给全国均价，因此只轻微下调并保留C级宽区间。"}, {"id": "planner", "label": "婚庆策划 / 舞美", "cost": "C/B-context≈¥2.6万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "婚礼策划、场景、灯光音响、花艺与执行。", "stage": "wedding", "group": "婚庆服务", "amount": 2.6, "main": false, "macroGroup": "婚礼服务", "prob": 0.65, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.5, "amountHi": 5.0, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1, "sourceKey": "weddingexpo_detail2024", "calibrationNote": "婚博会报告显示婚礼策划总体投入同比趋降10%–15%，但无全国均价；以原3万元下调约13%至2.6万元，仍为C级。"}, {"id": "banquet", "label": "婚宴 / 酒店", "cost": "B代理≈¥6.5万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "酒店、餐饮与场地，是婚礼阶段最大服务消费之一。", "stage": "wedding", "group": "酒店餐饮", "amount": 6.5, "main": false, "macroGroup": "婚礼服务", "prob": 0.8, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "B", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 4.0, "amountHi": 10.0, "probLo": 0.6, "probHi": 0.95, "cfLo": 0.78, "cfHi": 1, "sourceKey": "weddingexpo2024", "calibrationNote": "婚博会数据显示婚宴仍是核心环节，但桌数明显向“小而精”收缩。没有全国统一桌均价，因此6.5万元仍是B代理而非全国均值。"}, {"id": "alcohol", "label": "酒水 / 喜糖 / 伴手礼", "cost": "¥0.5–5万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "酒水/喜糖/伴手礼与婚宴套餐存在部分重叠。V12 在总量模型中按50%权重计入，降低与婚宴节点的重复计算。", "stage": "wedding", "group": "宴席配套", "amount": 2, "main": false, "macroGroup": "婚礼服务", "prob": 0.85, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 0.5, "accountingRole": "partial", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.65, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "attire", "label": "礼服 / 跟妆 / 主持", "cost": "B-context≈¥1.2万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "婚纱、西装、中式礼服、跟妆、主持等。", "stage": "wedding", "group": "婚礼服务", "amount": 1.2, "main": false, "macroGroup": "婚礼服务", "prob": 0.9, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "B", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.6, "amountHi": 2.0, "probLo": 0.7, "probHi": 1, "cfLo": 0.78, "cfHi": 1, "sourceKey": "weddingexpo_detail2024", "calibrationNote": "婚博会报告显示同级婚纱礼服套餐单价下降约20%–25%；在原1.5万元基础上下调到1.2万元，属于行业样本代理。"}, {"id": "wedding_car", "label": "婚车 / 租赁", "cost": "¥0.2–2万", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "婚车、车辆租赁与接送服务。", "stage": "wedding", "group": "婚礼交通", "amount": 0.8, "main": false, "macroGroup": "婚礼服务", "prob": 0.45, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.56, "amountHi": 1.04, "probLo": 0.25, "probHi": 0.65, "cfLo": 0.78, "cfHi": 1}, {"id": "honeymoon", "label": "蜜月", "cost": "¥1–5万+", "kind": "consumption", "inc": "A", "unit": "一次性", "note": "仅看相对原本旅游计划的额外支出。", "stage": "wedding", "group": "婚旅", "amount": 2.5, "main": false, "macroGroup": "婚旅", "prob": 0.55, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.8, "confidence": "C", "marriageSens": 100, "birthSens": 0, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.75, "amountHi": 3.25, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.58, "cfHi": 1}, {"id": "household_core", "label": "新家庭成立", "cost": "Household Formation", "kind": "super", "inc": "B", "unit": "生命周期节点", "note": "两个独立经济人转为一个共同家庭经济单元。", "stage": "household", "group": "家庭主链", "amount": 0, "main": true, "macroGroup": "家庭主链", "prob": 1.0, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 0.5, "confidence": "结构", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.8, "probHi": 1, "cfLo": 0.28, "cfHi": 0.72}, {"id": "balance", "label": "家庭资产负债表", "cost": "收入 + 储蓄 + 信用", "kind": "super", "inc": "B", "unit": "持续", "note": "父母储蓄、礼金、新人收入与银行信用汇入，形成家庭资产、消费、保障与育儿预算。", "stage": "household", "group": "资金Hub", "amount": 0, "main": true, "macroGroup": "资金Hub", "prob": 1.0, "duration": 1.0, "base": "marriage", "calcRole": "ignore", "cf": 0.5, "confidence": "结构", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.8, "probHi": 1, "cfLo": 0.28, "cfHi": 0.72}, {"id": "home", "label": "婚房资产", "cost": "≈¥100万 / 100㎡代理", "kind": "asset", "inc": "B", "unit": "资产规模", "note": "全国层面以2025年新建商品住宅销售额/销售面积推导均价约1.00万元/㎡；模型用100㎡作为标准住房代理。实际婚房面积、城市和新房/二手房差异很大。", "stage": "household", "group": "住房资产", "amount": 100.0, "main": false, "macroGroup": "住房与信用", "prob": 0.4, "duration": 1.0, "base": "marriage", "calcRole": "asset", "cf": 0.3, "confidence": "B", "marriageSens": 90, "birthSens": 18, "sourceKey": "housing_marriage_proxy", "calibrationNote": "婚房置业调查支持婚姻显著提前购房决策，但样本并非全国成交统计。V17采用40%发生率×30%婚姻净增量率，隐含约12%的婚姻可归因住房交易。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 82.0, "amountHi": 118.0, "probLo": 0.25, "probHi": 0.55, "cfLo": 0.15, "cfHi": 0.45}, {"id": "downpayment", "label": "首付", "cost": "≈¥30万", "kind": "asset", "inc": "B", "unit": "一次性资金投入", "note": "按100万元住房代理、30%首付比例构造；首付比例因城市、套数和政策不同而变化。", "stage": "household", "group": "住房资金", "amount": 30, "main": false, "macroGroup": "住房与信用", "prob": 0.4, "duration": 1.0, "base": "marriage", "calcRole": "assetFunding", "cf": 0.3, "confidence": "C", "marriageSens": 90, "birthSens": 18, "sourceKey": "housing_marriage_proxy", "calibrationNote": "跟随婚房节点的发生率/净增量；30%首付比例仍是模型假设。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 21.0, "amountHi": 39.0, "probLo": 0.25, "probHi": 0.55, "cfLo": 0.15, "cfHi": 0.45}, {"id": "mortgage", "label": "房贷本金", "cost": "≈¥70万", "kind": "asset", "inc": "B", "unit": "20–30年负债", "note": "按100万元住房代理、70%贷款构造；实际LTV和贷款期限差异很大。", "stage": "household", "group": "住房信用", "amount": 70, "main": false, "macroGroup": "住房与信用", "prob": 0.3, "duration": 1.0, "base": "marriage", "calcRole": "credit", "cf": 0.3, "confidence": "C", "marriageSens": 90, "birthSens": 18, "sourceKey": "housing_marriage_proxy", "calibrationNote": "部分婚房由现金或家庭资金覆盖，因此按揭渗透率低于婚房交易渗透率。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 49.0, "amountHi": 91.0, "probLo": 0.18, "probHi": 0.45, "cfLo": 0.15, "cfHi": 0.45}, {"id": "broker", "label": "中介 / 税费 / 搬家", "cost": "¥1–10万+", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "房产中介、交易服务与搬家等真实服务支出。", "stage": "household", "group": "交易服务", "amount": 3, "main": false, "macroGroup": "住房与信用", "prob": 0.3, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.3, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.1, "amountHi": 3.9, "probLo": 0.1, "probHi": 0.5, "cfLo": 0.08, "cfHi": 0.52}, {"id": "renovation", "label": "装修设计 / 施工 / 硬装", "cost": "¥8–25万", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "设计、施工、硬装、软装。", "stage": "household", "group": "家装", "amount": 15, "main": false, "macroGroup": "装修建材", "prob": 0.55, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.5, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 10.5, "amountHi": 19.5, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.28, "cfHi": 0.72}, {"id": "materials", "label": "建材 / 卫浴 / 门窗", "cost": "¥5–20万", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "建材/卫浴/门窗多数已进入“装修设计/施工/硬装”预算。V12 将该节点保留用于产业链展示，但在总量求和中权重设为0，避免重复计入。", "stage": "household", "group": "家装", "amount": 10, "main": false, "macroGroup": "装修建材", "prob": 0.55, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.5, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 0.0, "accountingRole": "included", "amountLo": 7.0, "amountHi": 13.0, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.28, "cfHi": 0.72}, {"id": "furniture", "label": "家具 / 软装", "cost": "¥3–15万", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "床、沙发、餐桌、床垫、柜体、窗帘与家纺。", "stage": "household", "group": "家居耐用品", "amount": 8, "main": false, "macroGroup": "家居家电", "prob": 0.8, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.55, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sourceKey": "retail2025", "calibrationNote": "A 级零售市场规模/增速用于行业环境校验；婚姻增量占比仍是C级。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 5.6, "amountHi": 10.4, "probLo": 0.6, "probHi": 1, "cfLo": 0.33, "cfHi": 0.77}, {"id": "appliance", "label": "家电 / 厨电", "cost": "¥3–12万", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "冰箱、洗衣机、空调、电视、烟灶、洗碗机等。", "stage": "household", "group": "家居耐用品", "amount": 7, "main": false, "macroGroup": "家居家电", "prob": 0.85, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.5, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sourceKey": "retail2025", "calibrationNote": "A 级零售市场规模/增速用于行业环境校验；婚姻增量占比仍是C级。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 4.9, "amountHi": 9.1, "probLo": 0.65, "probHi": 1, "cfLo": 0.28, "cfHi": 0.72}, {"id": "smart_home", "label": "智能家居", "cost": "¥0.5–5万", "kind": "consumption", "inc": "B", "unit": "一次性", "note": "智能门锁、扫地机器人、摄像头、智能灯与家庭网络。", "stage": "household", "group": "家居耐用品", "amount": 2, "main": false, "macroGroup": "家居家电", "prob": 0.35, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 0.4, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.18, "cfHi": 0.62}, {"id": "car", "label": "家庭汽车", "cost": "B代理≈¥15万", "kind": "asset", "inc": "B", "unit": "5–10年", "note": "结婚与生育提高购车概率、提前量与车型升级需求。", "stage": "household", "group": "家庭交通", "amount": 15, "main": false, "macroGroup": "家庭汽车", "prob": 0.25, "duration": 1.0, "base": "marriage", "calcRole": "asset", "cf": 0.3, "confidence": "B", "marriageSens": 90, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 10, "amountHi": 20, "probLo": 0.12, "probHi": 0.35, "cfLo": 0.15, "cfHi": 0.45, "sourceKey": "household_auto_proxy", "calibrationNote": "有车家庭81.4%的车辆总价低于20万元；婚房购房者中约两成称房车都要。V17将新婚购车典型金额降至15万元，发生率降至25%。"}, {"id": "car_life", "label": "车险 / 停车 / 充电", "cost": "¥0.5–3万/年", "kind": "consumption", "inc": "B", "unit": "每年", "note": "购车后持续形成车险、停车、充电与维保支出。", "stage": "household", "group": "家庭交通", "amount": 1.5, "main": false, "macroGroup": "家庭汽车", "prob": 0.25, "duration": 5.0, "base": "marriage", "calcRole": "direct", "cf": 0.3, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.12, "probHi": 0.35, "cfLo": 0.15, "cfHi": 0.45, "sourceKey": "household_auto_proxy", "calibrationNote": "与新增家庭汽车节点同步调整；停车/车险/充电等年度费用本身仍为C级金额假设。"}, {"id": "insurance", "label": "家庭保险", "cost": "C/B-context≈¥0.8万/年", "kind": "consumption", "inc": "B", "unit": "每年", "note": "寿险、医疗险、重疾险、儿童保险等。", "stage": "household", "group": "家庭保障", "amount": 0.8, "main": false, "macroGroup": "家庭保障", "prob": 0.35, "duration": 10.0, "base": "marriage", "calcRole": "direct", "cf": 0.35, "confidence": "C", "marriageSens": 82, "birthSens": 18, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.4, "amountHi": 1.5, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.13, "cfHi": 0.57, "sourceKey": "insurance_household2024", "calibrationNote": "保险消费者调研中近六成家庭年保费超过8000元；V18用0.8万元/年作为金额锚点，但P与婚姻净增量仍是C级。"}, {"id": "fertility_core", "label": "生育决策", "cost": "B基线≈¥2.5万", "kind": "super", "inc": "C", "unit": "生命周期节点", "note": "育娲2024报告以备孕/怀孕约1万元、分娩/休养约1.5万元作为基础“生产成本”，合计约2.5万元；本模型的IVF、NIPT、月子中心、月嫂等属于可选升级服务，单独保留。", "stage": "fertility", "group": "生育主链", "amount": 0, "main": true, "macroGroup": "生育主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 62, "birthSens": 100, "sourceKey": "yuwa2024", "calibrationNote": "基础孕产成本B级研究锚点；可选升级服务继续逐节点建模。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "prepreg", "label": "孕前检查", "cost": "¥0.2–1万", "kind": "population", "inc": "C", "unit": "阶段累计", "note": "孕前体检与生殖健康检查。", "stage": "fertility", "group": "孕前准备", "amount": 0.5, "main": false, "macroGroup": "孕前准备", "prob": 0.85, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.35, "amountHi": 0.65, "probLo": 0.65, "probHi": 1, "cfLo": 0.78, "cfHi": 1, "calibrationNote": "V16修正：孕前/生殖检查/辅助生殖按进入生育尝试的婚姻家庭计基数，不再按成功出生数计基数。"}, {"id": "supplement", "label": "营养 / 叶酸 / 备孕用品", "cost": "¥0.1–0.5万", "kind": "population", "inc": "C", "unit": "阶段累计", "note": "营养补充、叶酸、排卵检测与备孕用品。", "stage": "fertility", "group": "孕前准备", "amount": 0.3, "main": false, "macroGroup": "孕前准备", "prob": 0.8, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.21, "amountHi": 0.39, "probLo": 0.6, "probHi": 1, "cfLo": 0.78, "cfHi": 1, "calibrationNote": "V16修正：孕前/生殖检查/辅助生殖按进入生育尝试的婚姻家庭计基数，不再按成功出生数计基数。"}, {"id": "fertility_test", "label": "生殖检查", "cost": "¥0.2–1万", "kind": "population", "inc": "C", "unit": "阶段累计", "note": "妇科、男科、激素、精液等检查。", "stage": "fertility", "group": "生殖医疗", "amount": 0.5, "main": false, "macroGroup": "孕前准备", "prob": 0.25, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.35, "amountHi": 0.65, "probLo": 0.05, "probHi": 0.45, "cfLo": 0.78, "cfHi": 1, "calibrationNote": "V16修正：孕前/生殖检查/辅助生殖按进入生育尝试的婚姻家庭计基数，不再按成功出生数计基数。"}, {"id": "ivf", "label": "辅助生殖 IUI / IVF", "cost": "¥1–10万+", "kind": "population", "inc": "C", "unit": "按周期", "note": "促排、IUI、IVF、胚胎培养、移植和相关药物。", "stage": "fertility", "group": "生殖医疗", "amount": 4, "main": false, "macroGroup": "孕前准备", "prob": 0.08, "duration": 1.0, "base": "marriage", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.8, "amountHi": 5.2, "probLo": 0, "probHi": 0.28, "cfLo": 0.78, "cfHi": 1, "calibrationNote": "V16修正：孕前/生殖检查/辅助生殖按进入生育尝试的婚姻家庭计基数，不再按成功出生数计基数。"}, {"id": "prenatal", "label": "产检 / 筛查", "cost": "¥0.5–2万", "kind": "population", "inc": "C", "unit": "孕期累计", "note": "B超、NT、唐筛、糖耐、胎心监测。", "stage": "fertility", "group": "孕产医疗", "amount": 1, "main": false, "macroGroup": "孕期医疗", "prob": 0.95, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0.75, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "genetic", "label": "NIPT / 遗传检测", "cost": "¥0.1–1万", "kind": "population", "inc": "C", "unit": "按次", "note": "NIPT/遗传检测可能与部分产检套餐重叠。V12 在总量模型中按50%权重计入。", "stage": "fertility", "group": "孕产医疗", "amount": 0.5, "main": false, "macroGroup": "孕期医疗", "prob": 0.55, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 0.5, "accountingRole": "partial", "amountLo": 0.35, "amountHi": 0.65, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.78, "cfHi": 1}, {"id": "maternity_goods", "label": "孕妇用品", "cost": "¥0.2–1万", "kind": "population", "inc": "C", "unit": "孕期累计", "note": "孕妇服饰、护肤、营养与家庭医疗设备。", "stage": "fertility", "group": "孕期消费", "amount": 0.5, "main": false, "macroGroup": "孕期医疗", "prob": 0.8, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.35, "amountHi": 0.65, "probLo": 0.6, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "delivery", "label": "分娩 / 住院", "cost": "¥0.5–5万+", "kind": "population", "inc": "C", "unit": "一次性", "note": "住院、分娩、麻醉、剖宫产与私立产科等。", "stage": "fertility", "group": "分娩", "amount": 2, "main": false, "macroGroup": "分娩产后", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.8, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "postpartum", "label": "月子中心", "cost": "¥2–10万+", "kind": "population", "inc": "C", "unit": "一次性", "note": "住宿、护理、营养与新生儿照护。", "stage": "fertility", "group": "产后照护", "amount": 5, "main": false, "macroGroup": "分娩产后", "prob": 0.25, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 3.5, "amountHi": 6.5, "probLo": 0.05, "probHi": 0.45, "cfLo": 0.78, "cfHi": 1}, {"id": "nanny", "label": "月嫂 / 家政", "cost": "¥1–5万", "kind": "population", "inc": "C", "unit": "数月", "note": "月嫂、育儿嫂、家政与上门护理。", "stage": "fertility", "group": "产后照护", "amount": 2, "main": false, "macroGroup": "分娩产后", "prob": 0.35, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "recovery", "label": "产后康复", "cost": "¥0.5–3万", "kind": "population", "inc": "C", "unit": "阶段累计", "note": "盆底康复、产康、催乳与护理。", "stage": "fertility", "group": "产后照护", "amount": 1, "main": false, "macroGroup": "分娩产后", "prob": 0.35, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 62, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "infant_core", "label": "0–3岁母婴托育", "cost": "B锚点 ¥7.36万 / 0–2岁", "kind": "super", "inc": "C", "unit": "3年累计", "note": "0–2岁三年平均养育成本约7.3614万元。 阶段总量用研究锚点校准；阶段内部各具体产业节点仍按模型拆分。", "stage": "infant", "group": "0–3岁主链", "amount": 12, "main": true, "macroGroup": "0–3岁主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 38, "birthSens": 100, "sourceKey": "yuwa2024", "calibrationNote": "B级阶段总量锚定；内部节点分配仍为C级。", "policyNote": "国家基础育儿补贴3600元/孩/年，3岁以下最多3年，共10800元；这是家庭支出抵扣/转移，不应作为行业消费额机械新增。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 9.84, "amountHi": 14.16, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "formula", "label": "奶粉 / 喂养", "cost": "¥1–4万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "奶粉、奶瓶、吸奶器、消毒与辅食相关。", "stage": "infant", "group": "母婴快消", "amount": 2, "main": false, "macroGroup": "母婴快消", "prob": 0.65, "duration": 2.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "diaper", "label": "纸尿裤 / 湿巾", "cost": "¥0.3–1万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "婴幼儿高频快消品。", "stage": "infant", "group": "母婴快消", "amount": 0.6, "main": false, "macroGroup": "母婴快消", "prob": 0.95, "duration": 2.5, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.42, "amountHi": 0.78, "probLo": 0.75, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "baby_gear", "label": "推车 / 安全座椅 / 婴儿床", "cost": "¥0.5–3万", "kind": "population", "inc": "C", "unit": "一次性", "note": "婴童出行与居家耐用品。", "stage": "infant", "group": "婴童耐用品", "amount": 1.5, "main": false, "macroGroup": "婴童耐用品", "prob": 0.85, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.65, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "kidswear", "label": "童装 / 童鞋", "cost": "¥0.3–1.5万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "婴幼儿童装、童鞋与家纺。", "stage": "infant", "group": "儿童消费", "amount": 0.8, "main": false, "macroGroup": "母婴快消", "prob": 0.95, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.56, "amountHi": 1.04, "probLo": 0.75, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "pediatrics", "label": "儿科 / 药品", "cost": "¥0.3–2万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "儿科门诊、儿童药品与日常医疗。", "stage": "infant", "group": "儿童健康", "amount": 0.8, "main": false, "macroGroup": "儿童健康", "prob": 0.9, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.56, "amountHi": 1.04, "probLo": 0.7, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "vaccine", "label": "疫苗 / 体检", "cost": "¥0.1–0.8万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "自费疫苗、体检与健康管理。", "stage": "infant", "group": "儿童健康", "amount": 0.4, "main": false, "macroGroup": "儿童健康", "prob": 0.75, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.28, "amountHi": 0.52, "probLo": 0.55, "probHi": 0.95, "cfLo": 0.78, "cfHi": 1}, {"id": "daycare", "label": "托育中心", "cost": "¥2–8万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "全日托、半日托与社区托育。 官方数据显示2025年全国托位666万个、每千人口4.73个。", "stage": "infant", "group": "照护服务", "amount": 4, "main": false, "macroGroup": "托育照护", "prob": 0.35, "duration": 1.5, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sourceKey": "childcare2025", "calibrationNote": "A级托育供给数据可验证行业容量；家庭单价与使用率仍为C级参数。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.8, "amountHi": 5.2, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "caregiver", "label": "保姆 / 育儿嫂", "cost": "¥4–10万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "家庭照护服务。", "stage": "infant", "group": "照护服务", "amount": 6, "main": false, "macroGroup": "托育照护", "prob": 0.25, "duration": 1.5, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sourceKey": "childcare2025", "calibrationNote": "A级托育供给数据可验证行业容量；家庭单价与使用率仍为C级参数。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 4.2, "amountHi": 7.8, "probLo": 0.05, "probHi": 0.45, "cfLo": 0.78, "cfHi": 1}, {"id": "earlyedu", "label": "早教 / 亲子", "cost": "¥0.5–3万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "早教课程、亲子活动与启蒙内容。", "stage": "infant", "group": "早教", "amount": 1.5, "main": false, "macroGroup": "托育照护", "prob": 0.4, "duration": 2.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 38, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.2, "probHi": 0.6, "cfLo": 0.78, "cfHi": 1}, {"id": "preschool_core", "label": "3–6岁学前", "cost": "B锚点 ¥10.96万 / 3–5岁", "kind": "super", "inc": "C", "unit": "3年累计", "note": "3–5岁三年平均养育成本约10.9614万元。 阶段总量用研究锚点校准；阶段内部各具体产业节点仍按模型拆分。", "stage": "preschool", "group": "学前主链", "amount": 10, "main": true, "macroGroup": "学前主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 32, "birthSens": 100, "sourceKey": "yuwa2024", "calibrationNote": "B级阶段总量锚定；内部节点分配仍为C级。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 8.2, "amountHi": 11.8, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "kindergarten", "label": "幼儿园", "cost": "¥0.5–5万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "学前教育、餐费与园内服务。", "stage": "preschool", "group": "学前教育", "amount": 2, "main": false, "macroGroup": "学前教育", "prob": 0.95, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 32, "birthSens": 100, "sourceKey": "education2025", "calibrationNote": "A 级教育规模锚点；家庭自费金额仍需模型估算。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.75, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "interest", "label": "兴趣班 / 素质教育", "cost": "¥0.5–5万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "美术、音乐、体育、舞蹈、编程等。", "stage": "preschool", "group": "兴趣教育", "amount": 2, "main": false, "macroGroup": "学前教育", "prob": 0.6, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 32, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.4, "probHi": 0.8, "cfLo": 0.78, "cfHi": 1}, {"id": "toysbooks", "label": "玩具 / 绘本 / 文具", "cost": "¥0.2–1万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "儿童文化用品与启蒙内容。", "stage": "preschool", "group": "儿童消费", "amount": 0.6, "main": false, "macroGroup": "学前教育", "prob": 0.9, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 32, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.42, "amountHi": 0.78, "probLo": 0.7, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "child_med", "label": "儿童医疗 / 牙科 / 视力", "cost": "¥0.2–2万/年", "kind": "population", "inc": "C", "unit": "每年", "note": "儿科、牙科、视力与健康管理。", "stage": "preschool", "group": "儿童健康", "amount": 0.8, "main": false, "macroGroup": "健康与亲子", "prob": 0.8, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 32, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.56, "amountHi": 1.04, "probLo": 0.6, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "parent_trip", "label": "亲子旅游 / 乐园", "cost": "¥0.5–3万/年", "kind": "consumption", "inc": "C", "unit": "每年", "note": "家庭旅行、主题乐园与亲子娱乐。", "stage": "preschool", "group": "亲子体验", "amount": 1.5, "main": false, "macroGroup": "健康与亲子", "prob": 0.65, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 32, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "k12_core", "label": "6–18岁教育成长", "cost": "B锚点 ¥33.01万 / 6–17岁", "kind": "super", "inc": "C", "unit": "12年累计", "note": "6–14岁约24.3063万元 + 15–17岁约8.7021万元，合计约33.0084万元。 阶段总量用研究锚点校准；阶段内部各具体产业节点仍按模型拆分。", "stage": "k12", "group": "K12主链", "amount": 35, "main": true, "macroGroup": "K12主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 28, "birthSens": 100, "sourceKey": "yuwa2024", "calibrationNote": "B级阶段总量锚定；内部节点分配仍为C级。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 28.7, "amountHi": 41.3, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "school", "label": "K12 学校相关", "cost": "¥1–5万/年+", "kind": "education", "inc": "C", "unit": "每年", "note": "校内相关支出、餐费、校服、活动等，地区差异很大。", "stage": "k12", "group": "基础教育", "amount": 3, "main": false, "macroGroup": "基础教育", "prob": 1.0, "duration": 12.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sourceKey": "education2025", "calibrationNote": "A 级教育规模锚点；家庭自费金额仍需模型估算。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.1, "amountHi": 3.9, "probLo": 0.8, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "learning_hw", "label": "学习硬件", "cost": "¥0.5–3万", "kind": "education", "inc": "C", "unit": "周期性", "note": "学习机、平板、打印机、词典笔、护眼设备等。", "stage": "k12", "group": "教育硬件", "amount": 1.5, "main": false, "macroGroup": "基础教育", "prob": 0.65, "duration": 2.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "books", "label": "教辅 / 文具", "cost": "¥0.2–1万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "教辅资料、文具与打印耗材。", "stage": "k12", "group": "学习用品", "amount": 0.6, "main": false, "macroGroup": "基础教育", "prob": 0.95, "duration": 12.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.42, "amountHi": 0.78, "probLo": 0.75, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "qualityedu", "label": "体育 / 艺术 / 编程", "cost": "¥0.5–5万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "素质教育与兴趣培养。", "stage": "k12", "group": "素质教育", "amount": 2, "main": false, "macroGroup": "素质与体验", "prob": 0.6, "duration": 8.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.4, "probHi": 0.8, "cfLo": 0.78, "cfHi": 1}, {"id": "camp", "label": "研学 / 夏令营", "cost": "¥0.3–3万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "研学、游学、夏令营与竞赛活动。", "stage": "k12", "group": "体验教育", "amount": 1, "main": false, "macroGroup": "素质与体验", "prob": 0.35, "duration": 6.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "highschool", "label": "高中 / 升学服务", "cost": "¥1–6万/年+", "kind": "education", "inc": "C", "unit": "每年", "note": "高中阶段学习、升学规划、志愿与相关服务。", "stage": "k12", "group": "升学服务", "amount": 3, "main": false, "macroGroup": "升学与数码", "prob": 0.85, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sourceKey": "education2025", "calibrationNote": "A 级教育规模锚点；家庭自费金额仍需模型估算。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.1, "amountHi": 3.9, "probLo": 0.65, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "electronics", "label": "手机 / 电脑 / 数码", "cost": "¥0.5–3万/周期", "kind": "consumption", "inc": "C", "unit": "周期性", "note": "青少年学习和生活所需电子产品。", "stage": "k12", "group": "消费电子", "amount": 1.5, "main": false, "macroGroup": "升学与数码", "prob": 0.85, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 28, "birthSens": 100, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.65, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "college_core", "label": "18–22岁高等教育", "cost": "B锚点 ¥14.20万 / 本科4年", "kind": "super", "inc": "C", "unit": "4年累计", "note": "大学本科四年养育成本约14.2万元。 阶段总量用研究锚点校准；阶段内部各具体产业节点仍按模型拆分。", "stage": "college", "group": "高教主链", "amount": 20, "main": true, "macroGroup": "高教主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "B", "marriageSens": 24, "birthSens": 95, "sourceKey": "yuwa2024", "calibrationNote": "B级阶段总量锚定；内部节点分配仍为C级。", "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 16.4, "amountHi": 23.6, "probLo": 0.88, "probHi": 1, "cfLo": 0.88, "cfHi": 1}, {"id": "college", "label": "大学学费 / 住宿", "cost": "¥1–5万/年", "kind": "education", "inc": "C", "unit": "每年", "note": "国内大学学费、住宿与学校相关费用。", "stage": "college", "group": "高等教育", "amount": 2.5, "main": false, "macroGroup": "高等教育", "prob": 0.65, "duration": 4.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 100, "sourceKey": "education2025", "calibrationNote": "A 级教育规模锚点；家庭自费金额仍需模型估算。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.75, "amountHi": 3.25, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "living", "label": "生活费", "cost": "¥1.5–4万/年", "kind": "consumption", "inc": "C", "unit": "每年", "note": "餐饮、交通、通信与日常消费。", "stage": "college", "group": "生活消费", "amount": 2.5, "main": false, "macroGroup": "高等教育", "prob": 0.65, "duration": 4.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 95, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.75, "amountHi": 3.25, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "laptop", "label": "电脑 / 手机 / 数码", "cost": "¥0.5–3万/周期", "kind": "consumption", "inc": "C", "unit": "周期性", "note": "学习和生活设备。", "stage": "college", "group": "消费电子", "amount": 1.5, "main": false, "macroGroup": "高等教育", "prob": 0.65, "duration": 1.5, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 95, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.05, "amountHi": 1.95, "probLo": 0.45, "probHi": 0.85, "cfLo": 0.78, "cfHi": 1}, {"id": "postgrad", "label": "考研 / 考公 / 培训", "cost": "¥0.5–5万", "kind": "education", "inc": "C", "unit": "阶段累计", "note": "研究生考试、公职考试与职业培训。", "stage": "college", "group": "升学就业", "amount": 2, "main": false, "macroGroup": "升学就业", "prob": 0.35, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 95, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 1.4, "amountHi": 2.6, "probLo": 0.15, "probHi": 0.55, "cfLo": 0.78, "cfHi": 1}, {"id": "vocational", "label": "职业培训 / 认证", "cost": "¥0.3–3万", "kind": "education", "inc": "C", "unit": "阶段累计", "note": "技能培训、行业认证与就业前教育。", "stage": "college", "group": "职业教育", "amount": 1, "main": false, "macroGroup": "升学就业", "prob": 0.2, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 95, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0, "probHi": 0.4, "cfLo": 0.78, "cfHi": 1}, {"id": "studyabroad", "label": "留学", "cost": "¥20–60万/年+", "kind": "education", "inc": "C", "unit": "每年", "note": "仅部分家庭发生，包含学费、住宿、保险与生活费。", "stage": "college", "group": "留学", "amount": 35, "main": false, "macroGroup": "留学", "prob": 0.08, "duration": 2.5, "base": "birth", "calcRole": "direct", "cf": 1.0, "confidence": "C", "marriageSens": 24, "birthSens": 95, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 24.5, "amountHi": 45.5, "probLo": 0, "probHi": 0.28, "cfLo": 0.78, "cfHi": 1}, {"id": "adult_core", "label": "成年 / 下一代", "cost": "¥20–100万+", "kind": "super", "inc": "C", "unit": "阶段累计", "note": "成年后就业、租房、购车、购房首付，再进入下一轮婚育。", "stage": "adult", "group": "成年主链", "amount": 50, "main": true, "macroGroup": "成年主链", "prob": 1.0, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "结构", "marriageSens": 20, "birthSens": 55, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 35.0, "amountHi": 65.0, "probLo": 0.8, "probHi": 1, "cfLo": 0.78, "cfHi": 1}, {"id": "career", "label": "求职 / 职业培训", "cost": "¥0.2–3万", "kind": "consumption", "inc": "C", "unit": "阶段累计", "note": "求职、职业技能、证书与培训。", "stage": "adult", "group": "就业服务", "amount": 1, "main": false, "macroGroup": "就业居住", "prob": 0.75, "duration": 1.0, "base": "birth", "calcRole": "direct", "cf": 0.65, "confidence": "C", "marriageSens": 20, "birthSens": 55, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 0.7, "amountHi": 1.3, "probLo": 0.55, "probHi": 0.95, "cfLo": 0.43, "cfHi": 0.87}, {"id": "rent", "label": "毕业租房", "cost": "¥2–8万/年", "kind": "consumption", "inc": "C", "unit": "每年", "note": "离开家庭后的租房与居住支出。", "stage": "adult", "group": "居住服务", "amount": 4, "main": false, "macroGroup": "就业居住", "prob": 0.6, "duration": 3.0, "base": "birth", "calcRole": "direct", "cf": 0.55, "confidence": "C", "marriageSens": 20, "birthSens": 55, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 2.8, "amountHi": 5.2, "probLo": 0.4, "probHi": 0.8, "cfLo": 0.33, "cfHi": 0.77}, {"id": "adult_car", "label": "成年购车", "cost": "¥10–30万+", "kind": "asset", "inc": "C", "unit": "5–10年", "note": "工作后独立购车。", "stage": "adult", "group": "耐用品资产", "amount": 15, "main": false, "macroGroup": "资产形成", "prob": 0.25, "duration": 1.0, "base": "birth", "calcRole": "asset", "cf": 0.35, "confidence": "C", "marriageSens": 28, "birthSens": 55, "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 10, "amountHi": 20, "probLo": 0.12, "probHi": 0.38, "cfLo": 0.18, "cfHi": 0.5, "sourceKey": "household_auto_proxy", "calibrationNote": "成年子女家庭汽车延续15万元典型价格代理；长期发生率保持保守。"}, {"id": "adult_home", "label": "购房首付", "cost": "≈¥30万", "kind": "asset", "inc": "C", "unit": "一次性资金投入", "note": "成年子女首次置业的首付资金投入代理；V16起归入“资产资金投入”而非“资产交易价值”，避免把首付额误当成房屋总成交额。", "stage": "adult", "group": "代际资产", "amount": 30, "main": false, "macroGroup": "资产形成", "prob": 0.4, "duration": 1.0, "base": "birth", "calcRole": "assetFunding", "cf": 0.4, "confidence": "C", "marriageSens": 28, "birthSens": 55, "sourceKey": "housing2025", "calibrationNote": "住房总价由官方交易数据校准；首付/贷款比例仍是C级假设。", "sumWeight": 1.0, "accountingRole": "additive", "amountLo": 21.0, "amountHi": 39.0, "probLo": 0.2, "probHi": 0.6, "cfLo": 0.18, "cfHi": 0.62}, {"id": "next_marriage", "label": "下一代婚育", "cost": "重新进入循环", "kind": "super", "inc": "C", "unit": "生命周期节点", "note": "成年子女再次进入相亲、结婚、成家与生育链条。", "stage": "adult", "group": "循环", "amount": 0, "main": true, "macroGroup": "下一代循环", "prob": 0.55, "duration": 1.0, "base": "birth", "calcRole": "ignore", "cf": 1.0, "confidence": "结构", "marriageSens": 20, "birthSens": 55, "sumWeight": 1.0, "accountingRole": "structural", "amountLo": 0, "amountHi": 0.0, "probLo": 0.35, "probHi": 0.75, "cfLo": 0.78, "cfHi": 1}], "edges": {"dating": [["dating_core", "dating_app"], ["dating_core", "dating_event"], ["dating_core", "dating_spend"], ["dating_core", "image"], ["dating_core", "proposal"]], "wedding": [["wedding_core", "brideprice"], ["wedding_core", "dowry"], ["wedding_core", "engagement"], ["wedding_core", "gold"], ["wedding_core", "rings"], ["wedding_core", "photo"], ["wedding_core", "planner"], ["wedding_core", "banquet"], ["banquet", "alcohol"], ["wedding_core", "attire"], ["wedding_core", "wedding_car"], ["wedding_core", "honeymoon"]], "household": [["household_core", "balance"], ["balance", "home"], ["home", "downpayment"], ["home", "mortgage"], ["home", "broker"], ["balance", "renovation"], ["renovation", "materials"], ["balance", "furniture"], ["balance", "appliance"], ["balance", "smart_home"], ["balance", "car"], ["car", "car_life"], ["balance", "insurance"]], "fertility": [["fertility_core", "prepreg"], ["prepreg", "supplement"], ["prepreg", "fertility_test"], ["fertility_test", "ivf"], ["fertility_core", "prenatal"], ["prenatal", "genetic"], ["prenatal", "maternity_goods"], ["prenatal", "delivery"], ["delivery", "postpartum"], ["delivery", "nanny"], ["delivery", "recovery"]], "infant": [["infant_core", "formula"], ["infant_core", "diaper"], ["infant_core", "baby_gear"], ["infant_core", "kidswear"], ["infant_core", "pediatrics"], ["infant_core", "vaccine"], ["infant_core", "daycare"], ["infant_core", "caregiver"], ["infant_core", "earlyedu"]], "preschool": [["preschool_core", "kindergarten"], ["preschool_core", "interest"], ["preschool_core", "toysbooks"], ["preschool_core", "child_med"], ["preschool_core", "parent_trip"]], "k12": [["k12_core", "school"], ["k12_core", "learning_hw"], ["k12_core", "books"], ["k12_core", "qualityedu"], ["k12_core", "camp"], ["k12_core", "highschool"], ["k12_core", "electronics"]], "college": [["college_core", "college"], ["college_core", "living"], ["college_core", "laptop"], ["college_core", "postgrad"], ["college_core", "vocational"], ["college_core", "studyabroad"]], "adult": [["adult_core", "career"], ["adult_core", "rent"], ["adult_core", "adult_car"], ["adult_core", "adult_home"], ["adult_core", "next_marriage"]]}, "money": [["parents", "brideprice", 18, "transfer", "父母→彩礼"], ["parents", "dowry", 12, "transfer", "父母→嫁妆"], ["income", "gold", 4, "consume", "收入→三金"], ["income", "banquet", 8, "consume", "收入→婚宴"], ["income", "planner", 3, "consume", "收入→婚庆"], ["income", "honeymoon", 2.5, "consume", "收入→蜜月"], ["gifts", "wedding_core", 6, "transfer", "礼金→新人"], ["parents", "downpayment", 30, "asset", "父母→首付"], ["income", "balance", 15, "consume", "收入→家庭"], ["gifts", "balance", 6, "transfer", "礼金→家庭"], ["credit", "mortgage", 70, "asset", "银行→房贷"], ["credit", "car", 12, "asset", "银行→车贷"], ["balance", "renovation", 15, "consume", "家庭→装修"], ["balance", "furniture", 8, "consume", "家庭→家具"], ["balance", "appliance", 7, "consume", "家庭→家电"], ["balance", "insurance", 1, "consume", "家庭→保险"], ["balance", "prepreg", 0.5, "pop", "家庭→备孕"], ["balance", "ivf", 4, "pop", "家庭→辅助生殖"], ["balance", "delivery", 2, "pop", "家庭→分娩"], ["balance", "postpartum", 5, "pop", "家庭→月子"], ["balance", "formula", 2, "pop", "家庭→奶粉"], ["balance", "daycare", 4, "pop", "家庭→托育"], ["balance", "caregiver", 6, "pop", "家庭→照护"], ["balance", "kindergarten", 2, "pop", "家庭→幼儿园"], ["balance", "interest", 2, "pop", "家庭→兴趣教育"], ["balance", "school", 3, "pop", "家庭→K12"], ["balance", "qualityedu", 2, "pop", "家庭→素质教育"], ["balance", "college", 2.5, "pop", "家庭→大学"], ["balance", "studyabroad", 35, "pop", "家庭→留学"], ["parents", "adult_home", 30, "asset", "代际→首付"]]}; const INDUSTRY={"dating": {"upstream": ["互联网平台 / 广告", "线下场地", "服饰美妆", "餐饮娱乐"], "midstream": ["婚恋平台 / 红娘", "相亲活动", "形象管理", "约会 / 求婚服务"], "downstream": ["适婚人群"], "companies": []}, "wedding": {"upstream": ["黄金矿业 / 精炼", "食品饮料 / 酒类", "纺织 / 珠宝原料", "酒店用品 / 花艺"], "midstream": ["珠宝品牌与零售", "婚庆策划 / 摄影", "酒店餐饮 / 宴会", "OTA / 航空 / 酒店"], "downstream": ["新人家庭", "双方父母", "亲友宾客"], "companies": [["周大福", "01929.HK", "珠宝 / 婚庆消费", "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&market=SEHK&stockId=69691"], ["携程集团", "TCOM / 09961.HK", "蜜月 / OTA", "https://investors.trip.com/zh-hans/"]]}, "household": {"upstream": ["水泥 / 玻璃 / 铜铝", "化工 / 涂料 / 板材", "电子元器件 / 压缩机", "汽车零部件"], "midstream": ["房地产 / 中介", "装修 / 定制家居", "白电 / 厨电 / 智能家居", "汽车 / 保险"], "downstream": ["新成立家庭", "婚房改善家庭"], "companies": [["美的集团", "000333.SZ / 00300.HK", "家电 / 智能家居", "https://www.midea.com.cn/zh/about-midea/news/news-2120"], ["海尔智家", "600690.SH / 06690.HK", "家电 / 智慧家庭", "https://www.haier.com/investor-relationship/"], ["欧派家居", "603833.SH", "定制家居", "https://www.oppein.com/cn/zixunzhongxin/dingqibaogao/"], ["比亚迪", "002594.SZ / 01211.HK", "家庭汽车", "https://www.bydglobal.com/cn/investor-relations"], ["中国平安", "601318.SH / 02318.HK", "家庭保险", "https://ir.pingan.com/index.shtml"]]}, "fertility": {"upstream": ["生殖药物", "医疗器械 / 耗材", "IVD / 遗传检测", "医疗信息化"], "midstream": ["生殖中心 / 医院", "妇产医院", "产检 / 基因检测", "月子 / 产康 / 家政"], "downstream": ["备孕家庭", "孕产妇", "新生儿家庭"], "companies": [["锦欣生殖", "01951.HK", "辅助生殖 / 女性健康", "https://www.jxr-fertility.com/about?lang=zh-Hans"]]}, "infant": {"upstream": ["乳制品原料", "纸浆 / 无纺布", "纺织 / 塑料", "儿童医疗器械"], "midstream": ["奶粉 / 尿裤", "婴童耐用品", "母婴零售", "托育 / 育儿服务"], "downstream": ["0–3岁婴幼儿家庭"], "companies": [["孩子王", "301078.SZ", "母婴零售 / 亲子家庭服务", "https://www.cs.com.cn/roadshow/ipo/301078/"]]}, "preschool": {"upstream": ["出版 / 内容", "玩具 / 文创", "儿童医疗", "旅游与乐园资源"], "midstream": ["幼儿园", "兴趣教育", "儿童消费", "亲子旅游 / 乐园"], "downstream": ["3–6岁儿童家庭"], "companies": []}, "k12": {"upstream": ["出版 / 教辅", "消费电子 / AI硬件", "体育艺术器材", "研学旅行资源"], "midstream": ["校内教育", "素质教育", "学习硬件", "研学 / 升学服务"], "downstream": ["6–18岁学生家庭"], "companies": [["新东方", "EDU / 09901.HK", "教育服务 / 内容 / 留学相关", "https://investor.neworiental.org/zh-hans"]]}, "college": {"upstream": ["教材 / 内容", "消费电子", "考试与职业内容", "国际教育资源"], "midstream": ["高校相关消费", "考研考公 / 职培", "留学服务", "生活消费"], "downstream": ["18–22岁学生家庭"], "companies": [["新东方", "EDU / 09901.HK", "考试 / 留学 / 教育服务", "https://investor.neworiental.org/zh-hans"]]}, "adult": {"upstream": ["招聘平台 / 职培", "住房供给", "汽车产业链", "金融服务"], "midstream": ["就业服务", "租赁住房", "汽车", "购房 / 按揭"], "downstream": ["成年子女 → 下一代家庭"], "companies": [["比亚迪", "002594.SZ / 01211.HK", "汽车", "https://www.bydglobal.com/cn/investor-relations"], ["中国平安", "601318.SH / 02318.HK", "保险 / 金融", "https://ir.pingan.com/index.shtml"]]}}; const SOURCES=[["B｜民政部2025年婚姻登记数据（媒体转引）", "2025年全国结婚登记676.3万对，较2024年610.6万对增加65.7万对（+10.76%）。", "https://news.china.com.cn/2026-02/12/content_118331038.html"], ["A｜国家统计局｜2025年人口", "2025年出生人口792万人；年末65岁及以上人口22365万人，占15.9%。", "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962330.html"], ["A｜国家统计局｜2025年居民收入和消费支出", "全国居民人均消费支出29476元；城镇35869元、农村20259元；居住6397元、教育文化娱乐3489元、医疗保健2573元。", "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962321.html"], ["A｜国家统计局｜2025年房地产开发和销售", "新建商品住宅销售面积73299万㎡、销售额73335亿元，据此推导全国均价约1.00万元/㎡。", "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202601/t20260119_1962324.html"], ["A｜国家卫健委｜2025年托育服务", "2025年全国托育机构12.6万家、托位666万个，每千人口托位4.73个；全日托平均价格较“十四五”初下降29%。", "https://www.nhc.gov.cn/xcs/c100122/202512/9731f93a7e0d451284a0da462527cbd2.shtml"], ["A｜国家卫健委｜育儿补贴制度", "2025年起3岁以下婴幼儿国家基础补贴3600元/孩/年，2025年及以后出生可连续申领3年，共10800元。", "https://www.nhc.gov.cn/rkjcyjtfzs/c100147/202507/06cb12b180904128ae7e55620b713ac0.shtml"], ["A｜教育部｜2025年全国教育事业发展统计公报", "2025年幼儿园23.19万所、在园幼儿3225.52万人；义务教育在校生15687.63万人；高等教育在学总规模4872.57万人。", "https://www.moe.gov.cn/jyb_sjzl/sjzl_fztjgb/202607/t20260706_1442870.html"], ["B｜育娲人口研究｜中国生育成本报告2024版", "0–17岁平均养育成本53.8万元，至本科毕业约68万元；0–2岁7.3614万、3–5岁10.9614万、6–17岁33.0084万、大学四年约14.2万；城镇66.7万、农村36.5万，北京93.6万、上海101万（0–17岁）。", "https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"], ["B｜中国人民大学人口与发展研究中心专项调查（媒体报道）", "2023年7–9月专项调查显示，受访者结婚花费平均值约33.04万元；并非全国行政统计，模型仅作软校准锚点。", "https://news.china.com.cn/2024-04/30/content_117161519.shtml"], ["B｜中国黄金协会｜2025年黄金消费", "2025年黄金首饰消费363.836吨，同比下降31.61%；金条金币504.238吨，同比增长35.14%。", "https://cngold.org.cn/policies/show-8980.html"], ["A｜国家统计局｜2025年社会消费品零售", "2025年限额以上金银珠宝类零售额3736亿元、增长12.8%；家电11695亿元、增长11.0%；家具2092亿元、增长14.6%。", "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202601/t20260119_1962323.html"], ["C｜模型层", "节点渗透率、Counterfactual净增量率、首付比例、部分行业价格与发生概率仍是情景假设；没有可靠全国数据的地方不做伪精确。", ""]]; const elk=new ELK();
+const nodeById=Object.fromEntries(DATA.nodes.map(n=>[n.id,n]));
+const STAGES=DATA.stages.filter(s=>s.id!=="overview");
+const VIEWS=[
+ {id:"overview",name:"主链总览"},
+ {id:"full",name:"完整总图"},
+ ...STAGES.map(s=>({id:s.id,name:s.name.replace(/^[①②③④⑤⑥⑦⑧⑨]\s*/,"")}))
+];
+const svg=d3.select("#svg"),viewport=svg.append("g"),frameLayer=viewport.append("g"),edgeLayer=viewport.append("g"),moneyLayer=viewport.append("g"),labelLayer=viewport.append("g"),compoundLayer=viewport.append("g"),nodeLayer=viewport.append("g");
+const C={super:["#fff","#172033"],neutral:["#f5f7fa","#7a8797"],consumption:["#eaf3ff","#3b82f6"],transfer:["#fff6d8","#c99716"],asset:["#fff0e6","#e56b1f"],population:["#eaf8ef","#2f9e5b"],education:["#f2eeff","#7256c7"]};
+const MC={transfer:"#c99716",asset:"#e56b1f",consume:"#3b82f6",pop:"#2f9e5b"};
+const REGION={
+ national:{dating:1,wedding:1,household:1,fertility:1,infant:1,preschool:1,k12:1,college:1,adult:1,source:1},
+ tier1:{dating:1.35,wedding:1.35,household:1.346,fertility:1.25,infant:1.808550,preschool:1.808550,k12:1.808550,college:1.808550,adult:1.35,source:1},
+ tier23:{dating:1.216888,wedding:1.216888,household:1.216888,fertility:1.216888,infant:1.239777,preschool:1.239777,k12:1.239777,college:1.239777,adult:1.216888,source:1},
+ county:{dating:0.687305,wedding:0.687305,household:0.687305,fertility:0.687305,infant:0.678439,preschool:0.678439,k12:0.678439,college:0.678439,adult:0.687305,source:1}
+};
+const CAL_STAGE={wedding:1.000000,infant:0.454688,preschool:0.695300,k12:0.485668,college:0.634992};
+const CAL_ANCHORS=[
+ ["B","婚房时点效应","40%发生率 × 30%净增量","置业调查只支持“结婚显著提前买房”，不直接等同全国成交率；隐含婚姻可归因交易约12%","https://finance.people.com.cn/n1/2020/0824/c66323-31834914.html"],
+ ["B","婚庆金饰","≈1.0万元 / 三金节点","2025婚庆相关金饰约占珠宝门店销售19%，并与日常自戴重叠；下调金额并把Δ降至85%","https://china.gold.org/goldhub/research/publication/2025/10/15/19316"],
+ ["B","新婚家庭汽车","≈15万元；P=25%","婚房购房者中约两成“房车都要”，有车家庭81.4%车辆价格低于20万元；因此降低发生率和金额","https://sc.people.com.cn/n2/2022/0915/c345514-40124951.html"],
+ ["B","婚宴","≈6.5万元；P=80%","婚宴仍是核心环节，但主流桌数较过去明显收缩；金额为行业代理，不冒充全国均值","https://sh.people.com.cn/n2/2024/0312/c134768-40773191.html"],
+
+ ["A","2025婚姻登记","676.3万对；同比+65.7万对","2025同比增量用作默认情景","https://news.china.com.cn/2026-02/12/content_118331038.html"],
+ ["B","婚礼总花费","33.04万元/对","人大专项调查软校准，默认系数0.848","https://news.china.com.cn/2024-04/30/content_117161519.shtml"],
+ ["A→B","住房资产","约1.00万元/㎡","官方住宅成交均价；100㎡代理≈100万元","https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202601/t20260119_1962324.html"],
+ ["B","0–2岁","7.3614万元/孩","阶段总量校准系数0.455","https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"],
+ ["B","3–5岁","10.9614万元/孩","阶段总量校准系数0.695","https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"],
+ ["B","6–17岁","33.0084万元/孩","阶段总量校准系数0.486","https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"],
+ ["B","本科4年","14.2万元/孩","阶段总量校准系数0.635","https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"],
+ ["B","地区育儿系数","京沪≈1.809 / 城镇≈1.240 / 农村≈0.678","由0–17岁成本相对全国53.8万元推导","https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf"],
+ ["A","托育供给","12.6万机构 / 666万托位","容量锚点，不反推家庭单价","https://www.nhc.gov.cn/xcs/c100122/202512/9731f93a7e0d451284a0da462527cbd2.shtml"]
+];
+const CAL_SOURCE={"marriage2025": {"grade": "B", "title": "民政部2025年婚姻登记数据（媒体转引）", "url": "https://news.china.com.cn/2026-02/12/content_118331038.html", "note": "2025年全国结婚登记676.3万对，较2024年610.6万对增加65.7万对（+10.76%）。"}, "population2025": {"grade": "A", "title": "国家统计局｜2025年人口", "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962330.html", "note": "2025年出生人口792万人；年末65岁及以上人口22365万人，占15.9%。"}, "spending2025": {"grade": "A", "title": "国家统计局｜2025年居民收入和消费支出", "url": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962321.html", "note": "全国居民人均消费支出29476元；城镇35869元、农村20259元；居住6397元、教育文化娱乐3489元、医疗保健2573元。"}, "housing2025": {"grade": "A", "title": "国家统计局｜2025年房地产开发和销售", "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202601/t20260119_1962324.html", "note": "新建商品住宅销售面积73299万㎡、销售额73335亿元，据此推导全国均价约1.00万元/㎡。"}, "childcare2025": {"grade": "A", "title": "国家卫健委｜2025年托育服务", "url": "https://www.nhc.gov.cn/xcs/c100122/202512/9731f93a7e0d451284a0da462527cbd2.shtml", "note": "2025年全国托育机构12.6万家、托位666万个，每千人口托位4.73个；全日托平均价格较“十四五”初下降29%。"}, "subsidy2025": {"grade": "A", "title": "国家卫健委｜育儿补贴制度", "url": "https://www.nhc.gov.cn/rkjcyjtfzs/c100147/202507/06cb12b180904128ae7e55620b713ac0.shtml", "note": "2025年起3岁以下婴幼儿国家基础补贴3600元/孩/年，2025年及以后出生可连续申领3年，共10800元。"}, "education2025": {"grade": "A", "title": "教育部｜2025年全国教育事业发展统计公报", "url": "https://www.moe.gov.cn/jyb_sjzl/sjzl_fztjgb/202607/t20260706_1442870.html", "note": "2025年幼儿园23.19万所、在园幼儿3225.52万人；义务教育在校生15687.63万人；高等教育在学总规模4872.57万人。"}, "yuwa2024": {"grade": "B", "title": "育娲人口研究｜中国生育成本报告2024版", "url": "https://www.caoss.org.cn/upload/news/20240318/d498866bf3554763940159394e219e10.pdf", "note": "0–17岁平均养育成本53.8万元，至本科毕业约68万元；0–2岁7.3614万、3–5岁10.9614万、6–17岁33.0084万、大学四年约14.2万；城镇66.7万、农村36.5万，北京93.6万、上海101万（0–17岁）。"}, "wedding2023": {"grade": "B", "title": "中国人民大学人口与发展研究中心专项调查（媒体报道）", "url": "https://news.china.com.cn/2024-04/30/content_117161519.shtml", "note": "2023年7–9月专项调查显示，受访者结婚花费平均值约33.04万元；并非全国行政统计，模型仅作软校准锚点。"}, "gold2025": {"grade": "B", "title": "中国黄金协会｜2025年黄金消费", "url": "https://cngold.org.cn/policies/show-8980.html", "note": "2025年黄金首饰消费363.836吨，同比下降31.61%；金条金币504.238吨，同比增长35.14%。"}, "retail2025": {"grade": "A", "title": "国家统计局｜2025年社会消费品零售", "url": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202601/t20260119_1962323.html", "note": "2025年限额以上金银珠宝类零售额3736亿元、增长12.8%；家电11695亿元、增长11.0%；家具2092亿元、增长14.6%。"}, "housing_marriage_proxy": {"grade": "B", "title": "58同城/安居客《2020都市男女婚房置业报告》（人民网转引）", "url": "https://finance.people.com.cn/n1/2020/0824/c66323-31834914.html", "note": "调查中80.9%认为婚前买好婚房是最佳选择；在婚房购房者中64.1%表示结婚时优先买房。该结果不能直接当作全国实际成交率，只用于校准“婚姻使购房提前”的方向与区间。"}, "wgc_wedding_gold2025": {"grade": "B", "title": "世界黄金协会《2025中国金饰零售市场洞察》", "url": "https://china.gold.org/goldhub/research/publication/2025/10/15/19316", "note": "2025年上半年中国金饰消费金额约1370亿元；零售调研中婚庆相关金饰销售占比降至19%，且婚庆与日常自戴边界日益模糊。"}, "weddingexpo2024": {"grade": "B", "title": "中国婚博会 2023–2024 婚嫁消费趋势（人民网转引）", "url": "https://sh.people.com.cn/n2/2024/0312/c134768-40773191.html", "note": "婚嫁首饰仍属刚需品类，黄金订单占比增长；婚宴呈“小而精”，北京/上海主流8–15桌，广州/武汉15–20桌，杭州/成都/南京20–25桌。"}, "household_auto_proxy": {"grade": "B", "title": "家庭汽车消费结构与婚房置业调查（人民网）", "url": "https://sc.people.com.cn/n2/2022/0915/c345514-40124951.html", "note": "有车家庭中约81.4%的家用汽车总价低于20万元；另据婚房置业调查，约两成婚房购房者表示房子车子全都要。用于约束新婚家庭购车金额与发生率上界。"}, "caam2025": {"grade": "A/B", "title": "中国汽车工业协会 2025 年产销数据", "url": "https://www.caam.org.cn/chn/3/cate_38/con_5236999.html", "note": "2025年中国汽车销量3440万辆；用于校验汽车行业总量和车企捕获率量级。"}, "haier_share2025": {"grade": "B", "title": "海尔智家2025年年度报告", "url": "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260326/d7e721dc96a94bc4ac85794b0d818fe2.PDF", "note": "2025年中国市场冰箱线下份额47.7%、洗衣机47.4%、热水器32.5%。新家庭整套家电篮子包含更多品类，因此公司捕获率采用低于核心品类份额的折减代理。"}, "midea_market2025": {"grade": "B", "title": "美的集团2025年年度报告", "url": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225065145.PDF", "note": "奥维云网口径2025年国内家电（不含3C）零售规模8931亿元；美的在多个核心品类保持领先。由于缺少统一整套家电篮子市占率，捕获率继续使用保守情景值。"}, "pingan_insurance2025": {"grade": "B", "title": "中国平安2025年业绩 + 行业财险保费", "url": "https://www.pingan.cn/tc/common/news/article/1774528001371.shtml", "note": "2025年平安产险原保费3431.68亿元；行业财产险公司原保费约1.76万亿元，粗略份额约19.5%。该值不是家庭保险专项份额，模型用更保守的15%捕获率。"}, "brideprice_rural_context": {"grade": "B-context", "title": "2024农村彩礼公开治理/调研口径", "url": "https://www.huining.gov.cn/xxgk/xzxxgk/gcyz/fdzdgknr/cwgk/yycsq/cwgk/art/2025/art_f3bda70cc65c4236af22de66b2696b1c.html", "note": "地方政府公开材料转引“全国婚俗调研”称2024年农村平均彩礼约12.8万元；不同地区差异巨大，且不能代表全国城乡新婚人口，因此只作为全国模型的上限/背景锚点。"}, "weddingexpo_detail2024": {"grade": "B-context", "title": "中国婚博会2023–2024婚嫁消费动态", "url": "https://innovation.ifeng.com/c/8Xb40QpUHcY", "note": "婚礼策划总体投入更看重性价比、费用下降约10%–15%；同级婚纱礼服套餐单价下降约20%–25%；婚纱摄影消费更趋理性。报告有消费趋势但缺少全国统一均价。"}, "insurance_household2024": {"grade": "B-context", "title": "清华五道口中国保险与养老金融研究中心｜互联网保险消费者洞察", "url": "https://ciprc.pbcsf.tsinghua.edu.cn/info/1008/1141.htm", "note": "2024年调研中近六成受访家庭年保费支出超过8000元。样本为保险消费决策者、并非全国新婚家庭，因此只能校准家庭保险金额量级，不能直接用于渗透率。"}};
+const COMPANY_EXPOSURE=[{"id": "ctf", "name": "周大福珠宝", "ticker": "1929.HK", "nodes": ["gold", "rings"], "capture": 0.05, "revRmbBn": 80.58540144599999, "revenueLabel": "FY2026收入 HK$94.398bn", "growth": 5.3, "margin": 20.0, "marginType": "经营利润率", "pe": 12.16, "pb": 3.54, "div": 6.04, "mcapRmbBn": 93.49152622002865, "source": "https://www.ctfjewellerygroup.com/content/ctfjewellerygroup/sc/Media/news/p260611", "note": "珠宝业务直接暴露；5%捕获率为C级情景假设。", "revAnnualRmbBn": 80.58540144599999, "captureGrade": "C"}, {"id": "trip", "name": "携程集团", "ticker": "9961.HK", "nodes": ["honeymoon"], "capture": 0.03, "revRmbBn": 62.4, "revenueLabel": "2025收入 RMB62.4bn；住宿42%/交通36%", "growth": 17.0, "margin": null, "marginType": "—", "pe": 7.3, "pb": 1.11, "div": null, "mcapRmbBn": 173.63345133081796, "source": "https://investors.trip.com/news-releases/news-release-details/tripcom-group-limited-reports-unaudited-fourth-quarter-and-5", "note": "蜜月只是旅游需求的小部分；3%捕获率仅为情景参数。", "revAnnualRmbBn": 62.4, "captureGrade": "C"}, {"id": "midea", "name": "美的集团", "ticker": "300.HK", "nodes": ["appliance", "smart_home"], "capture": 0.12, "revRmbBn": 458.5, "revenueLabel": "2025收入 RMB458.5bn；ToB RMB122.8bn", "growth": 12.1, "margin": 9.585605234460196, "marginType": "净利率代理", "pe": 14.36, "pb": 2.99, "div": 5.11, "mcapRmbBn": 626.2224570519002, "source": "https://www.midea.com/ph/news/midea-achieves-a-record-high-ranking-of-no--231-on-fortune-global-500", "note": "家电/智能家居直接相关；12%捕获率为C级假设。", "revAnnualRmbBn": 458.5, "captureGrade": "C", "captureSource": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225065145.PDF"}, {"id": "haier", "name": "海尔智家", "ticker": "6690.HK", "nodes": ["appliance", "smart_home"], "capture": 0.25, "revRmbBn": 302.35, "revenueLabel": "2025收入 RMB302.35bn", "growth": 5.71, "margin": 6.466016206383331, "marginType": "净利率代理", "pe": 8.93, "pb": 1.33, "div": 6.75, "mcapRmbBn": 156.53351649715265, "source": "https://www.haier.com/global/press-events/news/20260402_288863.shtml", "note": "智慧家庭业务直接相关；10%捕获率为C级假设。 V17：核心品类线下份额约32.5%–47.7%，考虑整套家电篮子包含更多品类，捕获率取折减后的25%。", "revAnnualRmbBn": 302.35, "captureGrade": "B-proxy", "captureSource": "https://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260326/d7e721dc96a94bc4ac85794b0d818fe2.PDF"}, {"id": "byd", "name": "比亚迪", "ticker": "1211.HK", "nodes": ["car", "adult_car"], "capture": 0.1, "revRmbBn": 803.964958, "revenueLabel": "2025收入 RMB803.965bn", "growth": 3.4567517869957154, "margin": 4.057269122916176, "marginType": "净利率代理", "pe": 21.66, "pb": 2.66, "div": 0.51, "mcapRmbBn": 626.5429201885687, "source": "https://www.bydglobal.com/cn/investor-relations", "note": "汽车需求相关；家庭形成只是购车动因之一，8%捕获率为C级。 V17：2025年比亚迪全球销量460.24万辆、海外约104.96万辆，国内约355万辆；相对中国汽车3440万辆总销量约10%量级，因此捕获率上调至10%。", "revAnnualRmbBn": 803.964958, "captureGrade": "B-proxy", "captureSource": "https://www.caam.org.cn/chn/3/cate_38/con_5236999.html"}, {"id": "pingan", "name": "中国平安", "ticker": "2318.HK", "nodes": ["insurance"], "capture": 0.15, "revRmbBn": 497.912, "revenueLabel": "2025相关业务规模：产险收入338.9bn + 健康险保费159bn", "growth": 3.3, "margin": null, "marginType": "业务口径不同", "pe": 5.27, "pb": 0.82, "div": 5.89, "mcapRmbBn": 824.6884343777556, "source": "https://group.pingan.com/media/news/2026/ar-25.html", "note": "V17修复：不再把停车/充电/养车全部映射给保险公司，只映射家庭保险节点。平安产险原保费约占行业财险公司总保费19.5%，模型取更保守的15%捕获率。", "revAnnualRmbBn": 497.912, "captureGrade": "B-proxy", "captureSource": "https://www.pingan.cn/tc/common/news/article/1774528001371.shtml"}, {"id": "jinxin", "name": "锦欣生殖", "ticker": "1951.HK", "nodes": ["ivf", "fertility_test"], "capture": 0.025, "revRmbBn": 1.159, "revenueLabel": "2026H1辅助生殖及相关医疗收入 RMB1.159bn；比较口径按×2年化", "growth": 7.5, "margin": 29.335634167385678, "marginType": "调整后EBITDA率代理", "pe": 29.16, "pb": 0.56, "div": 1.97, "mcapRmbBn": 4.904848381737449, "source": "https://www.jxr-fertility.com/news/%E9%94%A6%E6%AC%A3%E7%94%9F%E6%AE%962026%E5%8D%8A%E5%B9%B4%E6%8A%A5%EF%BC%9A%E7%BB%8F%E8%B0%83%E6%95%B4ebitda3.4%E4%BA%BF%E5%85%83-%E7%BE%8E%E5%9B%BDhrc%E8%A1%A8%E7%8E%B0%E4%BA%AE%E7%9C%BC?lang=zh-Hans", "note": "辅助生殖直接暴露。V16校准：国家卫健委公开口径显示全国每年辅助生殖技术应用总周期数超过100万；锦欣披露2025年中国区取卵周期超过2.3万，周期份额约2.3%。考虑相关检查与服务口径并不完全等同，默认捕获率取2.5%，仍作为可编辑情景参数。", "revAnnualRmbBn": 2.318, "captureGrade": "B-proxy"}, {"id": "edu", "name": "新东方", "ticker": "9901.HK", "nodes": ["qualityedu", "highschool", "postgrad", "studyabroad"], "capture": 0.02, "revRmbBn": 32.8202397843, "revenueLabel": "FY2025收入 US$4.9003bn", "growth": 13.6, "margin": 8.7, "marginType": "经营利润率", "pe": 18.55, "pb": 2.21, "div": 2.16, "mcapRmbBn": 58.93566201431123, "source": "https://investor.neworiental.org/news-releases/news-release-details/new-oriental-announces-results-fourth-fiscal-quarter-and-8", "note": "只映射素质教育/升学/留学等相关节点；2%捕获率为C级。", "revAnnualRmbBn": 32.8202397843, "captureGrade": "C"}];
+const FX_ASOF={date:"2026-09-21",USD_CNY:6.69765,HKD_CNY:0.853677};
+const YEARS={dating:[-2,-1],wedding:[0],household:[0,1],fertility:[1,2,3],infant:[1,2,3],preschool:[4,5,6],k12:[7,8,9,10,11,12,13,14,15,16,17,18],college:[19,20,21,22],adult:[23,24,25,26,27,28,29,30,31,32,33,34,35]};
+const BIRTH_LAG=[{y:1,w:.25},{y:2,w:.50},{y:3,w:.25}];
+const CHILD_AGES={infant:[0,1,2],preschool:[3,4,5],k12:[6,7,8,9,10,11,12,13,14,15,16,17],college:[18,19,20,21]};
+const NODE_YEARS={
+ dating_app:[-2,-1],dating_event:[-2,-1],dating_spend:[-2,-1],image:[-2,-1],proposal:[-1,0],
+ home:[0,1],downpayment:[0,1],mortgage:[0,1],broker:[0,1],renovation:[0,1],materials:[0,1],furniture:[0,1],appliance:[0,1],smart_home:[0,1],car:[0,1],
+ prepreg:[-1,0],supplement:[-1,0],fertility_test:[-1,0],ivf:[0,1],
+ career:[23,24],rent:[23,24,25],adult_car:[26,27,28,29,30],adult_home:[29,30,31,32,33,34,35]
+};
+const ANNUAL_START={car_life:0,insurance:0};
+let view="overview",moneyOn=true,labelsOn=false,lastBounds=null,selectedId=null,focusOn=false,focusStage=null,selectedStage="wedding";
+const collapsed={}; for(const s of STAGES)collapsed[s.id]=new Set();
+
+const defs=svg.append("defs");
+[["gray","#7b8798"],["transfer","#c99716"],["asset","#e56b1f"],["consume","#3b82f6"],["pop","#2f9e5b"]].forEach(([id,c])=>{
+  defs.append("marker").attr("id","a-"+id).attr("viewBox","0 -5 10 10").attr("refX",9).attr("refY",0).attr("markerWidth",7).attr("markerHeight",7).attr("orient","auto").append("path").attr("d","M0,-5L10,0L0,5").attr("fill",c);
+});
+const zoom=d3.zoom().scaleExtent([.10,3]).on("zoom",ev=>viewport.attr("transform",ev.transform)); svg.call(zoom);
+
+const stagebar=document.querySelector("#stagebar");
+VIEWS.forEach(s=>{const b=document.createElement("button");b.textContent=s.name;b.dataset.id=s.id;b.onclick=()=>{view=s.id;if(STAGES.some(x=>x.id===s.id)){selectedStage=s.id;renderCostDeck()}sync();render()};stagebar.appendChild(b)});
+function sync(){[...stagebar.children].forEach(b=>b.classList.toggle("active",b.dataset.id===view))} sync();
+
+
+
+function info(){if(view==="overview")return["生命周期主链","先看骨架：婚恋 → 婚礼 → 成家 → 生育 → 母婴 → 学前 → K12 → 高教 → 成年；资金源作为第二层叠加。"];if(view==="full")return["完整总图｜3×3 阶段矩阵","阶段名称缩为角标，不再占据整条标题区；主生命周期用粗线贯穿，详细节点与资金流保持可折叠。"];const s=STAGES.find(x=>x.id===view);return[s.name+"｜Compound 阶段图",s.desc]}
+function head(nodes,money){const [a,b]=info();viewTitle.textContent=a;viewDesc.textContent=b;viewMeta.textContent=`可见节点 ${nodes} · 资金流 ${money} 条`}
+function kindName(k){return({super:"超级节点",neutral:"资金来源",consumption:"真实新增消费",transfer:"Transfer 资金转移",asset:"资产 / 信用",population:"生育衍生",education:"教育成长"})[k]||k}
+function incName(i){return i==="A"?"A · 婚姻专属":i==="B"?"B · 婚姻放大":"C · 生育衍生"}
+function clear(){frameLayer.selectAll("*").remove();edgeLayer.selectAll("*").remove();moneyLayer.selectAll("*").remove();labelLayer.selectAll("*").remove();compoundLayer.selectAll("*").remove();nodeLayer.selectAll("*").remove()}
+function opath(ss){if(!ss?.length)return"";let d="";for(const s of ss){d+=`M${s.startPoint.x},${s.startPoint.y}`;for(const p of s.bendPoints||[])d+=`L${p.x},${p.y}`;d+=`L${s.endPoint.x},${s.endPoint.y}`}return d}
+function fit(bounds){const el=document.querySelector("#svg"),w=el.clientWidth||1250,h=el.clientHeight||825,m=46,s=Math.min((w-2*m)/(bounds.width||w),(h-2*m)/(bounds.height||h),1.08);svg.call(zoom.transform,d3.zoomIdentity.translate((w-(bounds.width||w)*s)/2,(h-(bounds.height||h)*s)/2).scale(s))}
+function fmtYi(v){if(!isFinite(v))return"—";return v>=10000?(v/10000).toFixed(2)+" 万亿元":v>=1000?(v/1000).toFixed(2)+" 千亿元":v.toFixed(v<100?1:0)+" 亿元"}
+function modelBase(n){const pairs=Math.max(0,+mPairs.value||0),birth=Math.max(0,+mBirth.value||0);return n.base==="birth"?pairs*birth:pairs}
+function regionFactor(n){const r=REGION[mRegion?.value||"national"]||REGION.national;return r[n.stage]||1}
+function grossExpected(n){
+ if(!n||n.calcRole==="ignore")return 0;
+ const scen=+mScenario.value||1,pen=Math.max(0,+mPenScale.value||1),amt=Math.max(0,+n.amount||0),
+ p=Math.max(0,Math.min(1,(+n.prob||0)*pen)),dur=Math.max(0,+n.duration||1),
+ stageCal=CAL_STAGE[n.stage]||1,childStages=new Set(["infant","preschool","k12","college"]),
+ manualChild=childStages.has(n.stage)?Math.max(0,+mChildCal.value||0):1;
+ return modelBase(n)*amt*p*dur*scen*regionFactor(n)*stageCal*manualChild*Math.max(0,n.sumWeight??1)
+}
+function expected(n){return grossExpected(n)*Math.max(0,Math.min(1,+n.cf||0))}
+
+
+function perMarriage(v){const pairs=Math.max(0,+mPairs.value||0);return pairs>0?v/pairs:0}
+function fmtWan(v){if(!isFinite(v))return"—";return v>=100?`${(v/100).toFixed(2)} 百万元/对`:`${v.toFixed(v<10?2:1)} 万元/对`}
+function stageMetrics(sid){
+ const out={direct:0,netDirect:0,transfer:0,asset:0,assetFunding:0,credit:0,cDirect:0,cNodes:[]};
+ for(const n of DATA.nodes){
+   if(n.stage!==sid||n.calcRole==="ignore")continue;
+   const g=grossExpected(n),e=expected(n),r=n.calcRole;
+   if(r==="direct"){out.direct+=g;out.netDirect+=e;if((n.confidence||"C")==="C"){out.cDirect+=g;out.cNodes.push({label:n.label,val:g,id:n.id})}}
+   else if(r in out)out[r]+=g;
+ }
+ out.cash=out.direct+out.transfer+out.assetFunding;
+ out.cNodes.sort((a,b)=>b.val-a.val);
+ return out;
+}
+function chainMetrics(){
+ const out={direct:0,netDirect:0,transfer:0,asset:0,assetFunding:0,credit:0,cDirect:0,cNodes:[]};
+ for(const st of STAGES){
+   const q=stageMetrics(st.id);
+   for(const k of ["direct","netDirect","transfer","asset","assetFunding","credit","cDirect"])out[k]+=q[k];
+   out.cNodes.push(...q.cNodes.map(x=>({...x,stage:st.id})));
+ }
+ out.cash=out.direct+out.transfer+out.assetFunding;out.cNodes.sort((a,b)=>b.val-a.val);return out;
+}
+function cListHTML(list,total,limit=4){
+ if(!list.length)return"当前无C级直接消费节点。";
+ return list.slice(0,limit).map(x=>`${x.label} ${fmtWan(perMarriage(x.val))}`).join(" · ");
+}
+function renderCostDeck(){
+ const cm=chainMetrics(),cs=cm.direct>0?cm.cDirect/cm.direct:0;
+ chainCostLead.textContent=fmtWan(perMarriage(cm.direct));
+ chainNetCost.textContent=fmtWan(perMarriage(cm.netDirect));
+ chainCashPressure.textContent=fmtWan(perMarriage(cm.cash));
+ chainTransferCost.textContent=fmtWan(perMarriage(cm.transfer));
+ chainAssetCost.textContent=fmtWan(perMarriage(cm.asset));
+ chainFundingCost.textContent=fmtWan(perMarriage(cm.assetFunding));
+ chainCreditCost.textContent=fmtWan(perMarriage(cm.credit));
+ chainCShare.textContent=(cs*100).toFixed(1)+"%";chainCBar.style.width=Math.min(100,cs*100)+"%";chainCTop.innerHTML="<b>Top C：</b>"+cListHTML(cm.cNodes,cm.cDirect,5);
+
+ const st=STAGES.find(x=>x.id===selectedStage)||STAGES[0],q=stageMetrics(st.id),share=q.direct>0?q.cDirect/q.direct:0;
+ stageBillName.textContent=st.name.replace(/^[①②③④⑤⑥⑦⑧⑨]\s*/,"");
+ stageCostLead.textContent=fmtWan(perMarriage(q.direct));
+ const allBirth=DATA.nodes.filter(n=>n.stage===st.id&&n.calcRole==="direct").every(n=>n.base==="birth");
+ const birth=Math.max(0,+mBirth.value||0);
+ stageCostSub.textContent=allBirth&&birth>0?`主数字按每新增婚姻对摊销；折算约 ${fmtWan(perMarriage(q.direct)/birth).replace("/对","/增量孩子")}。`:"主数字为当前情景下每新增婚姻对的预计消费/服务支出。";
+ stageNetCost.textContent=fmtWan(perMarriage(q.netDirect));stageCashPressure.textContent=fmtWan(perMarriage(q.cash));
+ stageTransferCost.textContent=fmtWan(perMarriage(q.transfer));stageAssetCost.textContent=fmtWan(perMarriage(q.asset));
+ stageFundingCost.textContent=fmtWan(perMarriage(q.assetFunding));stageCreditCost.textContent=fmtWan(perMarriage(q.credit));
+ stageCShare.textContent=(share*100).toFixed(1)+"%";stageCBar.style.width=Math.min(100,share*100)+"%";stageCTop.innerHTML="<b>本阶段Top C：</b>"+cListHTML(q.cNodes,q.cDirect,4);
+
+ stageBillCard.classList.remove("stageBillActive");void stageBillCard.offsetWidth;stageBillCard.classList.add("stageBillActive");
+ setTimeout(()=>stageBillCard.classList.remove("stageBillActive"),450);
+}
+function showStageBill(sid){if(!sid||sid==="source")return;selectedStage=sid;renderCostDeck()}
+function renderCFocus(){
+ const list=[];
+ for(const st of STAGES)for(const n of DATA.nodes){
+   if(n.stage!==st.id||n.calcRole!=="direct"||(n.confidence||"C")!=="C")continue;
+   list.push({n,val:grossExpected(n)});
+ }
+ list.sort((a,b)=>b.val-a.val);
+ cFocusGrid.innerHTML=list.slice(0,12).map(({n,val})=>`<div class="cFocusItem"><b>${n.label}</b><div class="amt">${fmtWan(perMarriage(val))}</div><p>${STAGES.find(s=>s.id===n.stage)?.name||n.stage} · P ${Math.round((n.prob||0)*100)}% · Δ ${Math.round((n.cf||0)*100)}%<br>${n.calibrationNote||"缺少可靠全国口径。"}</p></div>`).join("");
+}
+
+function selectNode(n){
+ selectedId=n.id;if(n.stage&&n.stage!=="source"){selectedStage=n.stage;renderCostDeck()};dTitle.textContent=n.label;dCost.textContent=n.cost;dKind.textContent=kindName(n.kind);dInc.textContent=incName(n.inc);dUnit.textContent=n.unit;dNote.textContent=n.note;
+ const disabled=!!n.main||n.calcRole==="ignore";probRange.disabled=disabled;cfRange.disabled=disabled;durInput.disabled=disabled;
+ probRange.value=Math.round((n.prob||0)*100);probVal.textContent=Math.round((n.prob||0)*100)+"%";cfRange.value=Math.round((n.cf||0)*100);cfVal.textContent=Math.round((n.cf||0)*100)+"%";durInput.value=n.duration||1;amountInput.disabled=disabled;amountInput.value=n.amount||0;
+ const cg=n.confidence||"C";
+ dConfidence.textContent=cg==="结构"?"结构节点":`${cg} · ${cg==="B"?"校准参数":"模型假设"}`;
+ dConfidence.className="badge "+(cg==="A"?"confA":cg==="B"?"confB":"confC");
+ dSensitivity.textContent=`婚姻敏感 ${n.marriageSens||0} / 生育敏感 ${n.birthSens||0}`; dAccounting.textContent=n.accountingRole==="additive"?"独立可加":n.accountingRole==="partial"?`部分可加 ×${n.sumWeight}`:n.accountingRole==="included"?"已含于父节点，不重复加":"结构节点";
+ const src=n.sourceKey?CAL_SOURCE[n.sourceKey]:null;
+ nodeSource.innerHTML=src?`<div class="note"><b>${src.grade}级来源：</b>${src.title}<br><span style="color:#667085">${n.calibrationNote||src.note}</span><br><a class="sourceLink" href="${src.url}" target="_blank" rel="noopener">查看原始来源 ↗</a></div>`:"<div class=\"note\">该节点暂无可直接映射的全国数据，继续按C级情景参数处理。</div>";
+ nodeExpected.textContent=n.calcRole==="ignore"?"该节点仅用于结构展示，不进入模型求和。":`Gross ${fmtYi(grossExpected(n))} → 基线 ${fmtYi(grossExpected(n)-expected(n))} → Net ${fmtYi(expected(n))}；区间：金额 ${n.amountLo?.toFixed?.(1)??n.amountLo}–${n.amountHi?.toFixed?.(1)??n.amountHi} 万，P ${Math.round((n.probLo||0)*100)}–${Math.round((n.probHi||0)*100)}%，Δ ${Math.round((n.cfLo||0)*100)}–${Math.round((n.cfHi||0)*100)}%`;
+}
+probRange.oninput=()=>{if(!selectedId)return;const n=nodeById[selectedId];n.prob=(+probRange.value||0)/100;probVal.textContent=probRange.value+"%";selectNode(n);updateModel();refreshNodeMeta(selectedId)};
+probRange.onchange=()=>render();
+cfRange.oninput=()=>{if(!selectedId)return;const n=nodeById[selectedId];n.cf=(+cfRange.value||0)/100;cfVal.textContent=cfRange.value+"%";selectNode(n);updateModel();refreshNodeMeta(selectedId)};
+cfRange.onchange=()=>render();
+durInput.onchange=()=>{if(!selectedId)return;const n=nodeById[selectedId];n.duration=Math.max(0,+durInput.value||0);selectNode(n);updateModel();render()};
+amountInput.onchange=()=>{if(!selectedId)return;const n=nodeById[selectedId];n.amount=Math.max(0,+amountInput.value||0);selectNode(n);updateModel();render()};
+function refreshNodeMeta(id){nodeLayer.selectAll(`[data-id="${id}"] .np`).text(`P ${Math.round((nodeById[id].prob||0)*100)}% · Δ${Math.round((nodeById[id].cf||0)*100)}%`)}
+
+
+function labelLines(label,compact=false){
+ const max=compact?9:11, chars=[...String(label||"")];
+ if(chars.length<=max)return [label];
+ const parts=String(label).split(/\s*\/\s*/);
+ if(parts.length>1){
+   const a=[],b=[];let len=0;
+   for(const part of parts){
+     const add=(len?3:0)+[...part].length;
+     if(len+add<=max || a.length===0){a.push(part);len+=add}else b.push(part);
+   }
+   if(b.length){
+     let second=b.join(" / "), sc=[...second];
+     if(sc.length>max+2)second=sc.slice(0,max+1).join("")+"…";
+     return [a.join(" / "),second];
+   }
+ }
+ const first=chars.slice(0,max).join(""),rest=chars.slice(max);
+ return [first,rest.slice(0,max-1).join("")+(rest.length>max-1?"…":"")];
+}
+function descLines(text,max=27){
+ const c=[...String(text||"")]; if(c.length<=max)return [text];
+ return [c.slice(0,max).join(""),c.slice(max,max*2-1).join("")+(c.length>max*2-1?"…":"")];
+}
+
+function drawNode(n,p,compact=false){
+ const [fill,stroke]=C[n.kind]||C.neutral,g=nodeLayer.append("g").attr("class","node"+(n.main?" main":"")).attr("data-id",n.id).attr("transform",`translate(${p.x},${p.y})`).attr("tabindex",0);
+ if(n.kind==="transfer"&&n.stage!=="source"){
+   const w=p.width,h=p.height;g.append("polygon").attr("points",`${w/2},0 ${w},${h/2} ${w/2},${h} 0,${h/2}`).attr("fill",fill).attr("stroke",stroke)
+ }else g.append("rect").attr("width",p.width).attr("height",p.height).attr("rx",compact?10:13).attr("fill",fill).attr("stroke",stroke);
+
+ const lines=labelLines(n.label,compact), two=lines.length>1;
+ const titleY=two?(compact?16:18):(compact?23:25), lineGap=compact?12:14;
+ lines.forEach((line,i)=>g.append("text").attr("class","nt").attr("x",p.width/2).attr("y",titleY+i*lineGap).attr("text-anchor","middle").text(line));
+ const costY=two?(compact?45:50):(compact?41:45);
+ const metaY=costY+(compact?14:16), probY=metaY+(compact?13:15);
+ g.append("text").attr("class","nc").attr("x",p.width/2).attr("y",costY).attr("text-anchor","middle").text(n.cost);
+ g.append("text").attr("class","nm").attr("x",p.width/2).attr("y",metaY).attr("text-anchor","middle").text(`${n.inc} · ${n.unit}`);
+ g.append("text").attr("class","np").attr("x",p.width/2).attr("y",probY).attr("text-anchor","middle").text(n.main?"":`P ${Math.round((n.prob||0)*100)}% · Δ${Math.round((n.cf||0)*100)}%`);
+ g.on("click",()=>selectNode(n)).on("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectNode(n)}});
+}
+function groupsFor(st){const map=d3.group(DATA.nodes.filter(n=>n.stage===st&&!n.main),d=>d.macroGroup);return [...map.entries()].map(([name,nodes])=>({name,nodes,id:`grp:${st}:${name}`}))}
+function stageRoots(st){return DATA.nodes.filter(n=>n.stage===st&&n.main)}
+function originalEdges(st){return DATA.edges[st]||[]}
+function nodeGroupMap(st){const o={};for(const g of groupsFor(st))for(const n of g.nodes)o[n.id]=g.id;for(const r of stageRoots(st))o[r.id]=r.id;return o}
+
+async function internalLayout(group,compact=false){
+ const ids=new Set(group.nodes.map(n=>n.id)),ies=originalEdges(group.nodes[0].stage).filter(([a,b])=>ids.has(a)&&ids.has(b));
+ return await elk.layout({id:"ig",layoutOptions:{"elk.algorithm":"layered","elk.direction":"DOWN","elk.edgeRouting":"ORTHOGONAL","elk.spacing.nodeNode":compact?"18":"24","elk.layered.spacing.nodeNodeBetweenLayers":compact?"32":"42"},
+ children:group.nodes.map(n=>({id:n.id,width:compact?150:174,height:compact?82:94})),edges:ies.map((x,i)=>({id:"i"+i,sources:[x[0]],targets:[x[1]]}))});
+}
+async function buildStage(st,direction="RIGHT",compact=false){
+ const roots=stageRoots(st),groups=groupsFor(st),map=nodeGroupMap(st),parts=[],internal={};
+ for(const g of groups){const isCollapsed=collapsed[st].has(g.name);if(isCollapsed)parts.push({id:g.id,width:compact?190:224,height:compact?86:102,group:g,collapsed:true});else{const ig=await internalLayout(g,compact);internal[g.id]=ig;parts.push({id:g.id,width:Math.max(compact?205:245,(ig.width||180)+(compact?28:36)),height:(ig.height||96)+(compact?66:80),group:g,collapsed:false})}}
+ const children=[...roots.map(n=>({id:n.id,width:compact?176:205,height:compact?82:94})),...parts.map(p=>({id:p.id,width:p.width,height:p.height}))];
+ const dedup=new Map();for(const [a,b] of originalEdges(st)){const aa=map[a]||a,bb=map[b]||b;if(aa===bb)continue;dedup.set(aa+"→"+bb,[aa,bb])}
+ const sg=await elk.layout({id:"sg",layoutOptions:{"elk.algorithm":"layered","elk.direction":direction,"elk.edgeRouting":"ORTHOGONAL","elk.spacing.nodeNode":compact?"30":"44","elk.layered.spacing.nodeNodeBetweenLayers":compact?"50":"82","elk.layered.crossingMinimization.strategy":"LAYER_SWEEP","elk.layered.nodePlacement.strategy":"BRANDES_KOEPF"},
+ children,edges:[...dedup.values()].map((x,i)=>({id:"s"+i,sources:[x[0]],targets:[x[1]]}))});
+ return {sg,roots,groups,parts,internal,map};
+}
+function groupStats(g){const active=g.nodes.filter(n=>n.calcRole!=="ignore"),avg=active.length?d3.mean(active,n=>n.prob||0):0,cf=active.length?d3.mean(active,n=>n.cf||0):0,total=d3.sum(active,n=>expected(n));return{avg,cf,total,count:g.nodes.length}}
+function toggleGroup(st,name){collapsed[st].has(name)?collapsed[st].delete(name):collapsed[st].add(name);render()}
+
+function renderCompound(stageObj,offsetX,offsetY,compact=false,globalPos={}){
+ const {sg,parts,internal}=stageObj,top=Object.fromEntries(sg.children.map(x=>[x.id,{...x,x:x.x+offsetX,y:x.y+offsetY}]));
+ sg.edges.forEach(le=>{const ss=le.sections.map(s=>({...s,startPoint:{x:s.startPoint.x+offsetX,y:s.startPoint.y+offsetY},endPoint:{x:s.endPoint.x+offsetX,y:s.endPoint.y+offsetY},bendPoints:(s.bendPoints||[]).map(p=>({x:p.x+offsetX,y:p.y+offsetY}))}));edgeLayer.append("path").attr("class","edge").attr("d",opath(ss)).attr("marker-end","url(#a-gray)")});
+ for(const r of stageObj.roots){globalPos[r.id]=top[r.id];drawNode(r,top[r.id],compact)}
+ for(const p of parts){const box=top[p.id],st=p.group.nodes[0].stage,stats=groupStats(p.group),g=compoundLayer.append("g");
+   g.append("rect").attr("class","compound").attr("x",box.x).attr("y",box.y).attr("width",box.width).attr("height",box.height).attr("rx",13);
+   g.append("rect").attr("class","compoundHead").attr("x",box.x).attr("y",box.y).attr("width",box.width).attr("height",compact?38:44).attr("rx",13).on("click",()=>toggleGroup(st,p.group.name));
+   g.append("text").attr("class","compoundTitle").attr("x",box.x+10).attr("y",box.y+(compact?24:28)).text(p.group.name);
+   g.append("text").attr("class","toggle").attr("x",box.x+box.width-15).attr("y",box.y+(compact?24:28)).attr("text-anchor","middle").text(p.collapsed?"＋":"−");
+   if(p.collapsed){
+     g.append("text").attr("class","compoundMeta").attr("x",box.x+10).attr("y",box.y+(compact?56:66)).text(`${stats.count} 节点 · P ${Math.round(stats.avg*100)}% · Δ${Math.round(stats.cf*100)}%`);
+     g.append("text").attr("class","compoundMeta").attr("x",box.x+10).attr("y",box.y+(compact?72:84)).text(`模型量级 ${fmtYi(stats.total)}`);
+     for(const n of p.group.nodes)globalPos[n.id]=box;
+   }else{
+     const ig=internal[p.id],ix=box.x+(compact?14:18),iy=box.y+(compact?48:56),local=Object.fromEntries(ig.children.map(c=>[c.id,{...c,x:c.x+ix,y:c.y+iy}]));
+     ig.edges.forEach(le=>{const ss=le.sections.map(s=>({...s,startPoint:{x:s.startPoint.x+ix,y:s.startPoint.y+iy},endPoint:{x:s.endPoint.x+ix,y:s.endPoint.y+iy},bendPoints:(s.bendPoints||[]).map(q=>({x:q.x+ix,y:q.y+iy}))}));edgeLayer.append("path").attr("class","edge").attr("d",opath(ss)).attr("marker-end","url(#a-gray)")});
+     for(const n of p.group.nodes){globalPos[n.id]=local[n.id];drawNode(n,local[n.id],compact)}
+   }
+ }
+}
+function moneyEdgeValue(edge){const [s,t,v]=edge,n=nodeById[t];if(!n)return 0;const scen=+mScenario.value||1,pen=Math.max(0,+mPenScale.value||1),base=modelBase(n),p=n.main?1:Math.min(1,(n.prob||1)*pen),dur=n.main?1:(n.duration||1),cf=n.main?1:(n.cf||1);return base*v*p*dur*scen*regionFactor(n)*cf}
+function moneyPath(a,b){const x1=a.x+a.width/2,y1=a.y+a.height/2,x2=b.x+b.width/2,y2=b.y+b.height/2,dy=Math.max(45,Math.abs(y2-y1)*.35);return `M${x1},${y1} C${x1},${y1+dy} ${x2},${y2-dy} ${x2},${y2}`}
+function drawMoney(list,pos){
+ if(!moneyOn)return;
+ const threshold=Math.max(0,+moneyThreshold.value||0);
+ for(const e of list){
+   const [src,tgt,v,k,lbl]=e,a=pos[src],b=pos[tgt];if(!a||!b)continue;
+   const val=moneyEdgeValue(e);if(val<threshold)continue;
+   const w=Math.max(1.7,Math.min(12,1.4+Math.log10(1+Math.max(0,val))*1.7));
+   const p=moneyLayer.append("path").attr("class","money").attr("data-src",src).attr("data-tgt",tgt)
+     .attr("d",moneyPath(a,b)).attr("stroke",MC[k]).attr("stroke-width",w).attr("marker-end",`url(#a-${k})`);
+   p.append("title").text(`${lbl}｜当前模型量级 ${fmtYi(val)}`);
+   p.on("mouseenter",(ev)=>{
+      moneyLayer.selectAll(".money").classed("moneyHoverDim",true);
+      d3.select(ev.currentTarget).classed("moneyHoverDim",false).classed("moneyHoverHi",true);
+      nodeLayer.selectAll(".node").classed("moneyHoverDim",true);
+      nodeLayer.selectAll(`[data-id="${src}"],[data-id="${tgt}"]`).classed("moneyHoverDim",false).classed("moneyHoverHi",true);
+      flowTip.style.display="block";flowTip.innerHTML=`<b>${lbl}</b><br>${fmtYi(val)}<br><span style="opacity:.72">${nodeById[src]?.label||src} → ${nodeById[tgt]?.label||tgt}</span>`;
+   }).on("mousemove",(ev)=>{flowTip.style.left=(ev.clientX+14)+"px";flowTip.style.top=(ev.clientY+14)+"px"})
+     .on("mouseleave",()=>{
+       moneyLayer.selectAll(".money").classed("moneyHoverDim",false).classed("moneyHoverHi",false);
+       nodeLayer.selectAll(".node").classed("moneyHoverDim",false).classed("moneyHoverHi",false);
+       flowTip.style.display="none";
+     });
+   if(labelsOn)labelLayer.append("text").attr("class","moneyLabel").attr("x",(a.x+b.x)/2).attr("y",(a.y+b.y)/2-5).text(`${lbl} · ${fmtYi(val)}`);
+ }
+}
+
+async function renderOverview(){
+ clear();
+ const chain=["dating_core","wedding_core","household_core","fertility_core","infant_core","preschool_core","k12_core","college_core","adult_core"];
+ const sources=["parents","income","gifts","credit"];
+ const phase=["婚恋形成","婚礼","家庭形成","生育","母婴","学前","K12","高教","成年"];
+ const g=await elk.layout({
+   id:"overviewSpine",
+   layoutOptions:{
+     "elk.algorithm":"layered","elk.direction":"RIGHT","elk.edgeRouting":"ORTHOGONAL",
+     "elk.spacing.nodeNode":"32","elk.layered.spacing.nodeNodeBetweenLayers":"46"
+   },
+   children:chain.map(id=>({id,width:148,height:76})),
+   edges:chain.slice(0,-1).map((id,i)=>({id:"oe"+i,sources:[id],targets:[chain[i+1]]}))
+ });
+ const pos=Object.fromEntries(g.children.map(x=>[x.id,{...x,x:x.x+58,y:x.y+225}]));
+ sources.forEach((id,i)=>pos[id]={id,x:72+i*205,y:58,width:175,height:88});
+
+ // Funding is visually secondary and physically separated.
+ frameLayer.append("rect").attr("class","sourceBand").attr("x",48).attr("y",16).attr("width",845).attr("height",148).attr("rx",14);
+ frameLayer.append("text").attr("class","sourceBandText").attr("x",64).attr("y",36).text("资金激活层｜父母储蓄 · 新人收入 · 亲友礼金 · 银行信用");
+ for(const id of sources)drawNode(nodeById[id],pos[id],false);
+
+ // Strong lifecycle spine: thick, continuous, above ordinary industry edges.
+ g.edges.forEach(le=>{
+   const ss=le.sections.map(sec=>({
+     ...sec,
+     startPoint:{x:sec.startPoint.x+58,y:sec.startPoint.y+225},
+     endPoint:{x:sec.endPoint.x+58,y:sec.endPoint.y+225},
+     bendPoints:(sec.bendPoints||[]).map(p=>({x:p.x+58,y:p.y+225}))
+   }));
+   const d=opath(ss);
+   edgeLayer.append("path").attr("class","spineEdgeBg").attr("d",d);
+   edgeLayer.append("path").attr("class","spineEdge").attr("d",d).attr("marker-end","url(#a-gray)");
+ });
+
+ // Custom compact spine nodes so the skeleton is not confused with detailed industrial nodes.
+ chain.forEach((id,i)=>{
+   const n=nodeById[id],p=pos[id],g0=nodeLayer.append("g").attr("class","spineNode node").attr("data-id",id)
+     .attr("transform",`translate(${p.x},${p.y})`).attr("tabindex",0);
+   g0.append("rect").attr("width",p.width).attr("height",p.height).attr("rx",14);
+   g0.append("circle").attr("class","spineNo").attr("cx",16).attr("cy",16).attr("r",10);
+   g0.append("text").attr("class","spineNoText").attr("x",16).attr("y",19).attr("text-anchor","middle").text(String(i+1).padStart(2,"0"));
+   g0.append("text").attr("class","spineTitle").attr("x",p.width/2).attr("y",31).attr("text-anchor","middle").text(n.label);
+   g0.append("text").attr("class","spineMeta").attr("x",p.width/2).attr("y",51).attr("text-anchor","middle").text(phase[i]);
+   g0.append("text").attr("class","spineMeta").attr("x",p.width/2).attr("y",66).attr("text-anchor","middle").text(n.cost);
+   g0.on("click",()=>selectNode(n)).on("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectNode(n)}});
+ });
+
+ // Current calibrated macro flows; they are deliberately thinner/secondary to the lifecycle spine.
+ const macro=[
+   ["parents","wedding_core",22,"transfer","父母→婚礼/礼俗"],
+   ["income","wedding_core",15,"consume","收入→婚礼"],
+   ["parents","household_core",30,"asset","父母→首付/成家"],
+   ["income","household_core",15,"consume","收入→家庭"],
+   ["gifts","household_core",6,"transfer","礼金→新家庭"],
+   ["credit","household_core",70,"asset","信用→住房/汽车"],
+   ["household_core","fertility_core",5,"pop","家庭→生育"],
+   ["household_core","k12_core",35,"pop","家庭→长期教育"]
+ ];
+ drawMoney(macro,pos);
+
+ frameLayer.append("text").attr("class","spinePhase").attr("x",58).attr("y",205)
+   .text("LIFECYCLE SPINE · 主链优先，资金与产业细节作为第二层");
+ const width=Math.max(...Object.values(pos).map(b=>b.x+b.width))+70;
+ const height=Math.max(...Object.values(pos).map(b=>b.y+b.height))+90;
+ lastBounds={width,height};head(Object.keys(pos).length,macro.length);fit(lastBounds);
+}
+
+async function renderStage(st){
+ clear();const obj=await buildStage(st,"RIGHT",false),pos={};const sources=["parents","income","gifts","credit"];sources.forEach((id,i)=>pos[id]={id,x:70+i*205,y:54,width:175,height:88});
+ if(st!=="household"&&DATA.money.some(x=>x[0]==="balance"&&nodeById[x[1]]?.stage===st))pos.balance={id:"balance",x:920,y:54,width:210,height:88};
+ frameLayer.append("rect").attr("class","sourceBand").attr("x",45).attr("y",10).attr("width",pos.balance?1110:840).attr("height",146).attr("rx",14);frameLayer.append("text").attr("class","sourceBandText").attr("x",60).attr("y",31).text(pos.balance?"资金来源｜含家庭资产负债表 Hub":"资金来源");
+ renderCompound(obj,80,205,false,pos);for(const id of sources)drawNode(nodeById[id],pos[id]);if(pos.balance)drawNode(nodeById.balance,pos.balance);
+ const flows=DATA.money.filter(x=>nodeById[x[1]]?.stage===st);drawMoney(flows,pos);
+ const width=Math.max(...Object.values(pos).map(b=>b.x+b.width))+80,height=Math.max(...Object.values(pos).map(b=>b.y+b.height))+80;lastBounds={width,height};head(Object.keys(pos).length,flows.length);fit(lastBounds)
+}
+async function renderFull(){
+ clear();
+ const pos={},sources=["parents","income","gifts","credit"];
+ // Source band spans the top; all detailed money flows are overlaid from here / household balance hub.
+ sources.forEach((id,i)=>pos[id]={id,x:80+i*215,y:52,width:180,height:82});
+ frameLayer.append("rect").attr("class","sourceBand").attr("x",50).attr("y",12).attr("width",885).attr("height",138).attr("rx",14);
+ frameLayer.append("text").attr("class","sourceBandText").attr("x",66).attr("y",31).text("统一资金来源｜下方节点从 y=52 开始，标题保留独立安全区");
+
+ // Snake order:
+ // Row 1: 婚恋 → 婚礼 → 成家
+ // Row 2: 3–6 ← 0–3 ← 生育
+ // Row 3: 6–18 → 18–22 → 成年
+ const snake = [
+   ["dating","wedding","household"],
+   ["preschool","infant","fertility"],
+   ["k12","college","adult"]
+ ];
+ const built={};
+ for(const row of snake)for(const sid of row)built[sid]=await buildStage(sid,"DOWN",true);
+
+ // Compute 3 column widths and 3 row heights so the whole map is near-square.
+ const colW=[0,0,0],rowH=[0,0,0],innerPad=20,headerH=34;
+ for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+   const sid=snake[r][c],o=built[sid];
+   const w=Math.max(470,(o.sg.width||360)+innerPad*2);
+   const h=Math.max(400,(o.sg.height||340)+headerH+innerPad*2);
+   colW[c]=Math.max(colW[c],w); rowH[r]=Math.max(rowH[r],h);
+ }
+ const gapX=56,gapY=62,startX=55,startY=178;
+ const colX=[startX,startX+colW[0]+gapX,startX+colW[0]+gapX+colW[1]+gapX];
+ const rowY=[startY,startY+rowH[0]+gapY,startY+rowH[0]+gapY+rowH[1]+gapY];
+ const stageBox={};
+
+ // Render frames and stage compounds.
+ for(let r=0;r<3;r++)for(let c=0;c<3;c++){
+   const sid=snake[r][c],st=STAGES.find(s=>s.id===sid),obj=built[sid];
+   const x=colX[c],y=rowY[r],w=colW[c],h=rowH[r];
+   stageBox[sid]={x,y,w,h};
+   frameLayer.append("rect").attr("class","stageFrameV15").attr("x",x).attr("y",y).attr("width",w).attr("height",h).attr("rx",16);
+   // Small corner tag: stage identity remains visible without consuming a full header band.
+   const tagW=Math.min(146,w-28),tagX=x+12,tagY=y+10;
+   compoundLayer.append("rect").attr("class","stageTag").attr("x",tagX).attr("y",tagY).attr("width",tagW).attr("height",26).attr("rx",13).style("cursor","pointer").on("click",()=>{focusStage=sid;focusOn=true;focusBtn.classList.add("active");showStageBill(sid);applyFullFocus()});
+   compoundLayer.append("circle").attr("class","stageTagNo").attr("cx",tagX+14).attr("cy",tagY+13).attr("r",9);
+   compoundLayer.append("text").attr("class","stageTagNoText").attr("x",tagX+14).attr("y",tagY+16).attr("text-anchor","middle").text(String(STAGES.findIndex(q=>q.id===sid)+1).padStart(2,"0"));
+   compoundLayer.append("text").attr("class","stageTagText").attr("x",tagX+29).attr("y",tagY+17).text(st.name.replace(/^[①②③④⑤⑥⑦⑧⑨]\s*/,""));
+   compoundLayer.append("title").text(st.name+"｜"+st.desc);
+   renderCompound(obj,x+innerPad,y+headerH+10,true,pos);
+ }
+
+ // Draw the lifecycle as a high-contrast snake path through stage root nodes.
+ const order=["dating_core","wedding_core","household_core","fertility_core","infant_core","preschool_core","k12_core","college_core","adult_core"];
+ for(let i=0;i<order.length-1;i++){
+   const a=pos[order[i]],b=pos[order[i+1]]; if(!a||!b)continue;
+   const ax=a.x+a.width/2,ay=a.y+a.height/2,bx=b.x+b.width/2,by=b.y+b.height/2;
+   let d;
+   if(Math.abs(by-ay)<120){
+     const mx=(ax+bx)/2; d=`M${ax},${ay} L${mx},${ay} L${mx},${by} L${bx},${by}`;
+   }else{
+     // row transition: route outside the stage cards, then enter the next row.
+     const sa=nodeById[order[i]]?.stage,sb=nodeById[order[i+1]]?.stage;
+     const right=Math.max(stageBox[sa]?.x+stageBox[sa]?.w||a.x+a.width,stageBox[sb]?.x+stageBox[sb]?.w||b.x+b.width)+24;
+     d=`M${ax},${ay} L${right},${ay} L${right},${by} L${bx},${by}`;
+   }
+   edgeLayer.append("path").attr("class","lifeFlowBg").attr("d",d);
+   edgeLayer.append("path").attr("class","lifeFlow").attr("d",d).attr("marker-end","url(#a-gray)");
+ }
+
+ // Render source nodes last so money flows originate cleanly from a fixed top band.
+ for(const id of sources)drawNode(nodeById[id],pos[id],true);
+
+ // All 30 money flows remain available. They do not participate in stage layout.
+ drawMoney(DATA.money,pos);
+
+ // Explain snake reading direction in the canvas.
+ frameLayer.append("text").attr("class","gridHint").attr("x",startX).attr("y",startY-15)
+   .text("主链阅读：第一行 →　第二行 ←　第三行 →　｜阶段名仅作角标，详细描述移出绘图区。");
+
+ const width=colX[2]+colW[2]+60,height=rowY[2]+rowH[2]+70;
+ lastBounds={width,height}; head(Object.keys(pos).length,DATA.money.length); fit(lastBounds);
+}
+
+function applyFullFocus(){
+ if(view!=="full"||!focusOn||!focusStage){
+   frameLayer.selectAll("*").classed("focusDim",false);
+   compoundLayer.selectAll("*").classed("focusDim",false);
+   nodeLayer.selectAll("*").classed("focusDim",false);
+   edgeLayer.selectAll("*").classed("focusDim",false);
+   moneyLayer.selectAll("*").classed("focusDim",false);
+   return;
+ }
+ // Nodes: dim everything except selected stage and unified funding sources.
+ nodeLayer.selectAll(".node").classed("focusDim",function(){
+   const id=this.getAttribute("data-id"),n=nodeById[id];return !(n&&(n.stage===focusStage||n.stage==="source"));
+ });
+ // Compound groups don't have per-stage classes, so keep them; detailed node contrast carries focus.
+ // Money flows: keep flows whose target belongs to selected stage.
+ moneyLayer.selectAll(".money").classed("focusDim",function(){
+   const tgt=this.getAttribute("data-tgt"),n=nodeById[tgt];return !(n&&n.stage===focusStage);
+ });
+ // The lifecycle spine must always remain visible; only ordinary detail edges are de-emphasized.
+ edgeLayer.selectAll(".mainEdge").classed("focusDim",true);
+ edgeLayer.selectAll(".lifeFlow,.lifeFlowBg").classed("focusDim",false);
+}
+
+async function render(){loading.classList.remove("hidden");try{if(view==="overview")await renderOverview();else if(view==="full")await renderFull();else await renderStage(view);applyFullFocus()}finally{loading.classList.add("hidden")}}
+const loading=document.querySelector("#loading");
+
+function updateModel(){
+ const roles={direct:0,transfer:0,asset:0,assetFunding:0,credit:0},grossRoles={direct:0},stageSum={},rows=[];
+ for(const n of DATA.nodes){if(n.calcRole==="ignore")continue;const gross=grossExpected(n),val=expected(n);roles[n.calcRole]=(roles[n.calcRole]||0)+val;if(n.calcRole==="direct"){grossRoles.direct+=gross;stageSum[n.stage]=(stageSum[n.stage]||0)+val;rows.push([n.label,val,n.stage])}}
+ const childStages=new Set(["infant","preschool","k12","college"]),child=Object.entries(stageSum).filter(([s])=>childStages.has(s)).reduce((a,[,v])=>a+v,0),gross=grossRoles.direct,net=roles.direct,baseline=Math.max(0,gross-net),pairs=Math.max(0,+mPairs.value||0);
+ rGross.textContent=fmtYi(gross);rDirect.textContent=fmtYi(net);rBaseline.textContent=fmtYi(baseline);rChild.textContent=fmtYi(child);rTransfer.textContent=fmtYi(roles.transfer);rAsset.textContent=fmtYi(assetMode.value==="funding"?roles.assetFunding:roles.asset);rCredit.textContent=fmtYi(roles.credit);rPerCouple.textContent=pairs>0?(net/pairs).toFixed(1)+" 万元/对":"—";modelNodes.value=DATA.nodes.filter(n=>n.calcRole!=="ignore").length+" 个 / 加权去重";
+ const stageNames=Object.fromEntries(STAGES.map(s=>[s.id,s.name.replace(/^\d+\s*/,"")])),stageRows=Object.entries(stageSum).sort((a,b)=>b[1]-a[1]),mx=d3.max(stageRows,d=>d[1])||1;
+ stageBars.innerHTML=stageRows.map(([s,v])=>`<div class="barRow"><span>${stageNames[s]||s}</span><div class="bar"><i style="width:${Math.max(2,v/mx*100)}%"></i></div><span class="barVal">${fmtYi(v)}</span></div>`).join("");
+ rows.sort((a,b)=>b[1]-a[1]);const top=rows.slice(0,10),tm=top[0]?.[1]||1;topBars.innerHTML=top.map(([name,v])=>`<div class="barRow"><span>${name}</span><div class="bar"><i style="width:${Math.max(2,v/tm*100)}%"></i></div><span class="barVal">${fmtYi(v)}</span></div>`).join("");
+ renderCohort();runMonteCarlo();renderSensitivity();renderIndustry();renderCompanies();renderCostDeck();renderCFocus();if(selectedId)selectNode(nodeById[selectedId]);
+}
+
+function nodeTimeline(n,total){
+ const out=[];
+ if(!total)return out;
+ // Prenatal/delivery demand follows the actual birth-lag distribution.
+ if(n.stage==="fertility" && n.base==="birth"){
+   for(const lag of BIRTH_LAG)out.push({year:lag.y,val:total*lag.w});
+   return out;
+ }
+ // Child-related demand follows birth lag + child age.
+ if(n.base==="birth" && CHILD_AGES[n.stage]){
+   const ages=CHILD_AGES[n.stage];
+   for(const lag of BIRTH_LAG)for(const age of ages)out.push({year:lag.y+age,val:total*lag.w/ages.length});
+   return out;
+ }
+ // Adult children: node-specific ages are more realistic than a single 22–24 bucket.
+ if(n.base==="birth" && NODE_YEARS[n.id]){
+   const ages=NODE_YEARS[n.id];
+   for(const lag of BIRTH_LAG)for(const age of ages)out.push({year:lag.y+age,val:total*lag.w/ages.length});
+   return out;
+ }
+ // Explicit marriage-relative timing for one-off nodes.
+ if(NODE_YEARS[n.id]){
+   const ys=NODE_YEARS[n.id];for(const y of ys)out.push({year:y,val:total/ys.length});return out;
+ }
+ // Annual recurring items must be spread across the duration actually used in expected().
+ if((n.unit||"").includes("每年") && (n.duration||1)>1){
+   const start=ANNUAL_START[n.id]??(YEARS[n.stage]?.[0]??0),count=Math.max(1,Math.round(n.duration||1));
+   for(let i=0;i<count;i++)out.push({year:start+i,val:total/count});
+   return out;
+ }
+ const ys=YEARS[n.stage]||[0];for(const y of ys)out.push({year:y,val:total/ys.length});return out;
+}
+function cohortVector(nodeValFn=expected, includeRoles=new Set(["direct"])){
+ const years=d3.range(-2,39),vals=new Map(years.map(y=>[y,0]));
+ for(const n of DATA.nodes){
+   if(!includeRoles.has(n.calcRole))continue;
+   const total=nodeValFn(n);if(!total)continue;
+   for(const q of nodeTimeline(n,total))if(vals.has(q.year))vals.set(q.year,(vals.get(q.year)||0)+q.val);
+ }
+ return years.map(y=>({year:y,val:vals.get(y)||0}));
+}
+function fmtPct(v){return v==null||!isFinite(v)?"—":v.toFixed(2)+"%"}
+function companyVector(c){
+ const years=d3.range(-2,39),vals=new Map(years.map(y=>[y,0]));
+ for(const id of c.nodes){
+   const n=nodeById[id];if(!n)continue;
+   const total=expected(n)||0;
+   for(const q of nodeTimeline(n,total))if(vals.has(q.year))vals.set(q.year,(vals.get(q.year)||0)+q.val);
+ }
+ return years.map(y=>({year:y,val:vals.get(y)||0}));
+}
+function renderCompanies(){
+ companyRows.innerHTML=COMPANY_EXPOSURE.map(c=>{
+   const vec=companyVector(c),capture=Math.max(0,Math.min(1,c.capture||0));
+   const lifecycle=d3.sum(vec,d=>d.val)*capture;
+   const near=vec.filter(d=>d.year>=0&&d.year<=5);
+   const allFuture=vec.filter(d=>d.year>=0);
+   const nearPeakObj=near.reduce((a,b)=>b.val>a.val?b:a,{year:0,val:0});
+   const allPeakObj=allFuture.reduce((a,b)=>b.val>a.val?b:a,{year:0,val:0});
+   const nearPeak=nearPeakObj.val*capture,allPeak=allPeakObj.val*capture;
+   const annualBn=c.revAnnualRmbBn??c.revRmbBn,annualYi=annualBn*10;
+   const ratio=annualYi>0?nearPeak/annualYi*100:null;
+   const profit=c.margin!=null?nearPeak*c.margin/100:null;
+   return `<tr>
+     <td><a href="${c.source}" target="_blank" rel="noopener"><b>${c.name}</b><br><span class="metricPill">${c.ticker}</span></a></td>
+     <td>${c.nodes.map(id=>nodeById[id]?.label||id).join(" / ")}</td>
+     <td title="${c.note}">${c.revenueLabel}<br><span class="metricPill">年化≈RMB ${annualBn.toFixed(2)}bn</span></td>
+     <td><input class="captureInput" data-company="${c.id}" type="number" min="0" max="1" step="0.01" value="${c.capture}"><br><span class="metricPill">${c.captureGrade||"C"}</span></td>
+     <td class="impulseHi">${fmtYi(nearPeak)}<br><span class="metricPill">峰值T+${nearPeakObj.year}</span></td>
+     <td>${fmtPct(ratio)}</td>
+     <td>${fmtYi(lifecycle)}</td>
+     <td>${fmtYi(allPeak)} / T+${allPeakObj.year}</td>
+     <td>${profit==null?"—":fmtYi(profit)+"<br><span class='metricPill'>"+c.marginType+"</span>"}</td>
+     <td>${c.pe?.toFixed(2)??"—"}</td><td>${c.pb?.toFixed(2)??"—"}</td><td>${c.div==null?"—":fmtPct(c.div)}</td><td>${c.mcapRmbBn.toFixed(1)}</td>
+   </tr>`;
+ }).join("");
+ document.querySelectorAll(".captureInput").forEach(el=>el.onchange=()=>{const c=COMPANY_EXPOSURE.find(x=>x.id===el.dataset.company);if(c){c.capture=Math.max(0,Math.min(1,+el.value||0));renderCompanies()}});
+}
+
+function renderCohort(){
+ const arr=cohortVector(),el=document.querySelector("#cohortChart"),w=el.clientWidth||700,h=el.clientHeight||290,m={t:18,r:18,b:34,l:54};
+ const ss=d3.select(el);ss.selectAll("*").remove();const x=d3.scaleLinear().domain([-2,38]).range([m.l,w-m.r]),y=d3.scaleLinear().domain([0,d3.max(arr,d=>d.val)||1]).nice().range([h-m.b,m.t]);
+ ss.append("g").attr("class","grid").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(w-m.l-m.r)).tickFormat(""));
+ ss.append("path").datum(arr).attr("fill","#edf3fb").attr("d",d3.area().x(d=>x(d.year)).y0(y(0)).y1(d=>y(d.val)).curve(d3.curveMonotoneX));
+ ss.append("path").datum(arr).attr("fill","none").attr("stroke","#4f6b95").attr("stroke-width",2.4).attr("d",d3.line().x(d=>x(d.year)).y(d=>y(d.val)).curve(d3.curveMonotoneX));
+ ss.append("g").attr("class","axis").attr("transform",`translate(0,${h-m.b})`).call(d3.axisBottom(x).tickValues([-2,0,2,5,8,12,16,20,24,28,32,36]).tickFormat(d=>d===0?"T0":d>0?`+${d}年`:`${d}年`));
+ ss.append("g").attr("class","axis").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(v=>v>=1000?(v/1000).toFixed(1)+"k":Math.round(v)));
+ ss.append("text").attr("x",m.l).attr("y",12).attr("font-size",10).attr("fill","#667085").text("亿元 / 年（含生育滞后）");
+ const r=Math.max(0,+mDiscount.value||0),npv=d3.sum(arr,d=>d.val/Math.pow(1+r,Math.max(0,d.year)));lagSummary.innerHTML=`<div class="result"><div class="k">确定性净增量 PV@T0</div><div class="v">${fmtYi(npv)}</div></div><div class="mcMeta">Birth lag：T+1 25% / T+2 50% / T+3 25%；T0以后按 ${(r*100).toFixed(1)}% 折现，T0以前婚恋支出按已发生额不再反向复利。</div>`;
+}
+function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function tri(rng,lo,mode,hi){if(hi<=lo)return lo;mode=Math.min(hi,Math.max(lo,mode));const u=rng(),f=(mode-lo)/(hi-lo);return u<f?lo+Math.sqrt(u*(hi-lo)*(mode-lo)):hi-Math.sqrt((1-u)*(hi-lo)*(hi-mode))}
+function mcNodeValue(n,rng,birthSample){if(n.calcRole!=="direct")return 0;const scen=+mScenario.value||1,pen=Math.max(0,+mPenScale.value||1),amt=tri(rng,n.amountLo??n.amount,n.amount,n.amountHi??n.amount),p=Math.min(1,Math.max(0,tri(rng,n.probLo??n.prob,n.prob,n.probHi??n.prob)*pen)),cf=Math.min(1,Math.max(0,tri(rng,n.cfLo??n.cf,n.cf,n.cfHi??n.cf))),dur=n.duration||1,stageCal=CAL_STAGE[n.stage]||1,manual=["infant","preschool","k12","college"].includes(n.stage)?Math.max(0,+mChildCal.value||0):1,base=n.base==="birth"?(+mPairs.value||0)*birthSample:(+mPairs.value||0);return base*amt*p*dur*scen*regionFactor(n)*stageCal*manual*Math.max(0,n.sumWeight??1)*cf}
+function percentile(a,p){const x=[...a].sort((x,y)=>x-y),i=(x.length-1)*p,l=Math.floor(i),h=Math.ceil(i);return x[l]+(x[h]-x[l])*(i-l)}
+function runMonteCarlo(){const N=Math.max(200,Math.min(5000,Math.round(+mIters.value||1500))),rng=mulberry32(20260921),vals=[],npvs=[],baseBirth=Math.max(0,+mBirth.value||0),disc=Math.max(0,+mDiscount.value||0);
+ for(let k=0;k<N;k++){const birth=tri(rng,Math.max(0,baseBirth*.75),baseBirth,Math.min(2,baseBirth*1.25)),nodeVals=new Map();let total=0;for(const n of DATA.nodes){const v=mcNodeValue(n,rng,birth);if(v){nodeVals.set(n.id,v);total+=v}}vals.push(total);const arr=cohortVector(n=>nodeVals.get(n.id)||0);npvs.push(d3.sum(arr,d=>d.val/Math.pow(1+disc,Math.max(0,d.year))))}
+ const p10=percentile(vals,.1),p50=percentile(vals,.5),p90=percentile(vals,.9),n50=percentile(npvs,.5);rP10.textContent=fmtYi(p10);rP50.textContent=fmtYi(p50);rP90.textContent=fmtYi(p90);rNPV.textContent=fmtYi(n50);mcMeta.textContent=`${N}次模拟；P90/P10=${(p90/Math.max(1,p10)).toFixed(2)}×。A/B/C节点分别使用较窄/中等/较宽参数区间。`;
+ const el=document.querySelector("#mcChart"),w=el.clientWidth||700,h=el.clientHeight||250,mm={t:15,r:15,b:30,l:50},ss=d3.select(el);ss.selectAll("*").remove();const bins=d3.bin().thresholds(28)(vals),x=d3.scaleLinear().domain(d3.extent(vals)).nice().range([mm.l,w-mm.r]),y=d3.scaleLinear().domain([0,d3.max(bins,b=>b.length)||1]).nice().range([h-mm.b,mm.t]);ss.selectAll("rect").data(bins).join("rect").attr("x",b=>x(b.x0)+1).attr("y",b=>y(b.length)).attr("width",b=>Math.max(0,x(b.x1)-x(b.x0)-2)).attr("height",b=>y(0)-y(b.length)).attr("fill","#d9e4f2");ss.append("g").attr("class","axis").attr("transform",`translate(0,${h-mm.b})`).call(d3.axisBottom(x).ticks(6).tickFormat(v=>v>=1000?(v/1000).toFixed(1)+"k":Math.round(v)));ss.append("g").attr("class","axis").attr("transform",`translate(${mm.l},0)`).call(d3.axisLeft(y).ticks(4));for(const [v,label] of [[p10,"P10"],[p50,"P50"],[p90,"P90"]]){ss.append("line").attr("x1",x(v)).attr("x2",x(v)).attr("y1",mm.t).attr("y2",h-mm.b).attr("stroke","#596579").attr("stroke-dasharray","4 3");ss.append("text").attr("x",x(v)+3).attr("y",mm.t+10).attr("font-size",9).text(label)}}
+
+function renderSensitivity(){
+ const candidates=DATA.nodes.filter(n=>n.calcRole==="direct").map(n=>({n,score:Math.max(n.marriageSens||0,n.birthSens||0)})).sort((a,b)=>b.score-a.score).slice(0,16);
+ sensitivityRows.innerHTML=candidates.map(({n})=>`<div class="sensitivityRow"><span>${n.label}</span><div class="sbar"><i class="marriageBar" style="width:${n.marriageSens||0}%"></i></div><div class="sbar"><i class="birthBar" style="width:${n.birthSens||0}%"></i></div><span>${n.marriageSens||0}/${n.birthSens||0}</span></div>`).join("");
+}
+function renderIndustry(){
+ const sid=industryStage.value||"household",d=INDUSTRY[sid]||INDUSTRY.household;
+ chainUp.innerHTML=(d.upstream||[]).map(x=>`<div class="chainItem">${x}</div>`).join("");chainMid.innerHTML=(d.midstream||[]).map(x=>`<div class="chainItem">${x}</div>`).join("");chainDown.innerHTML=(d.downstream||[]).map(x=>`<div class="chainItem">${x}</div>`).join("");
+ companyWrap.innerHTML=(d.companies||[]).length?`<div class="researchSub"><b>代表性上市公司暴露：</b></div>`+(d.companies||[]).map(([name,ticker,exposure,url])=>`<a class="companyChip" href="${url}" target="_blank" rel="noopener"><b>${name} · ${ticker}</b><span>${exposure}</span></a>`).join(""):`<div class="researchSub">该阶段暂不放代表公司，避免建立弱映射。</div>`;
+}
+function renderCalibration(){
+ calGrid.innerHTML=CAL_ANCHORS.map(([grade,title,value,note,url])=>{
+   const cls=grade.startsWith("A")?"calBadgeA":grade==="B"?"calBadgeB":"calBadgeC";
+   return `<div class="calCard"><span class="badge ${cls}">${grade}</span><div class="t">${title}</div><div class="g">${value}</div><div class="n">${note}</div>${url?`<a class="sourceLink" href="${url}" target="_blank" rel="noopener">来源 ↗</a>`:""}</div>`;
+ }).join("");
+}
+
+function initResearch(){
+ for(const st of STAGES){const o=document.createElement("option");o.value=st.id;o.textContent=st.name;industryStage.appendChild(o)}
+ industryStage.value="household";industryStage.onchange=renderIndustry;
+ sourceGrid.innerHTML=SOURCES.map(([grade,desc,url])=>`<div class="sourceCard"><b>${grade}</b><p>${desc}</p>${url?`<a href="${url}" target="_blank" rel="noopener">查看来源 ↗</a>`:""}</div>`).join("");
+}
+initResearch();renderCalibration();
+
+function runRuntimeAudit(){
+ const tests=[];
+ const push=(title,ok,meta,fix=false)=>tests.push({title,ok,meta,fix});
+ const ids=[...document.querySelectorAll("[id]")].map(x=>x.id);
+ push("HTML ID唯一性",new Set(ids).size===ids.length,`${ids.length}个ID，无重复`);
+ const known=new Set(DATA.nodes.map(n=>n.id));
+ const badEdges=[];for(const [st,es] of Object.entries(DATA.edges))for(const [a,b] of es)if(!known.has(a)||!known.has(b))badEdges.push(`${st}:${a}→${b}`);
+ push("产业图引用",badEdges.length===0,badEdges.length?badEdges.join(", "):"全部产业边均指向有效节点");
+ const badMoney=DATA.money.filter(e=>!known.has(e[0])||!known.has(e[1]));
+ push("资金流引用",badMoney.length===0,badMoney.length?`${badMoney.length}条异常`:`${DATA.money.length}条资金流引用完整`);
+ const badCo=COMPANY_EXPOSURE.flatMap(c=>c.nodes.filter(id=>!known.has(id)).map(id=>`${c.name}:${id}`));
+ push("公司节点映射",badCo.length===0,badCo.length?badCo.join(", "):`${COMPANY_EXPOSURE.length}家公司映射完整`);
+ push("视图 / 渲染函数",VIEWS.length===11&&typeof renderOverview==="function"&&typeof renderFull==="function"&&typeof renderStage==="function",`${VIEWS.length}个视图；主链/总图/阶段渲染函数存在`);
+ push("孕前/IVF计基数",["prepreg","supplement","fertility_test","ivf"].every(id=>nodeById[id].base==="marriage"),"已按婚姻/生育尝试家庭计基数",true);
+ push("成年首付账户",nodeById.adult_home.calcRole==="assetFunding","已归入资金投入而非资产成交额",true);
+ push("公司年度口径",COMPANY_EXPOSURE.every(c=>(c.revAnnualRmbBn??0)>0),"公司冲击按年度峰值与年化业务规模比较",true);
+ push("婚礼硬缩放",Math.abs((CAL_STAGE.wedding||1)-1)<1e-9,"33.04万元仅作宽口径参考，不再统一压缩所有婚礼节点",true);
+ push("婚嫁金饰宏观约束",nodeById.gold.amount<=1.6&&nodeById.gold.cf<1,`三金=${nodeById.gold.amount}万，Δ=${Math.round(nodeById.gold.cf*100)}%`,true);
+ push("新婚汽车保守约束",nodeById.car.prob<=.30&&nodeById.car.amount<=20,`汽车=${nodeById.car.amount}万，P=${Math.round(nodeById.car.prob*100)}%`,true);
+ push("保险公司映射",COMPANY_EXPOSURE.find(c=>c.id==="pingan")?.nodes?.length===1&&COMPANY_EXPOSURE.find(c=>c.id==="pingan")?.nodes?.[0]==="insurance","平安仅映射家庭保险，不再捕获停车/充电/养车费用",true);
+ push("阶段成本账单",typeof stageMetrics==="function"&&typeof chainMetrics==="function"&&typeof renderCostDeck==="function","9阶段可点击成本账单 + 全生命周期成本汇总",true);
+ runtimeAudit.innerHTML=tests.map(t=>`<div class="validationItem"><div class="vTitle"><span class="${t.fix?"fixDot":"passDot"}"></span>${t.ok?"PASS":"FAIL"} · ${t.title}</div><div class="vMeta">${t.meta}</div></div>`).join("");
+}
+
+runRuntimeAudit();
+
+[mPairs,mBirth,mScenario,mRegion,mPenScale,mChildCal,mDiscount,mIters,assetMode].forEach(el=>el.addEventListener("input",()=>{updateModel();render()}));
+
+function applyPreset(kind){
+  [presetActual,presetLow,presetBase,presetHigh].forEach(b=>b.classList.remove("active"));
+  if(kind==="actual"){mPairs.value="65.7";mBirth.value="0.60";mScenario.value="1";mRegion.value="national";mPenScale.value="1.00";mChildCal.value="1.00";presetActual.classList.add("active")}
+  else if(kind==="low"){mBirth.value="0.45";mScenario.value="0.8";mRegion.value="tier23";mPenScale.value="0.85";mChildCal.value="1.00";presetLow.classList.add("active")}
+  else if(kind==="high"){mBirth.value="0.80";mScenario.value="1.2";mRegion.value="tier1";mPenScale.value="1.10";mChildCal.value="1.00";presetHigh.classList.add("active")}
+  else{mBirth.value="0.60";mScenario.value="1";mRegion.value="national";mPenScale.value="1.00";mChildCal.value="1.00";presetBase.classList.add("active")}
+  updateModel();render();
+}
+presetActual.onclick=()=>applyPreset("actual");
+presetLow.onclick=()=>applyPreset("low");
+presetBase.onclick=()=>applyPreset("base");
+presetHigh.onclick=()=>applyPreset("high");
+
+moneyBtn.onclick=()=>{moneyOn=!moneyOn;moneyBtn.classList.toggle("active",moneyOn);render()};
+labelBtn.onclick=()=>{labelsOn=!labelsOn;labelBtn.classList.toggle("active",labelsOn);render()};
+focusBtn.onclick=()=>{if(view!=="full"){view="full";sync()}focusOn=!focusOn;if(!focusStage)focusStage="household";focusBtn.classList.toggle("active",focusOn);render()};
+moneyThreshold.onchange=()=>render();
+expandBtn.onclick=()=>{for(const s of STAGES)collapsed[s.id].clear();render()};
+collapseBtn.onclick=()=>{for(const s of STAGES)for(const g of groupsFor(s.id))collapsed[s.id].add(g.name);render()};
+fitBtn.onclick=()=>lastBounds&&fit(lastBounds);
+
+exportBtn.onclick=()=>{const clone=document.querySelector("#svg").cloneNode(true);clone.setAttribute("xmlns","http://www.w3.org/2000/svg");clone.setAttribute("width",document.querySelector("#svg").clientWidth);clone.setAttribute("height",document.querySelector("#svg").clientHeight);const st=document.createElementNS("http://www.w3.org/2000/svg","style");st.textContent=document.querySelector("style").textContent;clone.insertBefore(st,clone.firstChild);const blob=new Blob([new XMLSerializer().serializeToString(clone)],{type:"image/svg+xml;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`marriage-chain-v18-${view}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+
+
+function currentConfig(){
+ return {
+   version:"V18",savedAt:new Date().toISOString(),
+   global:{pairs:+mPairs.value||0,birth:+mBirth.value||0,scenario:+mScenario.value||1,region:mRegion.value,penScale:+mPenScale.value||1,assetMode:assetMode.value,discount:+mDiscount.value||0,iters:+mIters.value||1500},
+   nodes:DATA.nodes.filter(n=>n.calcRole!=="ignore").map(n=>({id:n.id,prob:n.prob,cf:n.cf,duration:n.duration,amount:n.amount})),companies:COMPANY_EXPOSURE.map(c=>({id:c.id,capture:c.capture}))
+ };
+}
+exportConfigBtn.onclick=()=>{
+ const blob=new Blob([JSON.stringify(currentConfig(),null,2)],{type:"application/json;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="marriage-industry-model-v18.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+};
+importConfigBtn.onclick=()=>importConfigFile.click();
+importConfigFile.onchange=async()=>{
+ const f=importConfigFile.files?.[0];if(!f)return;
+ try{
+   const cfg=JSON.parse(await f.text()),g=cfg.global||{};
+   if(g.pairs!=null)mPairs.value=g.pairs;if(g.birth!=null)mBirth.value=g.birth;if(g.scenario!=null)mScenario.value=String(g.scenario);
+   if(g.region)mRegion.value=g.region;if(g.penScale!=null)mPenScale.value=g.penScale;if(g.assetMode)assetMode.value=g.assetMode;if(g.discount!=null)mDiscount.value=g.discount;if(g.iters!=null)mIters.value=g.iters;
+   const map=Object.fromEntries((cfg.nodes||[]).map(x=>[x.id,x]));
+   for(const n of DATA.nodes){const x=map[n.id];if(!x)continue;if(x.prob!=null)n.prob=+x.prob;if(x.cf!=null)n.cf=+x.cf;if(x.duration!=null)n.duration=+x.duration;if(x.amount!=null)n.amount=+x.amount}const cm=Object.fromEntries((cfg.companies||[]).map(x=>[x.id,x]));for(const c of COMPANY_EXPOSURE){if(cm[c.id]?.capture!=null)c.capture=+cm[c.id].capture}
+   updateModel();render();
+ }catch(err){alert("模型 JSON 读取失败："+err.message)}
+ finally{importConfigFile.value=""}
+};
+
+updateModel();render().catch(err=>{loading.textContent="ELK / D3 加载失败，请确认浏览器可访问 jsDelivr。";console.error(err)});
+</script><div class="flowTip" id="flowTip"></div>
+</body></html>
